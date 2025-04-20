@@ -26,7 +26,6 @@ let tryFetch = async (relayNamed = "ComposerStoryCreateMutation_facebookRelayOpe
                     }
                 },
                 "useDefaultActor": false, //@todo: check this
-
                 "feedLocation": "TIMELINE",
                 "feedbackSource": 0,
                 "focusCommentID": null,

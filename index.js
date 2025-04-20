@@ -101,8 +101,7 @@ let m = {
             try {
                 return await fs.promises.readFile(filePath, { encoding });
             } catch (error) {
-                console.error(`Error reading file '${filePath}': ${error.message}`);
-                return null;
+                throw new Error(`Error reading file '${filePath}': ${error.message}`);
             }
         },
 
@@ -119,8 +118,7 @@ let m = {
                 await fs.promises.writeFile(filePath, data, { encoding });
                 return true;
             } catch (error) {
-                console.error(`Error writing to file '${filePath}': ${error.message}`);
-                return false;
+                throw new Error(`Error writing to file '${filePath}': ${error.message}`);
             }
         },
 
@@ -135,8 +133,7 @@ let m = {
                 const data = await fs.promises.readFile(filePath, { encoding });
                 return JSON.parse(data);
             } catch (error) {
-                console.error(`Error reading or parsing JSON from '${filePath}': ${error.message}`);
-                return null;
+                throw new Error(`Error reading or parsing JSON from '${filePath}': ${error.message}`);
             }
         },
 
@@ -156,8 +153,7 @@ let m = {
                 await fs.promises.writeFile(filePath, jsonData, { encoding });
                 return true;
             } catch (error) {
-                console.error(`Error writing JSON to '${filePath}': ${error.message}`);
-                return false;
+                throw new Error(`Error writing JSON to '${filePath}': ${error.message}`);
             }
         },
 
@@ -184,7 +180,7 @@ let m = {
         },
     },
     env: {
-        URL_UPLOAD: 'https://upload.facebook.com/',
+        URL_UPLOAD: 'https://upload.facebook.com/ajax/react_composer/attachments/photo/upload',
         URL_GRAPH: 'https://www.facebook.com/api/graphql',
     }
 }
@@ -206,7 +202,6 @@ const dirData = '.data'
 const txtNamed = 'post.txt'
 const res_success = 'success'
 const res_error = 'error'
-
 const nes = await m.file.readAsJson('.asset/nes.json')
 const cookies = await m.file.readFile('.asset/cookies.txt')
 let mutation = {
@@ -216,11 +211,11 @@ let mutation = {
                 "source": "WWW", audience, attachments, message,
                 "actor_id": nes.data.__user
             }
-        }, nes.providedVariables[name]))
+        }, nes.variables2, nes.providedVariables[name]))
         let headers = { 'Content-Type': 'application/x-www-form-urlencoded', 'Cookie': cookies }
-        let body = m.code.queryEncode(Object.assign({ doc_id: nes.doc_ids[name], variables }, nes.data))
-        console.log(body);
-        return await axios.post(m.env.URL_GRAPH, body, { headers })
+        let body = Object.assign({ doc_id: nes.doc_ids[name], variables }, nes.data)
+        // await m.file.writeAsJson(`session/${Date.now()}.json`, body, 'utf-8')
+        return await axios.post(m.env.URL_GRAPH, m.code.queryEncode(body), { headers })
     },
     upload_image: async (imgPath) => {
         let handle_res = res => {
@@ -231,7 +226,7 @@ let mutation = {
         }
         let upUrl = `${m.env.URL_UPLOAD}?${m.code.queryEncode(nes.data)}`;
         let imageName = path.basename(imgPath);
-        let imageBuffer = await fs.readFile(imgPath);
+        let imageBuffer = await fs.promises.readFile(imgPath);
         let contentType;
 
         const fData = new FormData();
@@ -250,26 +245,49 @@ let mutation = {
     }
 }
 
+nes['variables2'] = {
+    checkPhotosToReelsUpsellEligibility: true,
+    feedLocation: "TIMELINE",
+    feedbackSource: 0,
+    gridMediaWidth: 230,
+    isTimeline: true,
+    privacySelectorRenderLocation: "COMET_STREAM",
+    renderLocation: "timeline",
+    scale: 1,
+    focusCommentID: null,
+    groupID: null,
+    hashtag: null,
+    inviteShortLinkKey: null,
+    useDefaultActor: false, //@todo: check this
+    canUserManageOffers: false,
+    isEvent: false,
+    isFeed: false,
+    isFunFactPost: false,
+    isFundraiser: false,
+    isGroup: false,
+    isPageNewsFeed: false,
+    isProfileReviews: false,
+    isSocialLearning: false,
+    isWorkSharedDraft: false,
+}
+
 async function post_me() {
     let dirEach = async (h_image, h_mutation, h_response) => {
         let log = [], prepare = {
             images: (dir) => u.shuffleArray(m.file.readImages(dir)),
             fields: async (dir) => {
-                let post = u.random_txt(20), data = {}
-                try {
-                    post = await m.file.readFile(`${dir}/${txtNamed}`)
-                    data = await m.file.readAsJson(`${dir}/data.json`)
-                } catch (error) {} finally {
-                    return { post, data }
-                }
+                let post, data;
+                try { post = await m.file.readFile(`${dir}/${txtNamed}`) } catch (error) { }
+                try { data = await m.file.readAsJson(`${dir}/data.json`) } catch (error) { }
+                return { post: post || '', data: data || {} }
             }
         }
         console.log('\n');
         let dirs = (await fs.promises.readdir(dirData, { withFileTypes: false }))
         for (let dir of dirs) {
-            let folder = `${dirData}/${dir}`
+            let folder = `${dirData}/${dir}`, fields = await prepare.fields(folder);
             let attachments = await h_image(prepare.images(folder)) // upload images
-            let res = await h_mutation(await prepare.fields(folder), attachments) // post mutation
+            let res = await h_mutation(fields, attachments) // post mutation
             log.push(await h_response(res, dir)) // handle response
         }
         return log
@@ -286,13 +304,12 @@ async function post_me() {
         },
         post_mutation: async (fields, attachments) => {
             let mutationNamed = 'ComposerStoryCreateMutation_facebookRelayOperation'
-            let text = fields.post
-            let message = { ranges: [], text }
+            let message = { ranges: [], text: fields.post }
             let audience = { privacy: { allow: [], deny: [], base_state: 'EVERYONE' } }
-            return await mutation.post(mutationNamed,audience, message, attachments)
+            return await mutation.post(mutationNamed, audience, message, attachments)
         },
         handle_response: async (response, folder) => {
-            let { data, errors, extensions } = response, now = Date.now(), fnw = new Date().toLocaleString('vi').replaceAll(':','.').replaceAll('/','-')
+            let { data, errors, extensions } = response.data, fnw = new Date().toLocaleString('vi').replaceAll(':', '.').replaceAll('/', '-')
             if (typeof data === 'string' && data.startsWith('for')) data = JSON.parse(data.substring(9))
             if (data) await m.file.writeAsJson(`res/${fnw}/${folder}/post ${res_success}.json`, data);
             if (errors) await m.file.writeAsJson(`res/${fnw}/${folder}/post ${res_error}.json`, errors);
