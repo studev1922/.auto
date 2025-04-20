@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises';
+import fs from 'node:fs';
 import path from 'node:path';
 import FormData from 'form-data';
 import axios from 'axios';
@@ -188,13 +188,27 @@ let m = {
         URL_GRAPH: 'https://www.facebook.com/api/graphql',
     }
 }
-function random_txt(t) { let r = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", n = ""; for (let o = 0; o < t; o++)n += r.charAt(Math.floor(Math.random() * r.length)); return n }
+const u = {
+    random_txt(t) { let r = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", n = ""; for (let o = 0; o < t; o++)n += r.charAt(Math.floor(Math.random() * r.length)); return n }
+    , shuffleArray(arr) {
+        if (!arr || arr.length <= 1) {
+            return arr; // No need to shuffle if empty or has only one element
+        }
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]]; // Hoán đổi phần tử
+        }
+        return arr;
+    }
+}
 
-const dirData = './data'
+const dirData = '.data'
 const txtNamed = 'post.txt'
 const res_success = 'success'
 const res_error = 'error'
-const nes = m.file.readAsJson('./nes.json')
+
+const nes = await m.file.readAsJson('.asset/nes.json')
+const cookies = await m.file.readFile('.asset/cookies.txt')
 let mutation = {
     post: async (name, audience, message, attachments) => {
         let variables = JSON.stringify(Object.assign({
@@ -202,9 +216,10 @@ let mutation = {
                 "source": "WWW", audience, attachments, message,
                 "actor_id": nes.data.__user
             }
-        }, provided[name]))
+        }, nes.providedVariables[name]))
         let headers = { 'Content-Type': 'application/x-www-form-urlencoded', 'Cookie': cookies }
-        let body = m.default.code.queryEncode(Object.assign({ doc_id: doc_ids[name], variables }, nes.data))
+        let body = m.code.queryEncode(Object.assign({ doc_id: nes.doc_ids[name], variables }, nes.data))
+        console.log(body);
         return await axios.post(m.env.URL_GRAPH, body, { headers })
     },
     upload_image: async (imgPath) => {
@@ -214,7 +229,7 @@ let mutation = {
             let payload = JSON.parse(res.data.substring(9)).payload
             return { id: payload.photoID, src: payload.imageSrc }
         }
-        let upUrl = `${m.env.URL_UPLOAD}?${m.default.code.queryEncode(nes.data)}`;
+        let upUrl = `${m.env.URL_UPLOAD}?${m.code.queryEncode(nes.data)}`;
         let imageName = path.basename(imgPath);
         let imageBuffer = await fs.readFile(imgPath);
         let contentType;
@@ -240,23 +255,28 @@ async function post_me() {
         let log = [], prepare = {
             images: (dir) => u.shuffleArray(m.file.readImages(dir)),
             fields: async (dir) => {
-                let post = await m.file.readFile(`${dir}/${txtNamed}`)
-                let data = await m.file.readFile(`${dir}/data.json`)
-                return {post, data}
+                let post = u.random_txt(20), data = {}
+                try {
+                    post = await m.file.readFile(`${dir}/${txtNamed}`)
+                    data = await m.file.readAsJson(`${dir}/data.json`)
+                } catch (error) {} finally {
+                    return { post, data }
+                }
             }
         }
         console.log('\n');
-        (await fs.readdir(dirData, { withFileTypes: false }))
-            .forEach(async (dir) => {
-                let attachments, res;
-                if (h_image) attachments = await h_image(prepare.images(dir)) // upload images
-                res = await h_mutation(await prepare.fields(dir), attachments) // post mutation
-                log.push(await h_response(res, dir)) // handle response
-            })
+        let dirs = (await fs.promises.readdir(dirData, { withFileTypes: false }))
+        for (let dir of dirs) {
+            let folder = `${dirData}/${dir}`
+            let attachments = await h_image(prepare.images(folder)) // upload images
+            let res = await h_mutation(await prepare.fields(folder), attachments) // post mutation
+            log.push(await h_response(res, dir)) // handle response
+        }
         return log
     }
     let handle = {
         upload_images: async (imgPaths) => {
+            if (!imgPaths || imgPaths.length <= 0) return []
             let attachments = [];
             for (let imgPath of imgPaths) {
                 let res = await mutation.upload_image(imgPath)
@@ -265,22 +285,24 @@ async function post_me() {
             return attachments
         },
         post_mutation: async (fields, attachments) => {
-            let text = fields.post || random_txt(100)
+            let mutationNamed = 'ComposerStoryCreateMutation_facebookRelayOperation'
+            let text = fields.post
             let message = { ranges: [], text }
             let audience = { privacy: { allow: [], deny: [], base_state: 'EVERYONE' } }
-            return await mutation.post(audience, message, attachments)
+            return await mutation.post(mutationNamed,audience, message, attachments)
         },
         handle_response: async (response, folder) => {
-            let { data, errors, extensions } = response, now = Date.now()
-            if (data) m.file.writeAsJson(`${new Date(now).toLocaleString('vi')}/${folder}/post ${res_success}.json`, data);
-            if (errors) m.file.writeAsJson(`${new Date(now).toLocaleString('vi')}/${folder}/post ${res_error}.json`, errors);
-            return {[folder]: {data, errors}}
+            let { data, errors, extensions } = response, now = Date.now(), fnw = new Date().toLocaleString('vi').replaceAll(':','.').replaceAll('/','-')
+            if (typeof data === 'string' && data.startsWith('for')) data = JSON.parse(data.substring(9))
+            if (data) await m.file.writeAsJson(`res/${fnw}/${folder}/post ${res_success}.json`, data);
+            if (errors) await m.file.writeAsJson(`res/${fnw}/${folder}/post ${res_error}.json`, errors);
+            return { [folder]: { data, errors } }
         }
     }
     return await dirEach(handle.upload_images, handle.post_mutation, handle.handle_response)
 }
 
 await post_me()
-    .then(_ => console.log('Done!', _))
+    .then(_ => console.log('Done!'))
     .catch(err => console.error(err))
     .finally(() => process.exit(0))
