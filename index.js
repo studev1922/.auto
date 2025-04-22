@@ -196,6 +196,7 @@ const u = {
         }
         return arr;
     }
+    , renderVariables:(e={renderLocation:'timeline', hashtag:null})=>{let i=e.renderLocation||"timeline",a={feedLocation:i.toUpperCase(),canUserManageOffers:!1,checkPhotosToReelsUpsellEligibility:!0,feedbackSource:0,gridMediaWidth:230,hashtag:null};return Object.assign(a,{isEvent:"event"===i,isFeed:"homepage_stream"===i,isFundraiser:"fundraiser_page"===i,isFunFactPost:!1,isGroup:"group"===i,isPageNewsFeed:"pages_feed"===i,isProfileReviews:"PAGE_SURFACE_RECOMMENDATIONS"===a.feedLocation,isSocialLearning:"group_units"===i,isTimeline:"timeline"===i||"bizweb_self_view"===i,isWorkSharedDraft:!1,privacySelectorRenderLocation:"COMET_STREAM",renderLocation:i,scale:1},e)}
 }
 
 const dirData = '.data'
@@ -204,6 +205,7 @@ const res_success = 'success'
 const res_error = 'error'
 const nes = await m.file.readAsJson('.asset/nes.json')
 const cookies = await m.file.readFile('.asset/cookies.txt')
+nes.renderVariables = u.renderVariables()
 let mutation = {
     post: async (name, audience, message, attachments) => {
         let variables = JSON.stringify(Object.assign({
@@ -211,7 +213,7 @@ let mutation = {
                 "source": "WWW", audience, attachments, message,
                 "actor_id": nes.data.__user
             }
-        }, nes.variables2, nes.providedVariables[name]))
+        }, nes.renderVariables, nes.providedVariables[name]))
         let headers = { 'Content-Type': 'application/x-www-form-urlencoded', 'Cookie': cookies }
         let body = Object.assign({ doc_id: nes.doc_ids[name], variables }, nes.data)
         // await m.file.writeAsJson(`session/${Date.now()}.json`, body, 'utf-8')
@@ -244,33 +246,6 @@ let mutation = {
         return handle_res(res)
     }
 }
-
-nes['variables2'] = {
-    checkPhotosToReelsUpsellEligibility: true,
-    feedLocation: "TIMELINE",
-    feedbackSource: 0,
-    gridMediaWidth: 230,
-    isTimeline: true,
-    privacySelectorRenderLocation: "COMET_STREAM",
-    renderLocation: "timeline",
-    scale: 1,
-    focusCommentID: null,
-    groupID: null,
-    hashtag: null,
-    inviteShortLinkKey: null,
-    useDefaultActor: false, //@todo: check this
-    canUserManageOffers: false,
-    isEvent: false,
-    isFeed: false,
-    isFunFactPost: false,
-    isFundraiser: false,
-    isGroup: false,
-    isPageNewsFeed: false,
-    isProfileReviews: false,
-    isSocialLearning: false,
-    isWorkSharedDraft: false,
-}
-
 async function post_me() {
     let dirEach = async (h_image, h_mutation, h_response) => {
         let log = [], prepare = {
