@@ -1,6 +1,5 @@
 node_modules/
 package-lock.json
-.env
 dist/
 build/
 coverage/
@@ -9,4 +8,4 @@ yarn-error.log*
 
 res/
 nes.json
-cookies.txt
+cookie.txt
