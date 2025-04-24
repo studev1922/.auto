@@ -93,18 +93,26 @@ const path = {
 const file = {
     /**
      * Reads the content of a file.
-     * @param {string} filePath - The path to the file.
+     * @param {...string} filePath - The path to the file.
      * @param {string} encoding - The file encoding (default: 'utf-8').
      * @returns {Promise<string | null>} - The file content, or null on error.
      */
-    async readFile(filePath, encoding = 'utf-8') {
-        try {
-            return await fs.promises.readFile(filePath, { encoding });
-        } catch (error) {
-            throw new Error(`Error reading file '${filePath}': ${error.message}`);
+    async readFile(filePaths, encoding = 'utf-8') {
+        const pathsToTry = Array.isArray(filePaths) ? filePaths : [filePaths];
+        for (const filePath of pathsToTry) {
+            try {
+                const content = await fs.promises.readFile(filePath, { encoding });
+                return content;
+            } catch (error) {
+                console.warn(`Cannot read file '${filePath}': ${error.message}`);
+            }
         }
+        // Nếu vòng lặp hoàn thành mà không trả về nội dung, nghĩa là không đọc được tệp nào
+        const errorMessage = pathsToTry.length > 1
+            ? `Cannot read any file from: ${pathsToTry.join(', ')}`
+            : `Files doesn't exist: ${pathsToTry[0]}`;
+        throw new Error(errorMessage);
     },
-
     /**
      * Writes data to a file.
      * @param {string} filePath - The path to the file.
