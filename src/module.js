@@ -221,7 +221,7 @@ const menu = {
      * @returns {[string, Function | null] | null} - The selected menu item (text and function),
      * or null if the user chooses to exit.
      */
-    createMenu(menuItems) {
+    _createMenu(menuItems) {
         const maxLength = Math.max(...menuItems.map(item => item[0].length));
         const width = maxLength + 6;
 
@@ -259,13 +259,13 @@ const menu = {
      */
     async internalization(menuItems, isClear = true) {
         while (true) {
-            if (isClear) console.clear();
-            const select = await util.createMenu(menuItems);
+            const select = await menu._createMenu(menuItems);
             if (select === null || select[1] === null) {
                 return;
             } else if (typeof select[1] === 'function') {
                 console.log(select[0]); await select[1]();
             }
+            if (isClear) console.clear();
         }
     },
 };
