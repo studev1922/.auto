@@ -1,0 +1,92 @@
+body {
+    font-family: sans-serif;
+}
+
+#path-display {
+    margin-bottom: 10px;
+}
+
+#search-bar {
+    margin-bottom: 10px;
+}
+
+#delete-button {
+    display: none;
+    margin-bottom: 10px;
+}
+
+#file-list {
+    padding: 0;
+    list-style: none;
+    min-height: 200px;
+    border: 1px solid #ddd;
+}
+
+#file-list li {
+    cursor: pointer;
+    padding: 8px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+}
+
+#file-list li:last-child {
+    border-bottom: none;
+}
+
+#file-list li.selected {
+    background-color: #e0f7fa;
+}
+
+#file-list li .icon {
+    margin-right: 10px;
+}
+
+.folder-icon::before {
+    content: "📁 ";
+    font-size: 1.2em;
+}
+
+.file-icon::before {
+    content: "📄 ";
+    font-size: 1.2em;
+}
+
+.drag-over-target {
+    background-color: #cce5ff !important;
+}
+
+#context-menu {
+    position: fixed;
+    display: none;
+    border: 1px solid #ccc;
+    background-color: white;
+    z-index: 1000;
+    padding: 5px 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#context-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#context-menu li {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+#context-menu li:hover {
+    background-color: #f0f0f0;
+}
+
+.action-btn {
+    background: transparent;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.action-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}

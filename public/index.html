@@ -1,1 +1,400 @@
-<html lang=vi><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>Quản lý Thư mục</title><link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css rel=stylesheet><style>body{font-family:sans-serif}#path-display{margin-bottom:10px}#search-bar{margin-bottom:10px}#delete-button{display:none;margin-bottom:10px}#file-list{padding:0;list-style:none;min-height:200px;border:1px solid #ddd}#file-list li{cursor:pointer;padding:8px 15px;border-bottom:1px solid #f0f0f0;display:flex;align-items:center}#file-list li:last-child{border-bottom:none}#file-list li.selected{background-color:#e0f7fa}#file-list li .icon{margin-right:10px}.folder-icon::before{content:"📁 ";font-size:1.2em}.file-icon::before{content:"📄 ";font-size:1.2em}.drag-over-target{background-color:#cce5ff!important}#context-menu{position:fixed;display:none;border:1px solid #ccc;background-color:#fff;z-index:1000;padding:5px 0;box-shadow:2px 2px 5px rgba(0,0,0,.1)}#context-menu ul{list-style:none;padding:0;margin:0}#context-menu li{padding:8px 15px;cursor:pointer}#context-menu li:hover{background-color:#f0f0f0}.action-btn{background:0 0;padding:2px 6px;border-radius:4px}.action-btn:hover{background-color:rgba(0,0,0,.05)}</style><div class="container mt-3"><div class="alert alert-secondary p-2"id=path-display><span onclick='loadFiles("")'style=cursor:pointer>./data</span></div><div class=mb-3 id=search-bar><input class=form-control oninput=searchItems(this.value) placeholder="Tìm kiếm tên..."></div><button class="mb-3 btn btn-danger"id=delete-button onclick=deleteSelected()><i class="bi bi-trash"></i> Xóa</button><ul id=file-list ondragover=handleDragOver(event) ondrop=handleDrop(event)><li class="p-5 text-center">Kéo và thả thư mục hoặc tệp vào đây</ul><div id=context-menu><ul class=list-group><li class="list-group-item rename-option"onclick=renameContextItem()>Đổi tên<li class="list-group-item delete-option"onclick=deleteContextItem()>Xóa<li class="list-group-item goback-option"onclick=goBack()>Quay lại<li class="list-group-item select-option"onclick=selectContextItem()>Chọn<li class="list-group-item unselect-option"onclick=unselectContextItem()>Bỏ chọn<li class="list-group-item create-folder-option"onclick=createFolder()>Thêm thư mục</ul></div></div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script><script>const fileListElement=document.getElementById("file-list"),pathDisplay=document.getElementById("path-display"),searchBar=document.getElementById("search-bar"),deleteButton=document.getElementById("delete-button"),contextMenu=document.getElementById("context-menu");let currentPath="",pathHistory=[],selectedItems=[],draggedItemPath=null,currentContextMenuPath=null,currentItemList=[];async function loadFiles(e=""){currentPath=e.replace(/\\/g,"/"),updatePathDisplay(),e!==currentPath&&pathHistory[pathHistory.length-1]!==currentPath&&pathHistory.push(currentPath);let t=await fetch(`/api/list?path=${e}`),n=await t.json();currentItemList=n,renderItemList(n),deleteButton.style.display=selectedItems.length>0?"block":"none"}function updatePathDisplay(){pathDisplay.innerHTML='<span onclick="loadFiles(\'\')" style="cursor: pointer;">./data</span>';let e=currentPath.split("/").filter(e=>""!==e),t="";e.forEach((n,l)=>{t+=""===t?n:`/${n}`;let a=t,i=l<e.length-1?"/":"",s=document.createElement("span");s.style.cursor="pointer",s.textContent=`${i}${n}`,s.onclick=()=>loadFiles(a),pathDisplay.appendChild(document.createTextNode("/")),pathDisplay.appendChild(s)})}function renderItemList(e){if(fileListElement.innerHTML="",0===e.length){fileListElement.innerHTML='<li class="text-center p-3">Kh\xf4ng c\xf3 mục n\xe0o</li>';return}e.forEach(e=>{let t=document.createElement("li");t.classList.add("d-flex","align-items-center"),t.dataset.path=e.path,t.dataset.type=e.type,t.draggable=!0,t.innerHTML=`<span class="icon ${"folder"===e.type?"folder-icon":"file-icon"}"></span> <span style=flex:1>${e.name}</span> <button class='action-btn btn btn-light btn-sm'style=border:none><i class='bi bi-three-dots-vertical'></i></button>`,t.classList.toggle("selected",selectedItems.includes(e.path)),t.addEventListener("click",t=>{"folder"===e.type?(loadFiles(e.path),selectedItems=[],Array.from(fileListElement.children).forEach(e=>e.classList.remove("selected")),deleteButton.style.display="none"):handleFileClick(e)}),fileListElement.appendChild(t),t.querySelector(".action-btn").addEventListener("click",t=>{t.stopPropagation(),currentContextMenuPath=e.path,showContextMenu(t.clientX,t.clientY,!0,""!==currentPath,"folder"===e.type)})})}function handleFileClick(e){let t=e.path,n=t.split(".").pop().toLowerCase();["jpg","jpeg","png","gif","bmp","webp"].includes(n)?openImage(t):["mp4","webm","ogg","avi","mov"].includes(n)?openVideo(t):["txt","json","md","html"].includes(n)?editTextFile(t):alert("Kh\xf4ng hỗ trợ xem tệp n\xe0y")}function openImage(e){let t=document.createElement("div");t.style.position="fixed",t.style.top="0",t.style.left="0",t.style.width="100vw",t.style.height="100vh",t.style.backgroundColor="rgba(0, 0, 0, 0.8)",t.style.display="flex",t.style.justifyContent="center",t.style.alignItems="center",t.style.zIndex="1000",t.style.cursor="pointer";let n=document.createElement("div");n.style.position="relative";let l=document.createElement("img");l.src=`/api/view?path=${encodeURIComponent(e)}`,l.alt="Image",l.style.maxWidth="90vw",l.style.maxHeight="90vh",l.style.transition="transform 0.2s ease-in-out";let a=document.createElement("div");function i(e,t){let n=l.getBoundingClientRect(),i=e-n.left,s=t-n.top;a.style.backgroundImage=`url(${l.src})`,a.style.backgroundSize=`${2*l.width}px ${2*l.height}px`,a.style.backgroundPosition=`-${2*i-100}px -${2*s-100}px`,a.style.top=`${s-100}px`,a.style.left=`${i-100}px`,a.style.display="block"}a.style.position="absolute",a.style.border="5px solid #fff",a.style.display="none",a.style.pointerEvents="none",a.style.zIndex="10",a.style.width="200px",a.style.height="200px",n.appendChild(l),n.appendChild(a),t.appendChild(n),document.body.appendChild(t),t.addEventListener("click",e=>{e.target===t&&document.body.removeChild(t)}),l.addEventListener("mousemove",e=>{i(e.clientX,e.clientY)}),l.addEventListener("mouseleave",()=>{a.style.display="none"}),l.addEventListener("touchmove",e=>{if(1===e.touches.length){let t=e.touches[0];i(t.clientX,t.clientY)}}),l.addEventListener("touchend",()=>{a.style.display="none"})}function openVideo(e){let t=document.createElement("div");t.style.position="fixed",t.style.top="0",t.style.left="0",t.style.width="100vw",t.style.height="100vh",t.style.backgroundColor="rgba(0, 0, 0, 0.8)",t.style.display="flex",t.style.justifyContent="center",t.style.alignItems="center",t.style.zIndex="1000",t.style.cursor="pointer";let n=document.createElement("div");n.style.position="relative";let l=document.createElement("video");l.src=`/api/view?path=${encodeURIComponent(e)}`,l.controls=!0,l.style.maxWidth="90vw",l.style.maxHeight="90vh",l.autoplay=!0,n.appendChild(l),t.appendChild(n),document.body.appendChild(t),t.addEventListener("click",e=>{e.target===t&&document.body.removeChild(t)})}function editTextFile(e){let t=document.createElement("div");t.style.position="fixed",t.style.top="0",t.style.left="0",t.style.width="100vw",t.style.height="100vh",t.style.backgroundColor="rgba(0, 0, 0, 0.8)",t.style.display="flex",t.style.justifyContent="center",t.style.alignItems="center",t.style.zIndex="1000";let n=document.createElement("div");n.style.backgroundColor="#fff",n.style.padding="20px",n.style.borderRadius="8px",n.style.maxWidth="90vw",n.style.maxHeight="90vh",n.style.width="600px",n.style.boxShadow="0 0 10px rgba(0,0,0,0.3)",n.style.display="flex",n.style.flexDirection="column",n.style.gap="10px",n.innerHTML=`<h5>Chỉnh sửa tệp: <span style=font-size:.9em;word-break:break-all>${e}</span></h5><textarea id=file-edit-text style=flex:1;min-height:300px;resize:vertical;padding:10px></textarea><div class=text-end><button class="btn btn-primary me-2"onclick='saveFile("${e}")'>💾 Lưu</button> <button class="btn btn-secondary"onclick=closeEditor()>✖ Đ\xf3ng</button></div>`,t.appendChild(n),document.body.appendChild(t),fetch(`/api/view?path=${encodeURIComponent(e)}`).then(e=>e.text()).then(e=>{document.getElementById("file-edit-text").value=e}).catch(e=>alert("Kh\xf4ng thể tải tệp để chỉnh sửa.")),window.currentTextEditorOverlay=t}function saveFile(e){let t=document.getElementById("file-edit-text").value;fetch("/api/save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({path:e,content:t})}).then(e=>e.json()).then(e=>{e.success?console.log("Lưu tệp th\xe0nh c\xf4ng!"):console.log("Lỗi khi lưu tệp.")}).catch(e=>console.log("Lỗi khi lưu tệp."))}function closeEditor(){window.currentTextEditorOverlay&&(document.body.removeChild(window.currentTextEditorOverlay),window.currentTextEditorOverlay=null)}async function createFolder(){let e=prompt("Nhập t\xean thư mục mới:");if(e){let t=await fetch("/api/create/folder",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:e,path:currentPath})}),n=await t.json();alert(n.message||n.error),loadFiles(currentPath)}}async function deleteSelected(e){let t=e||selectedItems;if(t.length>0&&confirm(`Bạn c\xf3 chắc chắn muốn x\xf3a ${t.length} mục đ\xe3 chọn?`)){let n=await fetch("/api/delete",{method:"DELETE",headers:{"Content-Type":"application/json"},body:JSON.stringify({items:t})}),l=await n.json();alert(l.message||l.error),loadFiles(currentPath),selectedItems=[],deleteButton.style.display="none"}else e&&e.length>0?loadFiles(currentPath):alert("Vui l\xf2ng chọn \xedt nhất một mục để x\xf3a.")}async function renameSelected(e){let t=e||(1===selectedItems.length?selectedItems[0]:null);if(t){let n=prompt("Nhập t\xean mới:");if(n){let l=await fetch("/api/rename",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({oldPath:t,newName:n})}),a=await l.json();alert(a.message||a.error),loadFiles(currentPath),selectedItems=[],deleteButton.style.display="none"}}else selectedItems.length>1?alert("Vui l\xf2ng chỉ chọn một mục để đổi t\xean."):alert("Vui l\xf2ng chọn một mục để đổi t\xean.")}async function goBack(){if(pathHistory.length>1){pathHistory.pop();let e=pathHistory.pop();await loadFiles(e)}else await loadFiles(""),pathHistory=[]}function handleDragOver(e){e.preventDefault()}async function handleDrop(e){e.preventDefault();let t=e.dataTransfer.items;if(t&&0!==t.length){for(let n of t){let l=n.webkitGetAsEntry?.();l&&await traverseFileTree(l,currentPath)}loadFiles(currentPath)}}async function traverseFileTree(e,t){if(e.isFile)e.file(async e=>{let n=pathJoin(t,e.name);await uploadFileWithRelativePath(e,n)});else if(e.isDirectory){let n=e.createReader(),l=await new Promise(e=>n.readEntries(e)),a=pathJoin(t,e.name);for(let i of(await createFolderOnServer(a),l))await traverseFileTree(i,a)}}async function uploadFileWithRelativePath(e,t){let n=new FormData;n.append("file",e),n.append("relativePath",pathDirname(t));let l=await fetch("/api/upload",{method:"POST",body:n}),a=await l.json();a.error&&console.error(`Lỗi khi tải l\xean: ${e.name}`,a.error)}async function createFolderOnServer(e){let t=await fetch("/api/create/folder",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:pathBasename(e),path:pathDirname(e)})}),n=await t.json();n.error&&console.error(`Lỗi khi tạo thư mục: ${e}`,n.error)}function pathJoin(...e){return e.join("/").replace(/\/+/g,"/")}function pathDirname(e){let t=e.split("/").filter(Boolean);return t.pop(),t.join("/")}function pathBasename(e){let t=e.split("/").filter(Boolean);return t[t.length-1]||""}async function uploadFile(e,t){let n=new FormData;n.append("file",e),n.append("relativePath",t);let l=await fetch("/api/upload",{method:"POST",body:n}),a=await l.json();a.error&&alert(`Lỗi khi tải l\xean ${e.name}: ${a.error}`)}function handleDragOverFolder(e){e.preventDefault(),this.classList.add("drag-over-target")}async function handleDropIntoFolder(e){if(e.preventDefault(),this.classList.remove("drag-over-target"),draggedItemPath){let t=this.dataset.path,n=draggedItemPath.split("/").pop(),l=`${t}/${n}`,a=await fetch("/api/move",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({oldPath:draggedItemPath,newPath:l})}),i=await a.json();i.error&&alert(`Lỗi khi di chuyển: ${i.error}`),loadFiles(currentPath),draggedItemPath=null}else if(e.dataTransfer.files&&e.dataTransfer.files.length>0){let s=e.dataTransfer.files,o=this.dataset.path;for(let r of(console.log("Thả tệp từ m\xe1y t\xednh v\xe0o thư mục:",o),s))await uploadFile(r,o);loadFiles(currentPath)}}function showContextMenu(e,t,n,l,a){let i=window.innerWidth,s=window.innerHeight,o=contextMenu.querySelector(".rename-option"),r=contextMenu.querySelector(".delete-option"),c=contextMenu.querySelector(".goback-option"),d=contextMenu.querySelector(".select-option"),p=contextMenu.querySelector(".unselect-option"),h=contextMenu.querySelector(".create-folder-option");o.style.display=n?"block":"none",r.style.display=n?"block":"none",d.style.display=n&&!selectedItems.includes(currentContextMenuPath)?"block":"none",p.style.display=n&&selectedItems.includes(currentContextMenuPath)?"block":"none",c.style.display=l?"block":"none",h.style.display=n?"none":"block",e+180>i&&(e=i-180-10),t+240>s&&(t=s-240-10),contextMenu.style.left=e+"px",contextMenu.style.top=t+"px",contextMenu.style.display="block"}function renameContextItem(){contextMenu.style.display="none",renameSelected(currentContextMenuPath),currentContextMenuPath=null}function deleteContextItem(){contextMenu.style.display="none",deleteSelected([currentContextMenuPath]),currentContextMenuPath=null}function selectContextItem(){if(currentContextMenuPath&&!selectedItems.includes(currentContextMenuPath)){selectedItems.push(currentContextMenuPath);let e=Array.from(fileListElement.children).find(e=>e.dataset.path===currentContextMenuPath);e&&e.classList.add("selected"),deleteButton.style.display=selectedItems.length>0?"block":"none"}contextMenu.style.display="none",currentContextMenuPath=null}function unselectContextItem(){if(currentContextMenuPath&&selectedItems.includes(currentContextMenuPath)){selectedItems=selectedItems.filter(e=>e!==currentContextMenuPath);let e=Array.from(fileListElement.children).find(e=>e.dataset.path===currentContextMenuPath);e&&e.classList.remove("selected"),deleteButton.style.display=selectedItems.length>0?"block":"none"}contextMenu.style.display="none",currentContextMenuPath=null}function searchItems(e){let t=currentItemList.filter(t=>t.name.toLowerCase().includes(e.toLowerCase()));renderItemList(t)}document.addEventListener("keydown",e=>{"Backspace"===e.key&&(e.preventDefault(),goBack())}),fileListElement.addEventListener("contextmenu",e=>{e.preventDefault();let t=e.target.closest("li[data-path]");if(t){currentContextMenuPath=t.dataset.path;let n="folder"===t.dataset.type;showContextMenu(e.clientX,e.clientY,!0,""!==currentPath,n)}else showContextMenu(e.clientX,e.clientY,!1,""!==currentPath,!1)}),document.addEventListener("click",()=>{contextMenu.style.display="none",currentContextMenuPath=null});let longPressTimer=null;fileListElement.addEventListener("touchstart",e=>{"LI"===e.target.tagName||e.target.closest("li")||(longPressTimer=setTimeout(()=>{showContextMenu(e.touches[0].clientX,e.touches[0].clientY,!1,""!==currentPath,!1)},800))}),fileListElement.addEventListener("touchend",()=>{clearTimeout(longPressTimer)}),loadFiles();</script></body></html>
+<!doctype html>
+<html lang=vi>
+
+<head>
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <title>Quản lý Thư mục</title>
+    <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css rel=stylesheet>
+    <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css>
+    <link rel=stylesheet href=style/index.css>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <div id=path-display class="alert alert-secondary p-2">
+            <span onclick='loadFiles("")' style=cursor:pointer>./data</span>
+        </div>
+        <div id=search-bar class=mb-3>
+            <input class=form-control placeholder="Tìm kiếm tên..." oninput=searchItems(this.value)>
+        </div>
+        <button id=delete-button class="btn btn-danger mb-3" onclick=deleteSelected()>
+            <i class="bi bi-trash"></i> Xóa
+        </button>
+        <ul id=file-list ondragover=handleDragOver(event) ondrop=handleDrop(event)>
+            <li class="text-center p-5">Kéo và thả thư mục hoặc tệp vào đây</li>
+        </ul>
+        <div id=context-menu>
+            <ul class=list-group>
+                <li class="list-group-item rename-option" onclick=renameContextItem()>Đổi tên</li>
+                <li class="list-group-item delete-option" onclick=deleteContextItem()>Xóa</li>
+                <li class="list-group-item select-option" onclick=selectContextItem()>Chọn</li>
+                <li class="list-group-item unselect-option" onclick=unselectContextItem()>Bỏ chọn</li>
+                <li class="list-group-item create-folder-option" onclick=createFolder()>Thêm thư mục</li>
+            </ul>
+        </div>
+    </div>
+    <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js></script>
+    <script>
+        const fileListElement = document.getElementById("file-list"),
+            pathDisplay = document.getElementById("path-display"),
+            searchBar = document.getElementById("search-bar"),
+            deleteButton = document.getElementById("delete-button"),
+            contextMenu = document.getElementById("context-menu");
+        let currentPath = "",
+            pathHistory = [],
+            selectedItems = [],
+            draggedItemPath = null,
+            currentContextMenuPath = null,
+            currentItemList = [];
+        async function loadFiles(e = "") {
+            currentPath = e.replace(/\\/g, "/"), updatePathDisplay(), e !== currentPath && pathHistory[pathHistory.length - 1] !== currentPath && pathHistory.push(currentPath);
+            const t = await fetch(`/api/list?path=${e}`),
+                n = await t.json();
+            currentItemList = n, renderItemList(n), deleteButton.style.display = selectedItems.length > 0 ? "block" : "none"
+        }
+
+        function updatePathDisplay() {
+            pathDisplay.innerHTML = '<span onclick="loadFiles(\'\')" style="cursor: pointer;">./data</span>';
+            const e = currentPath.split("/").filter((e => "" !== e));
+            let t = "";
+            e.forEach(((n, l) => {
+                t += "" === t ? n : `/${n}`;
+                const o = t,
+                    a = l < e.length - 1 ? "/" : "",
+                    i = document.createElement("span");
+                i.style.cursor = "pointer", i.textContent = `${a}${n}`, i.onclick = () => loadFiles(o), pathDisplay.appendChild(document.createTextNode("/")), pathDisplay.appendChild(i)
+            }))
+        }
+
+        function renderItemList(e) {
+            fileListElement.innerHTML = "", 0 !== e.length ? e.forEach((e => {
+                const t = document.createElement("li");
+                t.classList.add("d-flex", "align-items-center"), t.dataset.path = e.path, t.dataset.type = e.type, t.draggable = !0, t.innerHTML = `<span class="icon ${"folder" === e.type ? "folder-icon" : "file-icon"}"></span> <span style=flex:1>${e.name}</span> <button class='action-btn btn btn-light btn-sm'style=border:none><i class='bi bi-three-dots-vertical'></i></button>`, t.classList.toggle("selected", selectedItems.includes(e.path)), t.addEventListener("click", (t => {
+                    "folder" === e.type ? (loadFiles(e.path), selectedItems = [], Array.from(fileListElement.children).forEach((e => e.classList.remove("selected"))), deleteButton.style.display = "none") : handleFileClick(e)
+                })), fileListElement.appendChild(t), t.querySelector(".action-btn").addEventListener("click", (t => {
+                    t.stopPropagation(), currentContextMenuPath = e.path, showContextMenu(t.clientX, t.clientY, !0, "" !== currentPath, "folder" === e.type)
+                }))
+            })) : fileListElement.innerHTML = '<li class="text-center p-3">Không có mục nào</li>'
+        }
+
+        function handleFileClick(e) {
+            const t = e.path,
+                n = t.split(".").pop().toLowerCase();
+            ["jpg", "jpeg", "png", "gif", "bmp", "webp"].includes(n) ? openImage(t) : ["mp4", "webm", "ogg", "avi", "mov"].includes(n) ? openVideo(t) : ["mp3", "wav", "ogg", "flac", "aac"].includes(n) ? openAudio(t) : ["txt", "json", "md", "html"].includes(n) ? editTextFile(t) : alert("Không hỗ trợ xem tệp này")
+        }
+
+        function openImage(e) {
+            let t = document.createElement("div");
+            t.style.position = "fixed", t.style.top = "0", t.style.left = "0", t.style.width = "100vw", t.style.height = "100vh", t.style.backgroundColor = "rgba(0, 0, 0, 0.8)", t.style.display = "flex", t.style.justifyContent = "center", t.style.alignItems = "center", t.style.zIndex = "1000", t.style.cursor = "pointer";
+            let n = document.createElement("div");
+            n.style.position = "relative";
+            let l = document.createElement("img");
+            l.src = `/api/view?path=${encodeURIComponent(e)}`, l.alt = "Image", l.style.maxWidth = "90vw", l.style.maxHeight = "90vh", l.style.transition = "transform 0.2s ease-in-out";
+            let o = document.createElement("div");
+
+            function a(e, t) {
+                let n = l.getBoundingClientRect(),
+                    a = e - n.left,
+                    i = t - n.top;
+                o.style.backgroundImage = `url(${l.src})`, o.style.backgroundSize = `${2 * l.width}px ${2 * l.height}px`, o.style.backgroundPosition = `-${2 * a - 100}px -${2 * i - 100}px`, o.style.top = i - 100 + "px", o.style.left = a - 100 + "px", o.style.display = "block"
+            }
+            o.style.position = "absolute", o.style.border = "5px solid #fff", o.style.display = "none", o.style.pointerEvents = "none", o.style.zIndex = "10", o.style.width = "200px", o.style.height = "200px", n.appendChild(l), n.appendChild(o), t.appendChild(n), document.body.appendChild(t), t.addEventListener("click", (e => {
+                e.target === t && document.body.removeChild(t)
+            })), l.addEventListener("mousemove", (e => {
+                a(e.clientX, e.clientY)
+            })), l.addEventListener("mouseleave", (() => {
+                o.style.display = "none"
+            })), l.addEventListener("touchmove", (e => {
+                if (1 === e.touches.length) {
+                    let t = e.touches[0];
+                    a(t.clientX, t.clientY)
+                }
+            })), l.addEventListener("touchend", (() => {
+                o.style.display = "none"
+            }))
+        }
+
+        function openVideo(e) {
+            let t = document.createElement("div");
+            t.style.position = "fixed", t.style.top = "0", t.style.left = "0", t.style.width = "100vw", t.style.height = "100vh", t.style.backgroundColor = "rgba(0, 0, 0, 0.8)", t.style.display = "flex", t.style.justifyContent = "center", t.style.alignItems = "center", t.style.zIndex = "1000", t.style.cursor = "pointer";
+            let n = document.createElement("div");
+            n.style.position = "relative";
+            let l = document.createElement("video");
+            l.src = `/api/view?path=${encodeURIComponent(e)}`, l.controls = !0, l.style.maxWidth = "90vw", l.style.maxHeight = "90vh", l.autoplay = !0, n.appendChild(l), t.appendChild(n), document.body.appendChild(t), t.addEventListener("click", (e => {
+                e.target === t && document.body.removeChild(t)
+            }))
+        }
+
+        function openAudio(e) {
+            let t = document.createElement("div");
+            t.style.position = "fixed", t.style.top = "0", t.style.left = "0", t.style.width = "100vw", t.style.height = "100vh", t.style.backgroundColor = "rgba(0, 0, 0, 0.8)", t.style.display = "flex", t.style.justifyContent = "center", t.style.alignItems = "center", t.style.zIndex = "1000", t.style.cursor = "pointer";
+            let n = document.createElement("div");
+            n.style.background = "#fff", n.style.padding = "20px", n.style.borderRadius = "8px", n.style.textAlign = "center", n.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)", n.style.maxWidth = "90vw";
+            let l = document.createElement("audio");
+            l.src = `/api/view?path=${encodeURIComponent(e)}`, l.controls = !0, l.autoplay = !0, l.style.width = "100%";
+            let o = document.createElement("div");
+            o.textContent = `🎵 Đang phát: ${decodeURIComponent(e.split("/").pop())}`, o.style.marginBottom = "10px", o.style.fontWeight = "bold";
+            let a = document.createElement("button");
+            a.textContent = "Đóng", a.className = "btn btn-secondary mt-2", a.onclick = () => document.body.removeChild(t), n.appendChild(o), n.appendChild(l), n.appendChild(a), t.appendChild(n), document.body.appendChild(t), t.addEventListener("click", (e => {
+                e.target === t && document.body.removeChild(t)
+            }))
+        }
+
+        function editTextFile(e) {
+            let t = document.createElement("div");
+            t.style.position = "fixed", t.style.top = "0", t.style.left = "0", t.style.width = "100vw", t.style.height = "100vh", t.style.backgroundColor = "rgba(0, 0, 0, 0.8)", t.style.display = "flex", t.style.justifyContent = "center", t.style.alignItems = "center", t.style.zIndex = "1000";
+            let n = document.createElement("div");
+            n.style.backgroundColor = "#fff", n.style.padding = "20px", n.style.borderRadius = "8px", n.style.maxWidth = "90vw", n.style.maxHeight = "90vh", n.style.width = "600px", n.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)", n.style.display = "flex", n.style.flexDirection = "column", n.style.gap = "10px", n.innerHTML = `<h5>Chỉnh sửa tệp: <span style=font-size:.9em;word-break:break-all>${e}</span></h5><textarea id=file-edit-text style=flex:1;min-height:300px;resize:vertical;padding:10px></textarea><div class=text-end><button class="btn btn-primary me-2"onclick='saveFile("${e}")'>💾 Lưu</button> <button class="btn btn-secondary"onclick=closeEditor()>✖ Đóng</button></div>`, t.appendChild(n), document.body.appendChild(t), fetch(`/api/view?path=${encodeURIComponent(e)}`).then((e => e.text())).then((e => {
+                document.getElementById("file-edit-text").value = e
+            })).catch((e => alert("Không thể tải tệp để chỉnh sửa."))), window.currentTextEditorOverlay = t
+        }
+
+        function saveFile(e) {
+            const t = document.getElementById("file-edit-text").value;
+            fetch("/api/save", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    path: e,
+                    content: t
+                })
+            }).then((e => e.json())).then((e => {
+                e.success ? console.log("Lưu tệp thành công!") : console.log("Lỗi khi lưu tệp.")
+            })).catch((e => console.log("Lỗi khi lưu tệp.")))
+        }
+
+        function closeEditor() {
+            window.currentTextEditorOverlay && (document.body.removeChild(window.currentTextEditorOverlay), window.currentTextEditorOverlay = null)
+        }
+        async function createFolder() {
+            const e = prompt("Nhập tên thư mục mới:");
+            if (e) {
+                const t = await fetch("/api/create/folder", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: e,
+                        path: currentPath
+                    })
+                }),
+                    n = await t.json();
+                alert(n.message || n.error), loadFiles(currentPath)
+            }
+        }
+        async function deleteSelected(e) {
+            const t = e || selectedItems;
+            if (t.length > 0 && confirm(`Bạn có chắc chắn muốn xóa ${t.length} mục đã chọn?`)) {
+                const e = await fetch("/api/delete", {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        items: t
+                    })
+                }),
+                    n = await e.json();
+                alert(n.message || n.error), loadFiles(currentPath), selectedItems = [], deleteButton.style.display = "none"
+            } else e && e.length > 0 ? loadFiles(currentPath) : alert("Vui lòng chọn ít nhất một mục để xóa.")
+        }
+        async function renameSelected(e) {
+            const t = e || (1 === selectedItems.length ? selectedItems[0] : null);
+            if (t) {
+                const e = prompt("Nhập tên mới:");
+                if (e) {
+                    const n = await fetch("/api/rename", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            oldPath: t,
+                            newName: e
+                        })
+                    }),
+                        l = await n.json();
+                    alert(l.message || l.error), loadFiles(currentPath), selectedItems = [], deleteButton.style.display = "none"
+                }
+            } else selectedItems.length > 1 ? alert("Vui lòng chỉ chọn một mục để đổi tên.") : alert("Vui lòng chọn một mục để đổi tên.")
+        }
+        async function goBack() {
+            if (pathHistory.length > 1) {
+                pathHistory.pop();
+                const e = pathHistory.pop();
+                await loadFiles(e)
+            } else await loadFiles(""), pathHistory = []
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault()
+        }
+        async function handleDrop(e) {
+            e.preventDefault();
+            const t = e.dataTransfer.items;
+            if (t && 0 !== t.length) {
+                for (const e of t) {
+                    const t = e.webkitGetAsEntry?.();
+                    t && await traverseFileTree(t, currentPath)
+                }
+                loadFiles(currentPath)
+            }
+        }
+        async function traverseFileTree(e, t) {
+            if (e.isFile) e.file((async e => {
+                const n = pathJoin(t, e.name);
+                await uploadFileWithRelativePath(e, n)
+            }));
+            else if (e.isDirectory) {
+                const n = e.createReader(),
+                    l = await new Promise((e => n.readEntries(e))),
+                    o = pathJoin(t, e.name);
+                await createFolderOnServer(o);
+                for (const e of l) await traverseFileTree(e, o)
+            }
+        }
+        async function uploadFileWithRelativePath(e, t) {
+            const n = new FormData;
+            n.append("file", e), n.append("relativePath", pathDirname(t));
+            const l = await fetch("/api/upload", {
+                method: "POST",
+                body: n
+            }),
+                o = await l.json();
+            o.error && console.error(`Lỗi khi tải lên: ${e.name}`, o.error)
+        }
+        async function createFolderOnServer(e) {
+            const t = await fetch("/api/create/folder", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: pathBasename(e),
+                    path: pathDirname(e)
+                })
+            }),
+                n = await t.json();
+            n.error && console.error(`Lỗi khi tạo thư mục: ${e}`, n.error)
+        }
+
+        function pathJoin(...e) {
+            return e.join("/").replace(/\/+/g, "/")
+        }
+
+        function pathDirname(e) {
+            const t = e.split("/").filter(Boolean);
+            return t.pop(), t.join("/")
+        }
+
+        function pathBasename(e) {
+            const t = e.split("/").filter(Boolean);
+            return t[t.length - 1] || ""
+        }
+        async function uploadFile(e, t) {
+            const n = new FormData;
+            n.append("file", e), n.append("relativePath", t);
+            const l = await fetch("/api/upload", {
+                method: "POST",
+                body: n
+            }),
+                o = await l.json();
+            o.error && alert(`Lỗi khi tải lên ${e.name}: ${o.error}`)
+        }
+
+        function handleDragOverFolder(e) {
+            e.preventDefault(), this.classList.add("drag-over-target")
+        }
+        async function handleDropIntoFolder(e) {
+            if (e.preventDefault(), this.classList.remove("drag-over-target"), draggedItemPath) {
+                const e = `${this.dataset.path}/${draggedItemPath.split("/").pop()}`,
+                    t = await fetch("/api/move", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            oldPath: draggedItemPath,
+                            newPath: e
+                        })
+                    }),
+                    n = await t.json();
+                n.error && alert(`Lỗi khi di chuyển: ${n.error}`), loadFiles(currentPath), draggedItemPath = null
+            } else if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                const t = e.dataTransfer.files,
+                    n = this.dataset.path;
+                console.log("Thả tệp từ máy tính vào thư mục:", n);
+                for (const e of t) await uploadFile(e, n);
+                loadFiles(currentPath)
+            }
+        }
+
+        function showContextMenu(e, t, n, l, o) {
+            const a = window.innerWidth,
+                i = window.innerHeight,
+                s = contextMenu.querySelector(".rename-option"),
+                r = contextMenu.querySelector(".delete-option"),
+                c = contextMenu.querySelector(".select-option"),
+                d = contextMenu.querySelector(".unselect-option"),
+                p = contextMenu.querySelector(".create-folder-option");
+            s.style.display = n ? "block" : "none", r.style.display = n ? "block" : "none", c.style.display = n && !selectedItems.includes(currentContextMenuPath) ? "block" : "none", d.style.display = n && selectedItems.includes(currentContextMenuPath) ? "block" : "none", p.style.display = n ? "none" : "block", e + 180 > a && (e = a - 180 - 10), t + 240 > i && (t = i - 240 - 10), contextMenu.style.left = e + "px", contextMenu.style.top = t + "px", contextMenu.style.display = "block"
+        }
+
+        function renameContextItem() {
+            contextMenu.style.display = "none", renameSelected(currentContextMenuPath), currentContextMenuPath = null
+        }
+
+        function deleteContextItem() {
+            contextMenu.style.display = "none", deleteSelected([currentContextMenuPath]), currentContextMenuPath = null
+        }
+
+        function selectContextItem() {
+            if (currentContextMenuPath && !selectedItems.includes(currentContextMenuPath)) {
+                selectedItems.push(currentContextMenuPath);
+                const e = Array.from(fileListElement.children).find((e => e.dataset.path === currentContextMenuPath));
+                e && e.classList.add("selected"), deleteButton.style.display = selectedItems.length > 0 ? "block" : "none"
+            }
+            contextMenu.style.display = "none", currentContextMenuPath = null
+        }
+
+        function unselectContextItem() {
+            if (currentContextMenuPath && selectedItems.includes(currentContextMenuPath)) {
+                selectedItems = selectedItems.filter((e => e !== currentContextMenuPath));
+                const e = Array.from(fileListElement.children).find((e => e.dataset.path === currentContextMenuPath));
+                e && e.classList.remove("selected"), deleteButton.style.display = selectedItems.length > 0 ? "block" : "none"
+            }
+            contextMenu.style.display = "none", currentContextMenuPath = null
+        }
+
+        function searchItems(e) {
+            renderItemList(currentItemList.filter((t => t.name.toLowerCase().includes(e.toLowerCase()))))
+        }
+        document.addEventListener("keydown", (e => {
+            e.ctrlKey && "Backspace" === e.key && (e.preventDefault(), goBack())
+        })), fileListElement.addEventListener("contextmenu", (e => {
+            e.preventDefault();
+            const t = e.target.closest("li[data-path]");
+            if (t) {
+                currentContextMenuPath = t.dataset.path;
+                const n = "folder" === t.dataset.type;
+                showContextMenu(e.clientX, e.clientY, !0, "" !== currentPath, n)
+            } else showContextMenu(e.clientX, e.clientY, !1, "" !== currentPath, !1)
+        })), document.addEventListener("click", (() => {
+            contextMenu.style.display = "none", currentContextMenuPath = null
+        }));
+        let longPressTimer = null;
+        fileListElement.addEventListener("touchstart", (e => {
+            "LI" === e.target.tagName || e.target.closest("li") || (longPressTimer = setTimeout((() => {
+                showContextMenu(e.touches[0].clientX, e.touches[0].clientY, !1, "" !== currentPath, !1)
+            }), 800))
+        })), fileListElement.addEventListener("touchend", (() => {
+            clearTimeout(longPressTimer)
+        })), loadFiles()
+    </script>
+</body>
+
+</html>
