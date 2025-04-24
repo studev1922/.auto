@@ -49,7 +49,7 @@ let mutation = {
         return handle_res(res)
     }
 }
-async function _post(audience = audiences.me()) {
+async function _post(audience = audiences.me(), fnw = new Date().toLocaleString('vi').replaceAll(':', '.').replaceAll('/', '-')) {
     let dirEach = async (h_image, h_mutation, h_response) => {
         let logs = [], prepare = {
             images: (dir) => u.shuffleArray(m.file.readImages(dir)),
@@ -86,7 +86,7 @@ async function _post(audience = audiences.me()) {
             return await mutation.post(mutationNamed, audience, message, attachments)
         },
         handle_response: async (response, folder) => {
-            let { data, errors, extensions } = response.data, fnw = new Date().toLocaleString('vi').replaceAll(':', '.').replaceAll('/', '-')
+            let { data, errors, extensions } = response.data
             if (typeof data === 'string' && data.startsWith('for')) data = JSON.parse(data.substring(9))
             if (data) await m.file.writeAsJson(`res/${fnw}/${folder}/post ${res_success}.json`, data);
             if (errors) await m.file.writeAsJson(`res/${fnw}/${folder}/post ${res_error}.json`, errors);
@@ -96,11 +96,17 @@ async function _post(audience = audiences.me()) {
     return await dirEach(handle.upload_images, handle.post_mutation, handle.handle_response)
 }
 
-// await _post()
-//     .then(_ => console.log('Done!'))
-//     .catch(err => console.error(err))
-//     .finally(() => process.exit(0))
-await _post(audiences.group('633488806310573'))
-    .then(_ => console.log('Done!'))
-    .catch(err => console.error(err))
-    .finally(() => process.exit(0))
+
+let fnw = new Date().toLocaleString('vi').replaceAll(':', '.').replaceAll('/', '-')
+// await _post(audiences.group('633488806310573'), fnw)
+//     .then(resLogs => {
+//         m.file.writeAsJson(`res/${fnw}/res_data.json`, resLogs)
+//         console.log('Done!');
+//     })
+//     .catch(console.error).finally(() => process.exit(0))
+await _post(audiences.me(), fnw)
+    .then(resLogs => {
+        m.file.writeAsJson(`res/${fnw}/res_data.json`, resLogs)
+        console.log('Done!');
+    })
+    .catch(console.error).finally(() => process.exit(0))

@@ -83,7 +83,7 @@ const doc = {
     evt: function (e, t, l, o) { e && e[evt](t, l, o) }
 }
 
-const path = {
+const pathValue = {
     key_path(o, t) { let n = []; return !function f(l, x) { if ("object" == typeof l && null !== l) { if (Array.isArray(l)) l.forEach((t, n) => { let l = [...x]; l.length > 0 ? l[l.length - 1] += `[${n}]` : l.push(`[${n}]`), f(t, l) }); else for (let i in l) i === t && n.push([...x, i].join(".")), f(l[i], [...x, i]) } }(o, []), n },
     val_path(o, t) { let n = []; return !function f(t, i, x) { if ("string" == typeof i && "string" == typeof t && t.includes(i) || t === i) { n.push(x.join(".")); return } if ("object" == typeof t && null !== t) { if (Array.isArray(t)) t.forEach((t, n) => { let r = [...x]; x.length > 0 ? r[r.length - 1] += `[${n}]` : r.push(`[${n}]`), f(t, i, r) }); else for (let r in t) f(t[r], i, [...x, r]) } }(o, t, []), n.map(o => o.startsWith("]") && 0 === o.indexOf("[") ? "[" + o : o) },
     shortcut(e, t) { return function e(i) { if ("object" == typeof i && null !== i) { if (Array.isArray(i)) for (let r of i) { let f = e(r); if (void 0 !== f) return f } else { if (t in i) return i[t]; for (let n in i) { let o = e(i[n]); if (void 0 !== o) return o } } } }(e) },
@@ -319,5 +319,5 @@ export default {
     match: fun.match,
     join: fun.join,
     merger: fun.merger,
-    txt, code, doc, path, file, env
+    txt, code, doc, path: pathValue, file, env
 }
