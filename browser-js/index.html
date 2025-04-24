@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Thư mục</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        #path-display {
+            margin-bottom: 10px;
+        }
+
+        #search-bar {
+            margin-bottom: 10px;
+        }
+
+        #delete-button {
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        #file-list {
+            padding: 0;
+            list-style: none;
+            min-height: 200px;
+            border: 1px solid #ddd;
+        }
+
+        #file-list li {
+            cursor: pointer;
+            padding: 8px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+
+        #file-list li:last-child {
+            border-bottom: none;
+        }
+
+        #file-list li.selected {
+            background-color: #e0f7fa;
+        }
+
+        #file-list li .icon {
+            margin-right: 10px;
+        }
+
+        .folder-icon::before {
+            content: "📁 ";
+            font-size: 1.2em;
+        }
+
+        .file-icon::before {
+            content: "📄 ";
+            font-size: 1.2em;
+        }
+
+        .drag-over-target {
+            background-color: #cce5ff !important;
+        }
+
+        #context-menu {
+            position: fixed;
+            display: none;
+            border: 1px solid #ccc;
+            background-color: white;
+            z-index: 1000;
+            padding: 5px 0;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #context-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #context-menu li {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        #context-menu li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .action-btn {
+            background: transparent;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .action-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <div id="path-display" class="alert alert-secondary p-2">
+            <span onclick="loadFiles('')" style="cursor: pointer;">./data</span>
+        </div>
+        <div id="search-bar" class="mb-3">
+            <input type="text" class="form-control" placeholder="Tìm kiếm tên..." oninput="searchItems(this.value)">
+        </div>
+        <button id="delete-button" class="btn btn-danger mb-3" onclick="deleteSelected()">
+            <i class="bi bi-trash"></i> Xóa
+        </button>
+        <ul id="file-list" ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+            <li class="text-center p-5">Kéo và thả thư mục hoặc tệp vào đây</li>
+        </ul>
+
+        <div id="context-menu">
+            <ul class="list-group">
+                <li class="list-group-item rename-option" onclick="renameContextItem()">Đổi tên</li>
+                <li class="list-group-item delete-option" onclick="deleteContextItem()">Xóa</li>
+                <li class="list-group-item goback-option" onclick="goBack()">Quay lại</li>
+                <li class="list-group-item select-option" onclick="selectContextItem()">Chọn</li>
+                <li class="list-group-item unselect-option" onclick="unselectContextItem()">Bỏ chọn</li>
+                <li class="list-group-item create-folder-option" onclick="createFolder()">Thêm thư mục</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const fileListElement = document.getElementById('file-list');
+        const pathDisplay = document.getElementById('path-display');
+        const searchBar = document.getElementById('search-bar');
+        const deleteButton = document.getElementById('delete-button');
+        const contextMenu = document.getElementById('context-menu');
+        let currentPath = '';
+        let pathHistory = [];
+        let selectedItems = [];
+        let draggedItemPath = null;
+        let currentContextMenuPath = null;
+        let currentItemList = [];
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Backspace') {
+                event.preventDefault();
+                goBack();
+            }
+        });
+
+        fileListElement.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+            const targetElement = event.target.closest('li[data-path]');
+            if (targetElement) {
+                currentContextMenuPath = targetElement.dataset.path;
+                const isFolder = targetElement.dataset.type === 'folder';
+                showContextMenu(event.clientX, event.clientY, true, currentPath !== '', isFolder);
+            } else {
+                showContextMenu(event.clientX, event.clientY, false, currentPath !== '', false);
+            }
+        });
+
+        document.addEventListener('click', () => {
+            contextMenu.style.display = 'none';
+            currentContextMenuPath = null;
+        });
+
+        async function loadFiles(path = '') {
+            currentPath = path.replace(/\\/g, '/');
+            updatePathDisplay();
+
+            if (path !== currentPath && pathHistory[pathHistory.length - 1] !== currentPath) {
+                pathHistory.push(currentPath);
+            }
+
+            const response = await fetch(`/api/list?path=${path}`);
+            const data = await response.json();
+            currentItemList = data;
+            renderItemList(data);
+            deleteButton.style.display = selectedItems.length > 0 ? 'block' : 'none';
+        }
+
+        function updatePathDisplay() {
+            pathDisplay.innerHTML = `<span onclick="loadFiles('')" style="cursor: pointer;">./data</span>`;
+            const parts = currentPath.split('/').filter(part => part !== '');
+            let constructedPath = '';
+            parts.forEach((part, index) => {
+                constructedPath += (constructedPath === '' ? part : `/${part}`);
+                const clickPath = constructedPath;
+                const separator = index < parts.length - 1 ? '/' : '';
+                const pathElement = document.createElement('span');
+                pathElement.style.cursor = 'pointer';
+                pathElement.textContent = `${separator}${part}`;
+                pathElement.onclick = () => loadFiles(clickPath);
+                pathDisplay.appendChild(document.createTextNode('/'));
+                pathDisplay.appendChild(pathElement);
+            });
+        }
+
+        function renderItemList(items) {
+            fileListElement.innerHTML = '';
+            if (items.length === 0) {
+                fileListElement.innerHTML = '<li class="text-center p-3">Không có mục nào</li>';
+                return;
+            }
+            items.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('d-flex', 'align-items-center');
+                listItem.dataset.path = item.path;
+                listItem.dataset.type = item.type;
+                listItem.draggable = true;
+                listItem.innerHTML = `<span class="icon ${item.type === 'folder' ? 'folder-icon' : 'file-icon'}"></span> <span style=flex:1>${item.name}</span> <button class='action-btn btn btn-light btn-sm'style=border:none><i class='bi bi-three-dots-vertical'></i></button>`;
+                listItem.classList.toggle('selected', selectedItems.includes(item.path));
+
+                listItem.addEventListener('click', (event) => {
+                    if (item.type === 'folder') {
+                        loadFiles(item.path);
+                        selectedItems = [];
+                        Array.from(fileListElement.children).forEach(li => li.classList.remove('selected'));
+                        deleteButton.style.display = 'none';
+                    } else {
+                        handleFileClick(item);
+                    }
+                });
+
+                fileListElement.appendChild(listItem);
+                listItem.querySelector('.action-btn').addEventListener('click', (ev) => {
+                    ev.stopPropagation(); // không để sự kiện click lan ra ngoài
+                    currentContextMenuPath = item.path;
+                    showContextMenu(ev.clientX, ev.clientY, true, currentPath !== '', item.type === 'folder');
+                });
+            });
+        }
+
+        function handleFileClick(item) {
+            const filePath = item.path;
+            const fileExtension = filePath.split('.').pop().toLowerCase();
+
+            if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].includes(fileExtension)) {
+                // Mở hình ảnh trong tab mới
+                openImage(filePath);
+            } else if (['mp4', 'webm', 'ogg', 'avi', 'mov'].includes(fileExtension)) {
+                // Mở video trong tab mới
+                openVideo(filePath);
+            } else if (['txt', 'json', 'md', 'html'].includes(fileExtension)) {
+                // Chỉnh sửa file text hoặc json
+                editTextFile(filePath);
+            } else {
+                alert('Không hỗ trợ xem tệp này');
+            }
+        }
+
+        function openImage(e) { let t = document.createElement("div"); t.style.position = "fixed", t.style.top = "0", t.style.left = "0", t.style.width = "100vw", t.style.height = "100vh", t.style.backgroundColor = "rgba(0, 0, 0, 0.8)", t.style.display = "flex", t.style.justifyContent = "center", t.style.alignItems = "center", t.style.zIndex = "1000", t.style.cursor = "pointer"; let l = document.createElement("div"); l.style.position = "relative"; let n = document.createElement("img"); n.src = `/api/view?path=${encodeURIComponent(e)}`, n.alt = "Image", n.style.maxWidth = "90vw", n.style.maxHeight = "90vh", n.style.transition = "transform 0.2s ease-in-out"; let s = document.createElement("div"); function i(e, t) { let l = n.getBoundingClientRect(), i = e - l.left, o = t - l.top; s.style.backgroundImage = `url(${n.src})`, s.style.backgroundSize = `${2 * n.width}px ${2 * n.height}px`, s.style.backgroundPosition = `-${2 * i - 100}px -${2 * o - 100}px`, s.style.top = `${o - 100}px`, s.style.left = `${i - 100}px`, s.style.display = "block" } s.style.position = "absolute", s.style.border = "5px solid #fff", s.style.display = "none", s.style.pointerEvents = "none", s.style.zIndex = "10", s.style.width = "200px", s.style.height = "200px", l.appendChild(n), l.appendChild(s), t.appendChild(l), document.body.appendChild(t), t.addEventListener("click", e => { e.target === t && document.body.removeChild(t) }), n.addEventListener("mousemove", e => { i(e.clientX, e.clientY) }), n.addEventListener("mouseleave", () => { s.style.display = "none" }), n.addEventListener("touchmove", e => { if (1 === e.touches.length) { let t = e.touches[0]; i(t.clientX, t.clientY) } }), n.addEventListener("touchend", () => { s.style.display = "none" }) }
+        function openVideo(e) { let t = document.createElement("div"); t.style.position = "fixed", t.style.top = "0", t.style.left = "0", t.style.width = "100vw", t.style.height = "100vh", t.style.backgroundColor = "rgba(0, 0, 0, 0.8)", t.style.display = "flex", t.style.justifyContent = "center", t.style.alignItems = "center", t.style.zIndex = "1000", t.style.cursor = "pointer"; let l = document.createElement("div"); l.style.position = "relative"; let i = document.createElement("video"); i.src = `/api/view?path=${encodeURIComponent(e)}`, i.controls = !0, i.style.maxWidth = "90vw", i.style.maxHeight = "90vh", i.autoplay = !0, l.appendChild(i), t.appendChild(l), document.body.appendChild(t), t.addEventListener("click", e => { e.target === t && document.body.removeChild(t) }) }
+        function editTextFile(filePath) {
+            // Tạo overlay toàn màn hình
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100vw';
+            overlay.style.height = '100vh';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            overlay.style.display = 'flex';
+            overlay.style.justifyContent = 'center';
+            overlay.style.alignItems = 'center';
+            overlay.style.zIndex = '1000';
+
+            // Container cho trình chỉnh sửa
+            const editorContainer = document.createElement('div');
+            editorContainer.style.backgroundColor = '#fff';
+            editorContainer.style.padding = '20px';
+            editorContainer.style.borderRadius = '8px';
+            editorContainer.style.maxWidth = '90vw';
+            editorContainer.style.maxHeight = '90vh';
+            editorContainer.style.width = '600px';
+            editorContainer.style.boxShadow = '0 0 10px rgba(0,0,0,0.3)';
+            editorContainer.style.display = 'flex';
+            editorContainer.style.flexDirection = 'column';
+            editorContainer.style.gap = '10px';
+            editorContainer.innerHTML = `<h5>Chỉnh sửa tệp: <span style=font-size:.9em;word-break:break-all>${filePath}</span></h5><textarea id=file-edit-text style=flex:1;min-height:300px;resize:vertical;padding:10px></textarea><div class=text-end><button class="btn btn-primary me-2"onclick='saveFile("${filePath}")'>💾 Lưu</button> <button class="btn btn-secondary"onclick=closeEditor()>✖ Đóng</button></div>`;
+            overlay.appendChild(editorContainer);
+            document.body.appendChild(overlay);
+
+            // Load nội dung file vào textarea
+            fetch(`/api/view?path=${encodeURIComponent(filePath)}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('file-edit-text').value = data;
+                })
+                .catch(err => alert('Không thể tải tệp để chỉnh sửa.'));
+
+            // Lưu overlay để dùng ở closeEditor
+            window.currentTextEditorOverlay = overlay;
+        }
+
+        function saveFile(filePath) {
+            const newContent = document.getElementById('file-edit-text').value;
+            fetch('/api/save', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ path: filePath, content: newContent })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Lưu tệp thành công!');
+                    } else {
+                        console.log('Lỗi khi lưu tệp.');
+                    }
+                })
+                .catch(err => console.log('Lỗi khi lưu tệp.'));
+        }
+
+        function closeEditor() {
+            if (window.currentTextEditorOverlay) {
+                document.body.removeChild(window.currentTextEditorOverlay);
+                window.currentTextEditorOverlay = null;
+            }
+        }
+
+        async function createFolder() {
+            const folderName = prompt('Nhập tên thư mục mới:');
+            if (folderName) {
+                const response = await fetch('/api/create/folder', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: folderName, path: currentPath }),
+                });
+                const data = await response.json();
+                alert(data.message || data.error);
+                loadFiles(currentPath);
+            }
+        }
+
+        async function deleteSelected(itemsToDelete) {
+            const items = itemsToDelete || selectedItems;
+            if (items.length > 0 && confirm(`Bạn có chắc chắn muốn xóa ${items.length} mục đã chọn?`)) {
+                const response = await fetch('/api/delete', {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ items: items }),
+                });
+                const data = await response.json();
+                alert(data.message || data.error);
+                loadFiles(currentPath);
+                selectedItems = [];
+                deleteButton.style.display = 'none';
+            } else if (itemsToDelete && itemsToDelete.length > 0) {
+                loadFiles(currentPath);
+            } else {
+                alert('Vui lòng chọn ít nhất một mục để xóa.');
+            }
+        }
+
+        async function renameSelected(itemPath) {
+            const path = itemPath || (selectedItems.length === 1 ? selectedItems[0] : null);
+            if (path) {
+                const newName = prompt('Nhập tên mới:');
+                if (newName) {
+                    const response = await fetch('/api/rename', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ oldPath: path, newName: newName }),
+                    });
+                    const data = await response.json();
+                    alert(data.message || data.error);
+                    loadFiles(currentPath);
+                    selectedItems = [];
+                    deleteButton.style.display = 'none';
+                }
+            } else if (selectedItems.length > 1) {
+                alert('Vui lòng chỉ chọn một mục để đổi tên.');
+            } else {
+                alert('Vui lòng chọn một mục để đổi tên.');
+            }
+        }
+
+        async function goBack() {
+            if (pathHistory.length > 1) {
+                pathHistory.pop();
+                const previousPath = pathHistory.pop();
+                await loadFiles(previousPath);
+            } else {
+                await loadFiles('');
+                pathHistory = [];
+            }
+        }
+
+        function handleDragOver(event) {
+            event.preventDefault();
+        }
+
+        async function handleDrop(event) {
+            event.preventDefault();
+            const items = event.dataTransfer.items;
+
+            if (!items || items.length === 0) return;
+
+            for (const item of items) {
+                const entry = item.webkitGetAsEntry?.();
+                if (entry) {
+                    await traverseFileTree(entry, currentPath);
+                }
+            }
+
+            loadFiles(currentPath);
+        }
+
+        async function traverseFileTree(item, parentPath) {
+            if (item.isFile) {
+                item.file(async (file) => {
+                    const fullPath = pathJoin(parentPath, file.name);
+                    await uploadFileWithRelativePath(file, fullPath);
+                });
+            } else if (item.isDirectory) {
+                const dirReader = item.createReader();
+                const entries = await new Promise(resolve => dirReader.readEntries(resolve));
+
+                const folderPath = pathJoin(parentPath, item.name);
+                await createFolderOnServer(folderPath); // 👈 Tạo folder trước
+
+                for (const entry of entries) {
+                    await traverseFileTree(entry, folderPath);
+                }
+            }
+        }
+
+        // Tải file lên cùng relativePath
+        async function uploadFileWithRelativePath(file, relativePath) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('relativePath', pathDirname(relativePath)); // Thư mục chứa file
+            const response = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.json();
+            if (data.error) {
+                console.error(`Lỗi khi tải lên: ${file.name}`, data.error);
+            }
+        }
+
+        // Gửi yêu cầu tạo thư mục trên server
+        async function createFolderOnServer(relativePath) {
+            const response = await fetch('/api/create/folder', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: pathBasename(relativePath), path: pathDirname(relativePath) }),
+            });
+            const data = await response.json();
+            if (data.error) {
+                console.error(`Lỗi khi tạo thư mục: ${relativePath}`, data.error);
+            }
+        }
+
+        function pathJoin(...args) {
+            return args.join('/').replace(/\/+/g, '/');
+        }
+
+        function pathDirname(p) {
+            const parts = p.split('/').filter(Boolean);
+            parts.pop(); // bỏ phần tên file
+            return parts.join('/');
+        }
+
+        function pathBasename(p) {
+            const parts = p.split('/').filter(Boolean);
+            return parts[parts.length - 1] || '';
+        }
+
+
+
+        async function uploadFile(file, targetPath) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('relativePath', targetPath);
+            // console.log('FormData:', formData.get('relativePath'));
+            const response = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.json();
+            if (data.error) {
+                alert(`Lỗi khi tải lên ${file.name}: ${data.error}`);
+            }
+        }
+
+        function handleDragOverFolder(event) {
+            event.preventDefault();
+            this.classList.add('drag-over-target');
+        }
+
+        async function handleDropIntoFolder(event) {
+            event.preventDefault();
+            this.classList.remove('drag-over-target');
+
+            if (draggedItemPath) {
+                // Xử lý trường hợp kéo một mục (tệp hoặc thư mục) từ giao diện này
+                const targetFolderPath = this.dataset.path;
+                const itemName = draggedItemPath.split('/').pop();
+                const newPath = `${targetFolderPath}/${itemName}`;
+
+                const response = await fetch('/api/move', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ oldPath: draggedItemPath, newPath: newPath }),
+                });
+                const data = await response.json();
+                if (data.error) {
+                    alert(`Lỗi khi di chuyển: ${data.error}`);
+                }
+                loadFiles(currentPath);
+                draggedItemPath = null;
+            } else if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
+                // Xử lý trường hợp kéo tệp từ máy tính vào thư mục
+                const files = event.dataTransfer.files;
+                const targetFolderPath = this.dataset.path; // Lấy đường dẫn của thư mục đích
+
+                console.log('Thả tệp từ máy tính vào thư mục:', targetFolderPath);
+
+                for (const file of files) {
+                    await uploadFile(file, targetFolderPath); // Tải tệp lên thư mục đích
+                }
+                loadFiles(currentPath); // Tải lại danh sách
+            }
+        }
+
+        function showContextMenu(x, y, isItem, notRoot, isFolder) {
+            const menuWidth = 180; // ước lượng chiều rộng menu
+            const menuHeight = 240; // ước lượng chiều cao tối đa của menu
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            const renameOption = contextMenu.querySelector('.rename-option');
+            const deleteOption = contextMenu.querySelector('.delete-option');
+            const gobackOption = contextMenu.querySelector('.goback-option');
+            const selectOption = contextMenu.querySelector('.select-option');
+            const unselectOption = contextMenu.querySelector('.unselect-option');
+            const createFolderOption = contextMenu.querySelector('.create-folder-option');
+
+            renameOption.style.display = isItem ? 'block' : 'none';
+            deleteOption.style.display = isItem ? 'block' : 'none';
+            selectOption.style.display = isItem && !selectedItems.includes(currentContextMenuPath) ? 'block' : 'none';
+            unselectOption.style.display = isItem && selectedItems.includes(currentContextMenuPath) ? 'block' : 'none';
+            gobackOption.style.display = notRoot ? 'block' : 'none';
+            createFolderOption.style.display = !isItem ? 'block' : 'none';
+
+            // Điều chỉnh vị trí nếu gần mép phải hoặc dưới màn hình
+            if (x + menuWidth > viewportWidth) {
+                x = viewportWidth - menuWidth - 10;
+            }
+            if (y + menuHeight > viewportHeight) {
+                y = viewportHeight - menuHeight - 10;
+            }
+
+            contextMenu.style.left = x + 'px';
+            contextMenu.style.top = y + 'px';
+            contextMenu.style.display = 'block';
+        }
+
+
+        function renameContextItem() {
+            contextMenu.style.display = 'none';
+            renameSelected(currentContextMenuPath);
+            currentContextMenuPath = null;
+        }
+
+        function deleteContextItem() {
+            contextMenu.style.display = 'none';
+            deleteSelected([currentContextMenuPath]);
+            currentContextMenuPath = null;
+        }
+
+        function selectContextItem() {
+            if (currentContextMenuPath && !selectedItems.includes(currentContextMenuPath)) {
+                selectedItems.push(currentContextMenuPath);
+                const listItem = Array.from(fileListElement.children).find(li => li.dataset.path === currentContextMenuPath);
+                if (listItem) {
+                    listItem.classList.add('selected');
+                }
+                deleteButton.style.display = selectedItems.length > 0 ? 'block' : 'none';
+            }
+            contextMenu.style.display = 'none';
+            currentContextMenuPath = null;
+        }
+
+        function unselectContextItem() {
+            if (currentContextMenuPath && selectedItems.includes(currentContextMenuPath)) {
+                selectedItems = selectedItems.filter(path => path !== currentContextMenuPath);
+                const listItem = Array.from(fileListElement.children).find(li => li.dataset.path === currentContextMenuPath);
+                if (listItem) {
+                    listItem.classList.remove('selected');
+                }
+                deleteButton.style.display = selectedItems.length > 0 ? 'block' : 'none';
+            }
+            contextMenu.style.display = 'none';
+            currentContextMenuPath = null;
+        }
+
+        function searchItems(query) {
+            const filteredItems = currentItemList.filter(item =>
+                item.name.toLowerCase().includes(query.toLowerCase())
+            );
+            renderItemList(filteredItems);
+        }
+        let longPressTimer = null;
+
+        fileListElement.addEventListener('touchstart', (e) => {
+            if (e.target.tagName === 'LI' || e.target.closest('li')) return;
+
+            longPressTimer = setTimeout(() => {
+                showContextMenu(e.touches[0].clientX, e.touches[0].clientY, false, currentPath !== '', false);
+            }, 800); // giữ 0.8s thì hiện menu
+        });
+
+        fileListElement.addEventListener('touchend', () => {
+            clearTimeout(longPressTimer);
+        });
+
+        loadFiles();
+    </script>
+</body>
+
+</html>
