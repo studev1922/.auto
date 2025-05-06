@@ -3,7 +3,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 import readline from 'readline';
 import { stdin as input, stdout as output } from 'process';
-import { Builder, Browser, until, By } from 'selenium-webdriver';
+import { Builder, Browser, until, By, WebDriver } from 'selenium-webdriver';
 import chrome from 'selenium-webdriver/chrome.js';
 
 const rl = readline.createInterface({ input, output });
@@ -271,6 +271,10 @@ const menu = {
 };
 
 const driver = {
+    /**
+     * @param {boolean} isHeadLess 
+     * @returns {WebDriver}
+     */
     async getDriver(isHeadLess) {
         const options = new chrome.Options();
         if (isHeadLess) options.addArguments("--headless=new");
