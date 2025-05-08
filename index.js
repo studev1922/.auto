@@ -110,13 +110,18 @@ const mnu = {
                     .catch(console.error).finally(() => process.exit(0))
             },
             group: async () => {
-                let fnw = new Date().toLocaleString('vi').replaceAll(':', '.').replaceAll('/', '-')
-                await _post(audiences.group('633488806310573'), fnw)
-                    .then(resLogs => {
-                        m.file.writeAsJson(`res/${fnw}/res_data.json`, resLogs)
-                        console.log('Done!');
-                    })
-                    .catch(console.error).finally(() => process.exit(0))
+                const group_ids = [
+                    '633488806310573'
+                ]
+                for (const group_id of group_ids) {
+                    let fnw = new Date().toLocaleString('vi').replaceAll(':', '.').replaceAll('/', '-')
+                    await _post(audiences.group(group_id), fnw)
+                        .then(resLogs => {
+                            m.file.writeAsJson(`res/${fnw}/res_data.json`, resLogs)
+                            console.log('Done!');
+                        })
+                        .catch(console.error).finally(() => process.exit(0))
+                }
             }
         }
 

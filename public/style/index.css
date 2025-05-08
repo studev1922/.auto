@@ -2,6 +2,19 @@ body {
     font-family: sans-serif;
 }
 
+/* Add this style for the sticky navbar */
+.sticky-navbar {
+    position: sticky;
+    top: 1rem; /* Set the distance from the top */
+    z-index: 1020; /* Ensure the navbar stays on top of other content */
+    /* You might want to add background-color, padding, shadow, etc. here or in style/index.css */
+    background-color: #f8f9fa; /* Example background */
+    padding: 0.5rem 1rem; /* Example padding */
+    box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Example shadow */
+    border-radius: 0.5rem; /* Example rounded corners */
+    margin: 1rem; /* Example margin */
+}
+
 #path-display {
     margin-bottom: 10px;
 }
