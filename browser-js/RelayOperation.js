@@ -1,0 +1,7 @@
+let m = {
+    dataScript() { return Array.from(document.body.querySelectorAll("script")).map(r => { try { return JSON.parse(r.innerText) } catch (t) { return null } }).filter(Boolean) },
+    shortcuts(e, t) { let f = []; return !function e(n) { if ("object" == typeof n && null !== n) { if (Array.isArray(n)) for (let i of n) e(i); else for (let l in t in n && f.push(n[t]), n) e(n[l]) } }(e), f },
+    allSrc: (includes = ['.js'], isAbs) => Object.values(...m.shortcuts(m.dataScript(), 'rsrcMap')).filter(e => includes[isAbs ? 'every' : 'some'](str => e?.src?.includes(str))).map(e => e.src),
+    async _extractRelayOperationData(){let e=m.allSrc([".js"]),t=await Promise.all([...new Set(e)].map(e=>fetch(e).then(e=>e.ok?e.text():""))),l=(()=>{let e=/__d\("([^"]+)",\[\],\(function\(.+?\)\{e\.exports="([^"]+)"\}\)/g,l={};for(let r of t){let a;for(;null!==(a=e.exec(r));)l[a[1]]=a[2]}return Object.fromEntries(Object.entries(l).sort(([e],[t])=>e.localeCompare(t)))})(),r=(()=>{let e=/params:\s*\{[^}]*?id:\s*b\("([^"]+)"\)[\s\S]+?providedVariables:\s*\{([\s\S]+?)\}\s*\}/g,l=/([a-zA-Z0-9_]+)\s*:\s*b\("([^"]+)"\)/g,r={};for(let a of t){let n;for(;null!==(n=e.exec(a));){let o=n[1],s=n[2],c={},f;for(;null!==(f=l.exec(s));)try{c[f[1]]=require(f[2]).get()}catch{c[f[1]]=null}r[o]=c}}return r})();return{doc_ids:l,providedVariables:r}}
+}
+return await m._extractRelayOperationData()

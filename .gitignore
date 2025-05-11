@@ -6,6 +6,4 @@ coverage/
 npm-debug.log*
 yarn-error.log*
 
-res/
-nes.json
-cookie.txt
+user_data.json
