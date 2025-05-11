@@ -144,7 +144,7 @@ const file = {
             throw new Error(`Error reading or parsing JSON from '${filePath}': ${error.message}`);
         }
     },
-    async readOrJson(filePath, Or) {
+    async readJsonOr(filePath, Or) {
         try {
             return await file.readAsJson(filePath)
         } catch (error) {

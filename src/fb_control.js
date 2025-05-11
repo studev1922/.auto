@@ -43,13 +43,10 @@ const fb_mnu = {
         async saveUserDat(d, cookies) {
             if (!fs.existsSync(m.env.RELAY_OPERATION_JSON)) await fb_mnu.secure.loadRelayOperationData(d);
             let script = m.file.readFile(m.env.USER_DATA_SCRIPT)
-            let user_dat = await m.file.readOrJson(m.env.USER_DATA_JSON)
-            console.log("S1: ", user_dat);
+            let user_dat = await m.file.readJsonOr(m.env.USER_DATA_JSON)
             let result = await d.executeScript(script)
             result[cookies.c_user].cookie = m.code.cookieEncode(cookies)
-            console.log("S2: ", result);
             user_dat = Object.assign(user_dat, result)
-            console.log("S3: ", user_dat);
             await m.file.writeAsJson(m.env.USER_DATA_JSON, user_dat);
             menu.std.info(`Save (${Object.keys(result)})`)
             return result
@@ -109,10 +106,12 @@ const fb_mnu = {
 export default async (__dirname) => {
     dir = `${__dirname}/fb_profile`;
     const dirData = '.data', txtNamed = 'post.txt', res_success = 'success', res_error = 'error';
-    
-    await menu.internalization([
+
+    let choosers = [
         ['Exit', null],
-        ['Login', fb_mnu.fb_login],
-        ['Mở trang Facebook', void 0],
-    ], false)
+        ['Login', fb_mnu.fb_login]
+    ]
+
+    Object.keys(await m.file.readJsonOr(m.env.USER_DATA_JSON)).length && choosers.push(['Mở trang Facebook', void 0])
+    await menu.internalization(choosers, false)
 }
