@@ -100,7 +100,7 @@ const fb_mnu = {
             ['Login By Account', fb_mnu.loginByAccount],
         ], false);
     },
-    async fb_open() {
+    async fb_open_personal_page() {
         const meta_dat = await m.file.readJsonOr(m.env.USER_DATA_JSON)
         const d = await driver.getDriver(0, 0)
         async function open(c_user) {
@@ -126,6 +126,6 @@ export default async (__dirname) => {
     const dirData = '.data', txtNamed = 'post.txt', res_success = 'success', res_error = 'error';
 
     let choosers = [['Exit', null], ['Login', fb_mnu.fb_login]]
-    Object.keys(await m.file.readJsonOr(m.env.USER_DATA_JSON)).length && choosers.push(['Mở trang Facebook', fb_mnu.fb_open])
+    Object.keys(await m.file.readJsonOr(m.env.USER_DATA_JSON)).length && choosers.push(['Mở trang Facebook', fb_mnu.fb_open_personal_page])
     await menu.internalization(choosers, false)
 }
