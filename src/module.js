@@ -146,9 +146,9 @@ const file = {
     },
     async readOrJson(filePath, Or) {
         try {
-            const data = await fs.promises.readFile(filePath, { encoding });
-            return JSON.parse(data);
+            return await file.readAsJson(filePath)
         } catch (error) {
+            // console.log(error);
             return Or || {}
         }
     },

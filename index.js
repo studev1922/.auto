@@ -2,7 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'url'
 import server from './src/server.js';
 import fbmodel from './src/fb_control.js';
-import { menu } from './src/module.js';
+import m, { menu } from './src/module.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const mnu = {

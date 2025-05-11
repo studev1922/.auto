@@ -43,10 +43,13 @@ const fb_mnu = {
         async saveUserDat(d, cookies) {
             if (!fs.existsSync(m.env.RELAY_OPERATION_JSON)) await fb_mnu.secure.loadRelayOperationData(d);
             let script = m.file.readFile(m.env.USER_DATA_SCRIPT)
-            let user_dat = m.file.readOrJson(m.env.USER_DATA_JSON)
+            let user_dat = await m.file.readOrJson(m.env.USER_DATA_JSON)
+            console.log("S1: ", user_dat);
             let result = await d.executeScript(script)
             result[cookies.c_user].cookie = m.code.cookieEncode(cookies)
+            console.log("S2: ", result);
             user_dat = Object.assign(user_dat, result)
+            console.log("S3: ", user_dat);
             await m.file.writeAsJson(m.env.USER_DATA_JSON, user_dat);
             menu.std.info(`Save (${Object.keys(result)})`)
             return result
