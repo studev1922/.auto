@@ -99,6 +99,24 @@ const fb_mnu = {
             ['Login By Cookies', fb_mnu.loginByCookie],
             ['Login By Account', fb_mnu.loginByAccount],
         ], false);
+    },
+    async fb_open() {
+        const meta_dat = await m.file.readJsonOr(m.env.USER_DATA_JSON)
+        const d = await driver.getDriver(0, 0)
+        async function open(c_user) {
+            let cookie_txt = meta_dat[c_user].cookie
+            await fb_mnu.secure.logOut(d);
+            await fb_mnu.secure.setCookie(d, cookie_txt)
+            if (await driver.until(d, '[role=banner]', 15)) {
+                menu.std.info(`Đã đăng nhập(${c_user})!`)
+            } else menu.std.alert(`Đăng nhập(${c_user}) thất bại.`)
+        }
+
+        let choosers = [['Exit', null]]
+        for (let k of Object.keys(meta_dat))
+            choosers.push([`Mở profile(${k})`, async _ => await open(k)])
+        await menu.internalization(choosers, false)
+        await d.close()
     }
 }
 
@@ -107,11 +125,7 @@ export default async (__dirname) => {
     dir = `${__dirname}/fb_profile`;
     const dirData = '.data', txtNamed = 'post.txt', res_success = 'success', res_error = 'error';
 
-    let choosers = [
-        ['Exit', null],
-        ['Login', fb_mnu.fb_login]
-    ]
-
-    Object.keys(await m.file.readJsonOr(m.env.USER_DATA_JSON)).length && choosers.push(['Mở trang Facebook', void 0])
+    let choosers = [['Exit', null], ['Login', fb_mnu.fb_login]]
+    Object.keys(await m.file.readJsonOr(m.env.USER_DATA_JSON)).length && choosers.push(['Mở trang Facebook', fb_mnu.fb_open])
     await menu.internalization(choosers, false)
 }
