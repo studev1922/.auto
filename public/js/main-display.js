@@ -22,8 +22,8 @@ const mainDisplay = {
         t.className = "nav-item";
         if (Array.isArray(e[1])) {
             t.className += " dropdown";
-            const n = `navbarDropdown_${e[0].replace(/\s+/g,"_").replace(/[^\w-]/g,"")}`;
-            t.innerHTML = `${this._createLinkElement([e[0],"#"],"nav-link dropdown-toggle").outerHTML}<ul class="dropdown-menu" aria-labelledby="${n}"></ul>`;
+            const n = `navbarDropdown_${e[0].replace(/\s+/g, "_").replace(/[^\w-]/g, "")}`;
+            t.innerHTML = `${this._createLinkElement([e[0], "#"], "nav-link dropdown-toggle").outerHTML}<ul class="dropdown-menu" aria-labelledby="${n}"></ul>`;
             const l = t.querySelector(".dropdown-toggle");
             l.id = n, l.setAttribute("role", "button"), l.setAttribute("data-bs-toggle", "dropdown"), l.setAttribute("aria-expanded", "false");
             const a = t.querySelector(".dropdown-menu");
@@ -59,10 +59,14 @@ const mainDisplay = {
         document.body.appendChild(this.createNavbarElement(e))
     },
     init: () => {
-        mainDisplay.navDisplays(["Facebook", "https://www.facebook.com/me"], ["Quản lý tệp", typeof fileManager !== "undefined" && fileManager.init ? fileManager.init : () => console.warn("fileManager or fileManager.init not defined")], ["Liên kết", [
-            ["Github", "https://github.com/studev1922"],
-            ["Mở quản lý tệp", typeof fileManager !== "undefined" && fileManager.init ? fileManager.init : () => notify.notifyAction("fileManager or fileManager.init not defined", 'warn')],
-            ["Mục khác", "#another-section"]
-        ]])
+        mainDisplay.navDisplays(
+            ["Quản lý Facebook", "https://www.facebook.com/me"],
+            ["Quản lý tệp", typeof fileManager !== "undefined" && fileManager.init ? fileManager.init : () => console.warn("fileManager or fileManager.init not defined")],
+            ["Liên kết", [
+                ["Facebook", "https://www.facebook.com/me"],
+                ["Github", "https://github.com/studev1922"],
+                ["Mục khác", "#another-section"]
+            ]]
+        )
     }
 };
