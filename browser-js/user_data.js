@@ -1,1 +1,2 @@
 const data=(()=>{try{let t=JSON.parse(dataElement.innerText);if(!t?.u)return{fb_dtsg:t.f};let e=t.u.substring(10).split("&").map(t=>t.split("="));e.push(["fb_dtsg",t.f]);let r=Object.fromEntries(e);return delete r.jazoest,{[r.__user]:{nes:r}}}catch{return{}}})();
+return data
