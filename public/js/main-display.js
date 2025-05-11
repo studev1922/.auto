@@ -60,7 +60,7 @@ const mainDisplay = {
     },
     init: () => {
         mainDisplay.navDisplays(
-            ["Quản lý Facebook", "https://www.facebook.com/me"],
+            // ["Quản lý Facebook", "https://www.facebook.com/me"],
             ["Quản lý tệp", typeof fileManager !== "undefined" && fileManager.init ? fileManager.init : () => console.warn("fileManager or fileManager.init not defined")],
             ["Liên kết", [
                 ["Facebook", "https://www.facebook.com/me"],
