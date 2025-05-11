@@ -213,6 +213,21 @@ const utils = {
 }
 
 const menu = {
+    std: {
+        COLORS : {
+            cyan: '\x1b[36m',
+            blue: '\x1b[34m',
+            yellow: '\x1b[33m',
+            green: '\x1b[32m',
+            red: '\x1b[31m',
+            reset: '\x1b[0m',
+        },
+        input:(e=">> ")=>new Promise(t=>{rl.question(`${menu.std.COLORS.blue}${e}${menu.std.COLORS.reset}`,e=>{t(e)})}),
+        confirm:e=>new Promise(t=>{process.stdin.setRawMode(!0),process.stdin.resume(),process.stdout.write(`${menu.std.COLORS.green}[?]: ${e} (y/n) ${menu.std.COLORS.reset}`);let r=e=>{let r=e.toString();"y"===r||"\r"===r?(s(),t(!0)):("n"===r||"\x1b"===r)&&(s(),t(!1))},s=()=>{process.stdin.setRawMode(!1),process.stdin.pause(),process.stdin.removeListener("data",r),process.stdout.write("\n")};process.stdin.on("data",r)}),
+        info(e){console.log(`${menu.std.COLORS.cyan}[?]: ${e}${menu.std.COLORS.reset}`)},
+        alert(e){console.log(`${menu.std.COLORS.yellow}[!]: ${e}${menu.std.COLORS.reset}`)},
+        error(e){console.error(`${menu.std.COLORS.red}[x]: ${e}${menu.std.COLORS.reset}`)},
+        _close:()=>rl.close()},
     /**
      * Displays a menu and handles user input.
      * @param {Array<[string, Function | null]>} menuItems - An array of menu items,
@@ -275,10 +290,10 @@ const driver = {
      * @param {boolean} isHeadLess 
      * @returns {WebDriver}
      */
-    async getDriver(isHeadLess) {
+    async getDriver(user_data_dir, isHeadLess) {
         const options = new chrome.Options();
         if (isHeadLess) options.addArguments("--headless=new");
-        options.addArguments(`user-data-dir=${env.USER_DATA_DIR}`);
+        options.addArguments(`user-data-dir=${user_data_dir}`);
         options.excludeSwitches(['enable-logging']);
         return await new Builder()
             .forBrowser(Browser.CHROME)
@@ -316,7 +331,6 @@ const driver = {
         }
     }
 }
-
 
 export { utils, menu, driver }
 export default {
