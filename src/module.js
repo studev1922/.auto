@@ -222,19 +222,44 @@ const utils = {
 
 const menu = {
     std: {
-        COLORS: {
-            cyan: '\x1b[36m',
-            blue: '\x1b[34m',
-            yellow: '\x1b[33m',
-            green: '\x1b[32m',
-            red: '\x1b[31m',
-            reset: '\x1b[0m',
+        COLORS:{
+            // Text colors
+            reset: "\x1b[0m",
+            bold: "\x1b[1m",
+            dim: "\x1b[2m",
+            italic: "\x1b[3m",
+            underline: "\x1b[4m",
+            inverse: "\x1b[7m",
+            hidden: "\x1b[8m",
+            strikethrough: "\x1b[9m",
+
+            black: "\x1b[30m",
+            red: "\x1b[31m",
+            green: "\x1b[32m",
+            yellow: "\x1b[33m",
+            blue: "\x1b[34m",
+            magenta: "\x1b[35m",
+            cyan: "\x1b[36m",
+            white: "\x1b[37m",
+            gray: "\x1b[90m",
+
+            // Background colors
+            bgBlack: "\x1b[40m",
+            bgRed: "\x1b[41m",
+            bgGreen: "\x1b[42m",
+            bgYellow: "\x1b[43m",
+            bgBlue: "\x1b[44m",
+            bgMagenta: "\x1b[45m",
+            bgCyan: "\x1b[46m",
+            bgWhite: "\x1b[47m",
+            bgGray: "\x1b[100m",
         },
-        input: (e = ">> ") => new Promise(t => { rl.question(`${menu.std.COLORS.blue}${e}${menu.std.COLORS.reset}`, e => { t(e) }) }),
-        confirm: e => new Promise(t => { process.stdin.setRawMode(!0), process.stdin.resume(), process.stdout.write(`${menu.std.COLORS.green}[?]: ${e} (y/n) ${menu.std.COLORS.reset}`); let r = e => { let r = e.toString(); "y" === r || "\r" === r ? (s(), t(!0)) : ("n" === r || "\x1b" === r) && (s(), t(!1)) }, s = () => { process.stdin.setRawMode(!1), process.stdin.pause(), process.stdin.removeListener("data", r), process.stdout.write("\n") }; process.stdin.on("data", r) }),
-        info(e) { console.log(`${menu.std.COLORS.cyan}[?]: ${e}${menu.std.COLORS.reset}`) },
-        alert(e) { console.log(`${menu.std.COLORS.yellow}[!]: ${e}${menu.std.COLORS.reset}`) },
-        error(e) { console.error(`${menu.std.COLORS.red}[x]: ${e}${menu.std.COLORS.reset}`) },
+        text: (txt, ...styles) => `${styles.join('')}${txt}${menu.std.COLORS.reset}`,
+        input: (e = ">> ") => new Promise(t => { rl.question(menu.std.text(e,menu.std.COLORS.bgBlue), e => { t(e) }) }),
+        confirm: e => new Promise(t => { process.stdin.setRawMode(!0), process.stdin.resume(), process.stdout.write(menu.std.text(`[?]: ${e} (y/n)`, menu.std.COLORS.green)); let r = e => { let r = e.toString(); "y" === r || "\r" === r ? (s(), t(!0)) : ("n" === r || "\x1b" === r) && (s(), t(!1)) }, s = () => { process.stdin.setRawMode(!1), process.stdin.pause(), process.stdin.removeListener("data", r), process.stdout.write("\n") }; process.stdin.on("data", r) }),
+        info(e) { console.log(menu.std.text(`[?]: ${e} (y/n)`, menu.std.COLORS.cyan)) },
+        alert(e) { console.log(menu.std.text(`[!]: ${e} (y/n)`, menu.std.COLORS.yellow)) },
+        error(e) { console.error(menu.std.text(`[!]: ${e} (y/n)`, menu.std.COLORS.red)) },
         _close: () => rl.close()
     },
     /**
