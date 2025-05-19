@@ -9,3 +9,6 @@ yarn-error.log*
 .data/*
 user_data.json
 nodemon.json
+
+session/*
+res/*
