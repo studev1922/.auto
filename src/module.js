@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
 import readline from 'readline';
+import inquirer from 'inquirer';
 import { stdin as input, stdout as output } from 'process';
 import { Builder, Browser, until, By, WebDriver } from 'selenium-webdriver';
 import chrome from 'selenium-webdriver/chrome.js';
@@ -222,7 +223,8 @@ const utils = {
 
 const menu = {
     std: {
-        COLORS:{
+        _close: () => rl.close(),
+        COLORS: {
             // Text colors
             reset: "\x1b[0m",
             bold: "\x1b[1m",
@@ -255,12 +257,11 @@ const menu = {
             bgGray: "\x1b[100m",
         },
         text: (txt, ...styles) => `${styles.join('')}${txt}${menu.std.COLORS.reset}`,
-        input: (e = ">> ") => new Promise(t => { rl.question(menu.std.text(e,menu.std.COLORS.bgBlue), e => { t(e) }) }),
-        confirm: e => new Promise(t => { process.stdin.setRawMode(!0), process.stdin.resume(), process.stdout.write(menu.std.text(`[?]: ${e} (y/n)`, menu.std.COLORS.green)); let r = e => { let r = e.toString(); "y" === r || "\r" === r ? (s(), t(!0)) : ("n" === r || "\x1b" === r) && (s(), t(!1)) }, s = () => { process.stdin.setRawMode(!1), process.stdin.pause(), process.stdin.removeListener("data", r), process.stdout.write("\n") }; process.stdin.on("data", r) }),
-        info(e) { console.log(menu.std.text(`[?]: ${e} (y/n)`, menu.std.COLORS.cyan)) },
-        alert(e) { console.log(menu.std.text(`[!]: ${e} (y/n)`, menu.std.COLORS.yellow)) },
-        error(e) { console.error(menu.std.text(`[!]: ${e} (y/n)`, menu.std.COLORS.red)) },
-        _close: () => rl.close()
+        input(e = ">> ") { return new Promise(t => { rl.question(menu.std.text(e, menu.std.COLORS.bgBlue), e => { t(e) }) }) },
+        confirm(e) { return new Promise(t => { process.stdin.setRawMode(!0), process.stdin.resume(), process.stdout.write(menu.std.text(`[?]: ${e} (y/n)`, menu.std.COLORS.green)); let r = e => { let r = e.toString(); "y" === r || "\r" === r ? (s(), t(!0)) : ("n" === r || "\x1b" === r) && (s(), t(!1)) }, s = () => { process.stdin.setRawMode(!1), process.stdin.pause(), process.stdin.removeListener("data", r), process.stdout.write("\n") }; process.stdin.on("data", r) }) },
+        info(e) { console.log(menu.std.text(`[?]: ${e}`, menu.std.COLORS.cyan)) },
+        alert(e) { console.log(menu.std.text(`[o]: ${e}`, menu.std.COLORS.yellow)) },
+        error(e) { console.error(menu.std.text(`[!]: ${e}`, menu.std.COLORS.red)) },
     },
     /**
      * Displays a menu and handles user input.
@@ -312,7 +313,8 @@ const menu = {
             if (select === null || select[1] === null) {
                 return;
             } else if (typeof select[1] === 'function') {
-                console.log(select[0]); await select[1]();
+                console.log(menu.std.text(select[0], menu.std.COLORS.bold, menu.std.COLORS.cyan));
+                await select[1]();
             }
             if (isClear) console.clear();
         }
