@@ -10,7 +10,6 @@ const FB_URL = 'https://www.facebook.com/me'
 const FB_GRAPHQL = 'https://www.facebook.com/api/graphql'
 const FB_UPLOAD = 'https://upload.facebook.com/ajax/react_composer/attachments/photo/upload'
 const _time = function () { let t = new Date, e = t.getFullYear(), a = String(t.getMonth() + 1).padStart(2, "0"), r = String(t.getDate()).padStart(2, "0"), n = String(t.getHours()).padStart(2, "0"), d = String(t.getMinutes()).padStart(2, "0"), g = String(t.getSeconds()).padStart(2, "0"), p = String(t.getMilliseconds()).padStart(3, "0"); return `${e}.${a}.${r}-${n}.${d}.${g}.${p}` }
-function sleep(ms) { return new Promise(n => setTimeout(n, ms)) }
 const s = menu.std
 
 const fb_mnu = {
@@ -190,8 +189,8 @@ const fb_mnu = {
                 handle_response: async (response, folder) => {
                     let { data, errors, extensions } = response.data
                     if (typeof data === 'string' && data.startsWith('for')) data = JSON.parse(data.substring(9))
-                    if (data) await file.writeAsJson(`res/${folder}/post ${res_success}.json`, data);
-                    if (errors) await file.writeAsJson(`res/${folder}/post ${res_error}.json`, errors);
+                    if (data) await m.file.writeAsJson(`res/${folder}/post ${res_success}.json`, data);
+                    if (errors) await m.file.writeAsJson(`res/${folder}/post ${res_error}.json`, errors);
                     return { [folder]: { data, errors } }
                 }
             }
@@ -237,15 +236,15 @@ const fb_mnu = {
             for (let folder of (await fs.promises.readdir(m.env.DATA_DIRECTORY, { withFileTypes: false }))) {
                 const dir = `${m.env.DATA_DIRECTORY}/${folder}`
                 const pathImages = shuffleArray(m.file.readImages(dir));
-                const textToPost = await (async _ => { let a; try { a = await file.readFile(`${dir}/${txtNamed}`) } catch (r) { a = '' } return a })();
+                const textToPost = await (async _ => { let a; try { a = await m.file.readFile(`${dir}/${txtNamed}`) } catch (r) { a = '' } return a })();
                 for (const __user of u_ids) {
                     s.alert(`POST(${__user})\t:\t"${folder}"`)
                     let resFile = `${folder}/${__user}/${_time()}.json`
                     let res = await _once(_userData[__user], { pathImages, textToPost, folder }, 'timeline');
                     await m.file.writeAsJson(`res/${resFile}`, res, 'utf-8')
-                    s.info(`Nghỉ: (15s)`, await sleep(15 * 1e3)) // 15 giây nghỉ giữa các tài khoản
+                    await menu.text_cdown(`Nghỉ:`, 15e3, 1e3) // 15 giây nghỉ giữa các tài khoản
                 }
-                s.info(`Nghỉ: (15p)`, await sleep(15 * 60 * 1e3)) // 15 phút nghỉ giữa các lần post
+                await menu.text_cdown(`Nghỉ:`, 15 * 6e4, 1e3) // 15 phút nghỉ giữa các bài post
             }
         }
 

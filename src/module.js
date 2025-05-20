@@ -263,6 +263,7 @@ const menu = {
         alert(e) { console.log(menu.std.text(`[o]: ${e}`, menu.std.COLORS.yellow)) },
         error(e) { console.error(menu.std.text(`[!]: ${e}`, menu.std.COLORS.red)) },
     },
+    async text_cdown(t,e=15e3,$=1e3){$<=0&&(console.warn("Interval must be a positive number. Setting to default 1000ms."),$=1e3);let o=Math.floor(e/$);if(0===o){process.stdout.write(menu.std.text(`\r${t} (0)`,menu.std.COLORS.yellow,menu.std.COLORS.bold)),process.stdout.write("\r");return}let d=Date.now();for(let l=o;l>=0&&(process.stdout.write(menu.std.text(`\r${t} (${l})`,menu.std.COLORS.yellow,menu.std.COLORS.bold)),0!==l);l--){let n=d+(o-l+1)*$,r=Date.now(),s=Math.max(0,n-r);await new Promise(t=>setTimeout(t,s))}process.stdout.clearLine("\n")},
     /**
      * Displays a menu and handles user input.
      * @param {Array<[string, Function | null]>} menuItems - An array of menu items,
