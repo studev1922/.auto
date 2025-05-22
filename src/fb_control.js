@@ -167,21 +167,22 @@ const fb_mnu = {
                     let variables = JSON.stringify({ ...variableParts, ...providedVariables[name] })
                     let headers = { 'Content-Type': 'application/x-www-form-urlencoded', 'Cookie': u_dat.cookie }
                     let body = Object.assign({ doc_id: doc_ids[name], variables }, u_dat.nes)
-                    await m.file.writeAsJson(`session/${_time()}.json`, body, 'utf-8')
+                    // await m.file.writeAsJson(`session/${_time()}.json`, body, 'utf-8')
                     return await axios.post(FB_GRAPHQL, m.code.queryEncode(body), { headers })
                 },
             },
             action: {
                 /**
-                 * @param {Array<string>} imgPaths 
+                 * @param {UDat} u_dat
+                 * @param {Array<string>} pathImages 
                  * @param {AttachKey} _key
                  * @returns {Promise<ResPhoto[]>}
                  */
-                upload_images: async (pathImages, _key = 'photo' || 'media') => {
+                upload_images: async (u_dat, pathImages, _key = 'photo' || 'media') => {
                     let attachments = [];
                     if (!pathImages || pathImages.length <= 0) return attachments
                     for (let pathImage of pathImages) {
-                        let res = await on.mutation.upload_image(pathImage)
+                        let res = await on.mutation.upload_image(u_dat, pathImage)
                         if (res) attachments.push({ [_key]: { id: res.id, src: res.src } })
                     }
                     return attachments
@@ -189,8 +190,8 @@ const fb_mnu = {
                 handle_response: async (response, folder) => {
                     let { data, errors, extensions } = response.data
                     if (typeof data === 'string' && data.startsWith('for')) data = JSON.parse(data.substring(9))
-                    if (data) await m.file.writeAsJson(`res/${folder}/post ${res_success}.json`, data);
-                    if (errors) await m.file.writeAsJson(`res/${folder}/post ${res_error}.json`, errors);
+                    // if (data) await m.file.writeAsJson(`res/${folder}/post ${res_success}.json`, data);
+                    // if (errors) await m.file.writeAsJson(`res/${folder}/post ${res_error}.json`, errors);
                     return { [folder]: { data, errors } }
                 }
             }
@@ -218,7 +219,7 @@ const fb_mnu = {
              * @param {RenderLocation} renderLocation 
              */
             const _once = async (u_dat, _v = {}, renderLocation = 'timeline') => {
-                let attachments = await on.action.upload_images(_v.pathImages);
+                let attachments = await on.action.upload_images(u_dat, _v.pathImages, 'photo');
                 let response = await on.mutation.post(mutationNamed, u_dat, {
                     input: {
                         source: 'WWW',
@@ -233,18 +234,36 @@ const fb_mnu = {
                 return await on.action.handle_response(response, _v.folder) // handle response
             }
 
-            for (let folder of (await fs.promises.readdir(m.env.DATA_DIRECTORY, { withFileTypes: false }))) {
-                const dir = `${m.env.DATA_DIRECTORY}/${folder}`
+            // for (let folder of (await fs.promises.readdir(m.env.DATA_DIRECTORY, { withFileTypes: false }))) {
+            //     const dir = `${m.env.DATA_DIRECTORY}/${folder}`
+            //     const pathImages = shuffleArray(m.file.readImages(dir));
+            //     const textToPost = await (async _ => { let a=''; try { a = await m.file.readFile(`${dir}/${txtNamed}`) } catch (r) {}; return a})();
+            //     const all_res = {}, resFile = `res/${mutationNamed}/${folder}/${_time()}.json`;
+            //     for (const __user of u_ids) {
+            //         s.alert(`POST(${__user})\t:\t"${folder}"`)
+            //         all_res[__user] = await _once(_userData[__user], { pathImages, textToPost, folder }, 'timeline');
+            //         await menu.text_cdown(`Chờ tài khoản:`, 1.5e3) // Nghỉ giữa các tài khoản
+            //     }
+            //     await m.file.writeAsJson(resFile, all_res, 'utf-8') // save all response
+            //     await menu.text_cdown(`Chờ post tiếp theo:`, 5e3) // Nghỉ giữa các bài post
+            // }
+
+            const folders = await fs.promises.readdir(m.env.DATA_DIRECTORY, { withFileTypes: false });
+            for (let i = 0; i < folders.length; i++) {
+                const folder = folders[i];
+                const dir = `${m.env.DATA_DIRECTORY}/${folder}`;
                 const pathImages = shuffleArray(m.file.readImages(dir));
-                const textToPost = await (async _ => { let a; try { a = await m.file.readFile(`${dir}/${txtNamed}`) } catch (r) { a = '' } return a })();
-                for (const __user of u_ids) {
-                    s.alert(`POST(${__user})\t:\t"${folder}"`)
-                    let resFile = `${folder}/${__user}/${_time()}.json`
-                    let res = await _once(_userData[__user], { pathImages, textToPost, folder }, 'timeline');
-                    await m.file.writeAsJson(`res/${resFile}`, res, 'utf-8')
-                    await menu.text_cdown(`Nghỉ:`, 15e3, 1e3) // 15 giây nghỉ giữa các tài khoản
+                const textToPost = await (async _ => { let a = ''; try { a = await m.file.readFile(`${dir}/${txtNamed}`) } catch (r) { }; return a })();
+                const all_res = {}, resFile = `res/${mutationNamed}/${folder}/${_time()}.json`;
+
+                for (let j = 0; j < u_ids.length; j++) {
+                    const __user = u_ids[j];
+                    s.alert(`POST(${__user})\t:\t"${folder}"`);
+                    all_res[__user] = await _once(_userData[__user], { pathImages, textToPost, folder }, 'timeline');
+                    if (j < u_ids.length - 1) await menu.text_cdown(`Chờ tài khoản:`, 1.5e3);
                 }
-                await menu.text_cdown(`Nghỉ:`, 15 * 6e4, 1e3) // 15 phút nghỉ giữa các bài post
+                await m.file.writeAsJson(resFile, all_res, 'utf-8');
+                if (i < folders.length - 1)await menu.text_cdown(`Chờ post tiếp theo:`, 5e3); 
             }
         }
 

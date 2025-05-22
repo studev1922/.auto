@@ -4,11 +4,6 @@
         "AdCenterAdRowReachDefinitionPopoverQuery_facebookRelayOperation": "9687209951375861",
         "AdCenterAdRowViewersDefinitionPopoverQuery_facebookRelayOperation": "9578152985587200",
         "AdCenterAdRowViewsDefinitionPopoverQuery_facebookRelayOperation": "9653450868042908",
-        "AdCenterOverviewCardMenuPopoverQuery_facebookRelayOperation": "9866613096768375",
-        "AdPreferencesDemographicCategoryOptOutMutation_facebookRelayOperation": "29344417135205407",
-        "AdPreferencesDFCABusinessOptOutMutation_facebookRelayOperation": "8914127645355391",
-        "AdPreferencesHideAdvertiserMutation_facebookRelayOperation": "9623023361117189",
-        "AdPreferencesInterestCategoryOptOutMutation_facebookRelayOperation": "29267737149541661",
         "AMACometCreationContainerQuery_facebookRelayOperation": "29609601451986957",
         "AppLastUsedTimestampsFetcherQuery_facebookRelayOperation": "24308983718702083",
         "AvatarEditorDeleteAvatarMutation_facebookRelayOperation": "30274762018804856",
@@ -18,12 +13,19 @@
         "AvatarStickerFlyoutStickerPaginatedSectionPaginationQuery_facebookRelayOperation": "9017938728307244",
         "AvatarStickerFlyoutStickerPaginatedSectionQuery_facebookRelayOperation": "29560161173631038",
         "BasicMarketplaceEmailRefetchQuery_facebookRelayOperation": "9867580086640121",
-        "BillingLWIPaymentMethodsSectionQuery_facebookRelayOperation": "29309375082042238",
         "BillingWizardNameUtilsQuery_facebookRelayOperation": "9866815346715957",
         "BillingWizardNameUtilsRefetch_facebookRelayOperation": "29496019166709131",
         "BizKitBIOOrderDetailActionsQuery_facebookRelayOperation": "9506687476118523",
         "BizKitPageProfilePictureMutation_facebookRelayOperation": "9713563175390521",
         "BizMarketingMessagingPageOnboardingMutation_facebookRelayOperation": "9488148297969887",
+        "BizPayoutAsyncValidationActionsAddressValidationQuery_facebookRelayOperation": "9708941939141779",
+        "BizPayoutAsyncValidationActionsBankAccountValidationQuery_facebookRelayOperation": "9768923736521578",
+        "BizPayoutAsyncValidationActionsCreateCharityMutation_facebookRelayOperation": "9614161248696635",
+        "BizPayoutAsyncValidationActionsCreateDirectDebitCredentialMutation_facebookRelayOperation": "9700733299961811",
+        "BizPayoutAsyncValidationActionsCreateGameshowExternalPayoutsMutation_facebookRelayOperation": "9638003879568561",
+        "BizPayoutAsyncValidationActionsPaypalValidationQuery_facebookRelayOperation": "29317687944545637",
+        "BizPayoutAsyncValidationActionsPhoneNumberValidationQuery_facebookRelayOperation": "24308966312026278",
+        "BizPayoutAsyncValidationActionsTINValidationQuery_facebookRelayOperation": "10087157557983917",
         "BSPCometCMSContentRootQuery_facebookRelayOperation": "9812328028880973",
         "BSPCometSupportDialogQuery_facebookRelayOperation": "9997152323650131",
         "BSPCometSupportDialogSearchContentQuery_facebookRelayOperation": "9315926758512520",
@@ -38,17 +40,19 @@
         "CDSAvatarEditorStyle2Queries_fullPreviewQuery_facebookRelayOperation": "10071081059578418",
         "CDSAvatarEditorStyle2Queries_maxProfileQuery_facebookRelayOperation": "9723196677771450",
         "CDSAvatarEditorWorkplaceSyncingMutation_facebookRelayOperation": "9580132565404963",
+        "CGCreateCharityMutation_facebookRelayOperation": "23967814526136507",
+        "CGCreateDAFLightweightOnboardingJobMutation_facebookRelayOperation": "9584324811685108",
+        "CGCreateOffsiteOnlyCharityOnboardingJobMutation_facebookRelayOperation": "10008787512486033",
         "CometABTestingCreateExperimentMutation_facebookRelayOperation": "9382729345189173",
         "CometABTestingCreateProcessingStateExperimentMutation_facebookRelayOperation": "29395813426698739",
         "CometActivityLogStoriesArchiveRendererPaginationQuery_facebookRelayOperation": "9580022998740578",
-        "CometActorGatewayExperienceSubscription_facebookRelayOperation": "29899108966369351",
+        "CometActorGatewayExperienceSubscription_facebookRelayOperation": "9633706850088372",
         "CometAddTypeaheadRecentSearchMutation_facebookRelayOperation": "9552671701468719",
         "CometAdPrefsWAIST30DialogFallbackRootQuery_facebookRelayOperation": "9595963613857899",
         "CometAdPrefsWAIST30DialogRootQuery_facebookRelayOperation": "9602031383219705",
         "CometAdPrefsWAISTDialogRootQuery_facebookRelayOperation": "9546862992101210",
         "CometAdPrefsWAISTYouthDialogRootQuery_facebookRelayOperation": "24232919969630763",
         "CometAIProductTagSuggestionsQuery_facebookRelayOperation": "9865415610147230",
-        "CometAlbumEditItemTagFriendsDialogQuery_facebookRelayOperation": "24274649172135320",
         "CometAlbumUploadItemPhotoBackdateQuery_facebookRelayOperation": "29455881060692728",
         "CometAnimatedImagePickerSearchResultsRootQuery_facebookRelayOperation": "29125515663758656",
         "CometAppStoreFBECommerceAccountMutation_facebookRelayOperation": "9722028177911572",
@@ -66,8 +70,8 @@
         "CometComposerBrandedContentSponsorCardQuery_facebookRelayOperation": "23941317852127751",
         "CometComposerBrandedContentTaggerViewStrategyQuery_facebookRelayOperation": "29358001390482217",
         "CometComposerEditVideoButtonWithNuxCopyrightQuery_facebookRelayOperation": "9983895184990079",
-        "CometComposerEventAttachmentAreaQuery_facebookRelayOperation": "29459717340339812",
-        "CometComposerEventFooterAttachmentAreaQuery_facebookRelayOperation": "23927793296806202",
+        "CometComposerEventAttachmentAreaQuery_facebookRelayOperation": "9793016974079349",
+        "CometComposerEventFooterAttachmentAreaQuery_facebookRelayOperation": "23874935242131251",
         "CometComposerFooterAttachmentAreaBumpCounterMutation_facebookRelayOperation": "29235235242788923",
         "CometComposerGetWhatsAppMessagesVerificationFlowQuery_facebookRelayOperation": "8765728960197487",
         "CometComposerInterceptionPluginUtilsQuery_facebookRelayOperation": "9605223812865666",
@@ -88,26 +92,26 @@
         "CometDefaultPrivacyNuxDismissCountMutation_facebookRelayOperation": "9511254758994969",
         "CometDeleteRecentSearchMutation_facebookRelayOperation": "9360833174026215",
         "CometDismissFBNuxMutation_facebookRelayOperation": "9653902364703586",
-        "CometEditFeedComposerDialogQuery_facebookRelayOperation": "9527952370667126",
+        "CometEditFeedComposerDialogQuery_facebookRelayOperation": "9855834951131705",
         "CometEmojiDataSourceQuery_facebookRelayOperation": "9576414822473481",
-        "CometFacebookIXTNextMutation_facebookRelayOperation": "9763783073737953",
-        "CometFacebookWithLoggedOutIXTNextMutation_facebookRelayOperation": "29455767407400329",
+        "CometFacebookIXTNextMutation_facebookRelayOperation": "24598098596446735",
         "CometFBPayECPBaseComponentDataQuery_facebookRelayOperation": "24614398624816719",
         "CometFeedClickToMessengerPrivateMessagingDialogQuery_facebookRelayOperation": "9745168798929826",
         "CometFeedInlineComposerQuery_facebookRelayOperation": "9753001711481160",
         "CometFeedPreferencesControlPanelDialogQuery_facebookRelayOperation": "29963573966589741",
         "CometFeedPreferencesDialogNoFavoriteQuery_facebookRelayOperation": "29778488968431632",
         "CometFeedsNotificationsUpdateSeenStateMutation_facebookRelayOperation": "24325282127076395",
-        "CometFeedStoryFeedbackUFIStrategyEnvironmentSwitchQuery_facebookRelayOperation": "10095134197198307",
+        "CometFeedStoryFeedbackUFIStrategyEnvironmentSwitchQuery_facebookRelayOperation": "9686000654843857",
         "CometFeedStoryMenuQuery_facebookRelayOperation": "24072660595660601",
         "CometFeedStoryMusicPostLevelAttributionDialogQuery_facebookRelayOperation": "24324621813794076",
-        "CometFocusedStoryViewStoryQuery_facebookRelayOperation": "9707518506011644",
-        "CometFocusedStoryViewUFIQuery_facebookRelayOperation": "9646588088761823",
+        "CometFocusedStoryViewStoryQuery_facebookRelayOperation": "9871943536191976",
+        "CometFocusedStoryViewUFIQuery_facebookRelayOperation": "9950813998368199",
         "CometFriendNotificationsStateChangeSubscription_facebookRelayOperation": "9754477301332178",
         "CometFriendsFeedResharesDialogQuery_facebookRelayOperation": "23914523571478412",
-        "CometFRXQuery_facebookRelayOperation": "9654780204603199",
+        "CometFRXFriendSelectionDataSourceQuery_facebookRelayOperation": "9337947116332221",
+        "CometFRXQuery_facebookRelayOperation": "9762876477080647",
         "CometFubsSignUpRootQuery_facebookRelayOperation": "9315286488600484",
-        "CometGroupDiscussionRootSuccessQuery_facebookRelayOperation": "9797634336992906",
+        "CometGroupDiscussionRootSuccessQuery_facebookRelayOperation": "9496500617131728",
         "CometGroupReshareComposerDialogQuery_facebookRelayOperation": "29231527963157338",
         "CometGroupReshareComposerQuery_facebookRelayOperation": "9181286125308987",
         "CometGroupResharesDialogPushPageContentQuery_facebookRelayOperation": "23978324188440935",
@@ -115,7 +119,6 @@
         "CometHomeContactChannelsContainerQuery_facebookRelayOperation": "9830561663690812",
         "CometHomeContactCommunityChatsContainerQuery_facebookRelayOperation": "9520697668021545",
         "CometHomeContactGroupsContainerQuery_facebookRelayOperation": "9988115327905246",
-        "CometHomeContactsContainerLiveQuery_facebookRelayOperation": "9861074920624756",
         "CometHomeContactsContainerQuery_facebookRelayOperation": "9705712032879367",
         "CometHomeCreateMenuContentQuery_facebookRelayOperation": "9597998656943379",
         "CometHomeMegaMenuAllProductsQuery_facebookRelayOperation": "23884928281112900",
@@ -126,18 +129,19 @@
         "CometInformLabelActions_hideNITMutation_facebookRelayOperation": "8359610914163872",
         "CometInstantGamesPlayerRHCActionCard3DQuery_facebookRelayOperation": "9478297732278030",
         "CometIPSPushPageQuery_facebookRelayOperation": "9858256724241570",
-        "CometIXTFacebookAuthenticityWizardTriggerRootQuery_facebookRelayOperation": "9933466740116301",
-        "CometIXTFacebookBusinessVerificationAdvertiserVerificationWizardTriggerRootQuery_facebookRelayOperation": "9729917207094978",
-        "CometIXTFacebookBusinessVerificationWizardTriggerRootQuery_facebookRelayOperation": "24133020246304130",
-        "CometIXTFacebookContentTriggerRootQuery_facebookRelayOperation": "29472002055780302",
-        "CometIXTFacebookProactiveWarningFlowTriggerRootQuery_facebookRelayOperation": "29942056755439816",
-        "CometIXTFacebookXfacUniversalTriggerRootQuery_facebookRelayOperation": "10054608587935858",
+        "CometIXTFacebookAuthenticityWizardTriggerRootQuery_facebookRelayOperation": "9418077378319950",
+        "CometIXTFacebookBusinessVerificationAdvertiserVerificationWizardTriggerRootQuery_facebookRelayOperation": "23956153330687412",
+        "CometIXTFacebookBusinessVerificationWizardTriggerRootQuery_facebookRelayOperation": "9191903270911645",
+        "CometIXTFacebookContentTriggerRootQuery_facebookRelayOperation": "29553869167590170",
+        "CometIXTFacebookDefaultTriggerRootQuery_facebookRelayOperation": "10052409561493009",
+        "CometIXTFacebookProactiveWarningFlowTriggerRootQuery_facebookRelayOperation": "29868052119475195",
+        "CometIXTFacebookXfacUniversalTriggerRootQuery_facebookRelayOperation": "9743899989050541",
         "CometLinkSharingInlineDisclosureCountQuery_facebookRelayOperation": "29216341604678886",
         "CometLoggedInAccountSwitcherRemoveAccountMutation_facebookRelayOperation": "9467150813380303",
         "CometLogImpressionFBNuxMutation_facebookRelayOperation": "9723864714359536",
         "CometLogImpressionFBNuxMutationWithNoImpressionLimitMutation_facebookRelayOperation": "9632094066825967",
         "CometMagicUploadsSyncSubscription_facebookRelayOperation": "8861117017323108",
-        "CometManagePostsFeedRefetchQuery_facebookRelayOperation": "9600930096642950",
+        "CometManagePostsFeedRefetchQuery_facebookRelayOperation": "10051914511566018",
         "CometMarketplaceActivityHistoryMutation_facebookRelayOperation": "9714609748585552",
         "CometMarketplaceConfirmMarkAsPaidDialogQuery_facebookRelayOperation": "9643878485689642",
         "CometMarketplaceCreateDiscountedPriceDialogContentQuery_facebookRelayOperation": "9518476484940601",
@@ -156,20 +160,20 @@
         "CometMarketplaceYouFeedCardMoreMenuTargetQuery_facebookRelayOperation": "8740033882766871",
         "CometMarketplaceYouFeedCardMoreMenuViewerQuery_facebookRelayOperation": "29771028425844368",
         "CometMediaEditorAIProductTagSuggestionTriggerQuery_facebookRelayOperation": "30164930409772705",
-        "CometMediaViewerPhotoAddTagsActionMutation_facebookRelayOperation": "24149951627941918",
-        "CometMediaViewerPhotoDeleteTagsActionMutation_facebookRelayOperation": "29354196070892807",
+        "CometMediaViewerPhotoAddTagsActionMutation_facebookRelayOperation": "9869537889805386",
+        "CometMediaViewerPhotoDeleteTagsActionMutation_facebookRelayOperation": "9726521707395592",
         "CometMediaViewerPhotoRotateActionMutation_facebookRelayOperation": "23921405444133402",
-        "CometMediaViewerVideoActionsDeleteViewerTagMutation_facebookRelayOperation": "10083545294999382",
+        "CometMediaViewerVideoActionsDeleteViewerTagMutation_facebookRelayOperation": "9510519809059544",
         "CometMediaViewerVideoActionsEditMessageMutation_facebookRelayOperation": "29564837603131613",
         "CometMegaphoneRootQuery_facebookRelayOperation": "9852723488111370",
         "CometMessagingJewelCommunitiesQPBannerContainerPassthroughQuery_facebookRelayOperation": "9705460656213373",
-        "CometMessagingJewelDropdownOnboardingUpsellQuery_facebookRelayOperation": "9626398730780899",
-        "CometMessagingJewelDropdownQuery_facebookRelayOperation": "29554808980829788",
-        "CometMessagingJewelDropdownRestoreUpsellQuery_facebookRelayOperation": "9310162019092878",
-        "CometMessengerResharesDialogQuery_facebookRelayOperation": "9614011638667732",
+        "CometMessagingJewelDropdownOnboardingUpsellQuery_facebookRelayOperation": "9937246289647987",
+        "CometMessagingJewelDropdownQuery_facebookRelayOperation": "23936567719313090",
+        "CometMessagingJewelDropdownRestoreUpsellQuery_facebookRelayOperation": "24282213901370251",
+        "CometMessengerResharesDialogQuery_facebookRelayOperation": "24084820431125603",
         "CometMessengerResharesUpdatedDialogQuery_facebookRelayOperation": "9405818449529339",
         "cometMisinformationLinkDetectorPluginInternalStateReducerQuery_facebookRelayOperation": "9020562084710596",
-        "CometModernHomeFeedQuery_facebookRelayOperation": "29623928837252206",
+        "CometModernHomeFeedQuery_facebookRelayOperation": "9734270560025600",
         "CometNotificationsDropdownMenuContainerQuery_facebookRelayOperation": "9868911486562375",
         "CometNotificationsDropdownQuery_facebookRelayOperation": "9861938747192055",
         "CometNotificationsListPaginationQuery_facebookRelayOperation": "9829628953767073",
@@ -178,8 +182,6 @@
         "CometNotificationsRootQuery_facebookRelayOperation": "9800438670001747",
         "CometNotificationsStateChangeSubscription_facebookRelayOperation": "24141189532148378",
         "CometNotificationsUpdateSeenStateMutation_facebookRelayOperation": "9661160550617348",
-        "CometPageCoverSlideshowUpdateMutation_facebookRelayOperation": "9679382298777781",
-        "CometPageCoverVideoUpdateMutation_facebookRelayOperation": "29635699039377451",
         "CometPageFollowCommitMutation_facebookRelayOperation": "9725090054211835",
         "CometPageFollowDialogQuery_facebookRelayOperation": "29383958857917245",
         "CometPageLikeCommitMutation_facebookRelayOperation": "9525815357507631",
@@ -196,11 +198,11 @@
         "CometPhotoEditorTaggedProductsTokenQuery_facebookRelayOperation": "9489209334482055",
         "CometPhotoEditorTextOverlayFontSelectorGatedQuery_facebookRelayOperation": "9940595816050799",
         "CometPhotoEditorToolbarQuery_facebookRelayOperation": "23963356976594876",
-        "CometPhotoPermalinkRootQuery_facebookRelayOperation": "10002522043140672",
-        "CometPhotoRootContentQuery_facebookRelayOperation": "9675238209220617",
+        "CometPhotoPermalinkRootQuery_facebookRelayOperation": "9867462550037757",
+        "CometPhotoRootContentQuery_facebookRelayOperation": "30427360150196911",
         "CometPhotoTagLayerQuery_facebookRelayOperation": "29253390534304815",
         "CometPoliticalInfosheetDialogV2Query_facebookRelayOperation": "9883590621703808",
-        "CometPollVoterDialogContentRefetchQuery_facebookRelayOperation": "9563621310434281",
+        "CometPollVoterDialogContentRefetchQuery_facebookRelayOperation": "29839170565696664",
         "CometPostTestCreatedDialogQuery_facebookRelayOperation": "29144117471903477",
         "CometPrivacySelectorEditableQuery_facebookRelayOperation": "7912624335528359",
         "CometPrivacySelectorFullCustomViewQuery_facebookRelayOperation": "9845154212215476",
@@ -209,8 +211,8 @@
         "CometPrivacySelectorSavePrivacyMutation_facebookRelayOperation": "9131899383576251",
         "CometProfessionalDashboardABTestingHasClickedABTestingTabMutation_facebookRelayOperation": "9846088962101282",
         "CometProfileInsightsPostsMainCardPaginationQuery_facebookRelayOperation": "9971222626242965",
-        "CometProfileListDialogListRefetchQuery_facebookRelayOperation": "9595000613955403",
-        "CometProfileListDialogQuery_facebookRelayOperation": "9883505121715719",
+        "CometProfileListDialogListRefetchQuery_facebookRelayOperation": "9807992345981969",
+        "CometProfileListDialogQuery_facebookRelayOperation": "9623598334429297",
         "CometProfilePlusAdminSettingsWhatsAppLinkMixedPermsRootQuery_facebookRelayOperation": "9431741500285196",
         "CometProfilePlusCreatePreferredInteractionDialogQuery_facebookRelayOperation": "29831484473164289",
         "CometProfilePlusLikeMutation_facebookRelayOperation": "24452064861060493",
@@ -227,16 +229,17 @@
         "CometProfileVerificationBadgePopoverQuery_facebookRelayOperation": "9566277983468919",
         "CometRecordProductUsageMutationMutation_facebookRelayOperation": "29632133166400451",
         "CometReelsLinkingUpsellDialogImpressionMutation_facebookRelayOperation": "9929464213770237",
-        "CometResharesDialogQuery_facebookRelayOperation": "9990999737605376",
-        "CometResharesFeedPaginationQuery_facebookRelayOperation": "10098675936822056",
-        "CometRightSideHeaderCardsQuery_facebookRelayOperation": "24305379215715444",
+        "CometResharesDialogQuery_facebookRelayOperation": "8367443670046817",
+        "CometResharesFeedPaginationQuery_facebookRelayOperation": "23904564742514046",
+        "CometRightSideHeaderCardsQuery_facebookRelayOperation": "9859495124106706",
         "CometRouteActorToasterQuery_facebookRelayOperation": "23976436895274809",
         "CometSearchKeywordDataSourceQuery_facebookRelayOperation": "29730949296490326",
         "CometSetDarkModeSettingMutation_facebookRelayOperation": "29290083260606628",
         "CometSetDenseModeMutation_facebookRelayOperation": "23993927640194207",
         "CometSettingsDropdownHelpAndSupportPushPageQuery_facebookRelayOperation": "9419250444851724",
         "CometSingleActionWithPasswordReauthBarrierForWorkAccountQuery_facebookRelayOperation": "9930564877000731",
-        "CometSinglePostDialogContentQuery_facebookRelayOperation": "7948662645257604",
+        "CometSingleActionWithPasswordReauthBarrierScreenQuery_facebookRelayOperation": "9532794533494848",
+        "CometSinglePostDialogContentQuery_facebookRelayOperation": "9792430257507457",
         "CometStarsOnboardingLearnMoreEducationPageQuery_facebookRelayOperation": "29474545938857160",
         "CometStarsOnboardingUpsellDialogContentBaseMutation_facebookRelayOperation": "9515784868490410",
         "CometStarsOnboardingUpsellDialogQuery_facebookRelayOperation": "9826975567340884",
@@ -250,13 +253,13 @@
         "CometStickerPickerRecentlyUsedStickersContentRootQuery_facebookRelayOperation": "10022640691126403",
         "CometStickerPickerSearchResultsRootQuery_facebookRelayOperation": "9652702088117799",
         "CometStickersStoreDialogQuery_facebookRelayOperation": "29237828849196584",
-        "CometStoryAggregatedCollaboratorsDialogQuery_facebookRelayOperation": "9926056237477303",
-        "CometStoryAggregatedUsersSuffixDialogQuery_facebookRelayOperation": "9649707401791130",
-        "CometStoryAggregatedUsersTitleDialogQuery_facebookRelayOperation": "9533346390124933",
+        "CometStoryAggregatedCollaboratorsDialogQuery_facebookRelayOperation": "9668777796503514",
+        "CometStoryAggregatedUsersSuffixDialogQuery_facebookRelayOperation": "29399667663010269",
+        "CometStoryAggregatedUsersTitleDialogQuery_facebookRelayOperation": "9840489832694354",
         "CometTextDelightAnimationQuery_facebookRelayOperation": "24278124065111423",
-        "CometUFICommentMenuQuery_facebookRelayOperation": "9366839326771145",
+        "CometUFICommentMenuQuery_facebookRelayOperation": "9742605429126596",
         "CometUFICommentReactionIconTooltipContentQuery_facebookRelayOperation": "29298396559776323",
-        "CometUFICommentRefetchQuery_facebookRelayOperation": "9853793468015324",
+        "CometUFICommentRefetchQuery_facebookRelayOperation": "9713098278757138",
         "CometUFICommentsCountTooltipContentQuery_facebookRelayOperation": "10088332217851606",
         "CometUFIConversationGuideContainerQuery_facebookRelayOperation": "24015100244764928",
         "CometUFIFeedbackReactMutation_facebookRelayOperation": "29333620026283566",
@@ -264,19 +267,18 @@
         "CometUFILinkSharingDisclosureDialogQuery_facebookRelayOperation": "23872774335642324",
         "CometUFILiveTypingBroadcastMutation_StartMutation_facebookRelayOperation": "9432643450167108",
         "CometUFILiveTypingBroadcastMutation_StopMutation_facebookRelayOperation": "9839865266070262",
-        "CometUFIPollPickerCardQuery_facebookRelayOperation": "9595866200492382",
         "CometUFIReactionIconTooltipContentQuery_facebookRelayOperation": "9516958201714477",
         "CometUFIReactionsCountTooltipContentQuery_facebookRelayOperation": "24326765383580670",
-        "CometUFIReactionsDialogQuery_facebookRelayOperation": "9818194734960539",
-        "CometUFIReactionsDialogTabContentRefetchQuery_facebookRelayOperation": "9737801336295730",
-        "CometUFIReactionsDialogTabImportantContentRefetchQuery_facebookRelayOperation": "9891956910868778",
+        "CometUFIReactionsDialogQuery_facebookRelayOperation": "9959575650770073",
+        "CometUFIReactionsDialogTabContentRefetchQuery_facebookRelayOperation": "9832795980135212",
+        "CometUFIReactionsDialogTabImportantContentRefetchQuery_facebookRelayOperation": "29897270549887046",
         "CometUFIShareActionLinkMenuQuery_facebookRelayOperation": "9817844201612503",
         "CometUFIShareActionLinkMenuUnstyledQuery_facebookRelayOperation": "9028047603964056",
         "CometUFISharesCountTooltipContentQuery_facebookRelayOperation": "29258518103792267",
         "CometUFIStarsPickerCardRootForLexicalQuery_facebookRelayOperation": "9536335546448479",
         "CometUFIStarsPickerCardRootQuery_facebookRelayOperation": "29404395752540824",
         "CometUFIStickersComposerUpgradedPreviewContentQuery_facebookRelayOperation": "9832850366770548",
-        "CometUFIVoteCountDialogQuery_facebookRelayOperation": "9785709541549995",
+        "CometUFIVoteCountDialogQuery_facebookRelayOperation": "9470841779686699",
         "CometUnifiedShareSheetDialogQuery_facebookRelayOperation": "9864767013591357",
         "CometUnifiedShareSheetEmbedVideoContentQuery_facebookRelayOperation": "9579650218822561",
         "CometUnifiedVideoCreationDialogQuery_facebookRelayOperation": "9645790212153350",
@@ -301,7 +303,6 @@
         "CometVideoHomeLeftRailWatchlistQuery_facebookRelayOperation": "10018697804848105",
         "CometVideoHomeLOEExploreLeftRailSectionQuery_facebookRelayOperation": "30188781574054138",
         "CometVideoHomeRootProviderQuery_facebookRelayOperation": "9725313080825477",
-        "CometVideoHomeUFICommentListRendererRootQuery_facebookRelayOperation": "9475354349197629",
         "CometVideoHomeVideoContextMenuContentsQuery_facebookRelayOperation": "8975353172565900",
         "CometVideoHomeVideoThumbnailPreviewRootQuery_facebookRelayOperation": "29116150191367038",
         "CometWatchAndScrollChainingQuery_facebookRelayOperation": "9758123160921551",
@@ -313,15 +314,17 @@
         "CometWorkUserPrivacySelectorFullCustomViewQuery_facebookRelayOperation": "9676269039153586",
         "commitWorkplaceChatBotSubmitFeedbackMutation_facebookRelayOperation": "9629240687183550",
         "ComposerActivityObjectPickerTypeaheadQuery_facebookRelayOperation": "9528454523876731",
-        "ComposerLinkAttachmentPreviewQuery_facebookRelayOperation": "24043169688608303",
-        "ComposerLocationAttachmentAreaQuery_facebookRelayOperation": "9649740935094732",
+        "ComposerLinkAttachmentPreviewQuery_facebookRelayOperation": "9781786991858411",
+        "ComposerLocationAttachmentAreaQuery_facebookRelayOperation": "30435778859342789",
         "ComposerMediaDeepDiveItemQuery_facebookRelayOperation": "9547988821985073",
-        "ComposerMinutiaeAttachmentAreaQuery_facebookRelayOperation": "29556670540615369",
+        "ComposerMinutiaeAttachmentAreaQuery_facebookRelayOperation": "24715217468068354",
         "ComposerPaidContentAttachmentAreaQuery_facebookRelayOperation": "23904845225790161",
-        "ComposerStoryCreateMutation_facebookRelayOperation": "9304250023013453",
-        "ComposerStoryEditMutation_facebookRelayOperation": "29563921509919206",
+        "ComposerStoryCreateMutation_facebookRelayOperation": "10054602331271914",
+        "ComposerStoryEditMutation_facebookRelayOperation": "10053329034726254",
         "ComposerWriteWithAIPopoverQuery_facebookRelayOperation": "9169184556518649",
         "ConstituentBadgeAddressInputDialogQuery_facebookRelayOperation": "9849277081803116",
+        "CoronavirusCommunityHelpCometRequestOfferHelpCreateDialogListingFetcherQuery_facebookRelayOperation": "9930384560383109",
+        "CoronavirusCommunityHelpCometRequestOfferHelpCreateDialogQuery_facebookRelayOperation": "10026400174076988",
         "CreateLiveVideoClipDialogQuery_facebookRelayOperation": "29392389983710050",
         "CSExperienceStateQuery_facebookRelayOperation": "9345549775542360",
         "DismissRecommendationsUnitItemMutation_facebookRelayOperation": "9832307900159414",
@@ -334,9 +337,9 @@
         "EBMessageRangeQueryForThreadsWithPersistenceQuery_facebookRelayOperation": "29234169046230621",
         "EBMessageRangeQueryWithPersistenceQuery_facebookRelayOperation": "23891425050463617",
         "EBMinosUploadMessagesMutation_facebookRelayOperation": "9290059591116926",
-        "EBRegisterMinosMessageEncryptionKeyMutation_facebookRelayOperation": "23906093962348688",
+        "EBRegisterMinosMessageEncryptionKeyMutation_facebookRelayOperation": "29390095610634676",
         "EBUploadMessagesFromWorkerMutation_facebookRelayOperation": "9723960407697513",
-        "EntityQualityComplianceEnforcementDetailsDialogQuery_facebookRelayOperation": "24213901178217023",
+        "EntityQualityComplianceEnforcementDetailsDialogQuery_facebookRelayOperation": "23912009888448788",
         "EntPhotoCollageItemContainerQuery_facebookRelayOperation": "9649016211879739",
         "EntPhotoDeepDiveItemContainerQuery_facebookRelayOperation": "9668404886571419",
         "EventCometCommunityChatDialogQuery_facebookRelayOperation": "9698469826910719",
@@ -345,10 +348,10 @@
         "EventCometComposerTaggingInterceptionDialogQuery_facebookRelayOperation": "9601800249914613",
         "EventCometComposerTaggingInterceptionUpcomingEventsSectionQuery_facebookRelayOperation": "9579825552095211",
         "EventCometExportDialogQuery_facebookRelayOperation": "9884472001643604",
-        "EventCometFormPreviewRootQuery_facebookRelayOperation": "9721973271232600",
+        "EventCometFormPreviewRootQuery_facebookRelayOperation": "24068413066096137",
         "EventCometGenAiSuggestedPostDialogQuery_facebookRelayOperation": "10046005625418400",
-        "EventCometGuestlistDetailsListUsersSelfRendererQuery_facebookRelayOperation": "9857406620992110",
-        "EventCometGuestlistDetailsRootQuery_facebookRelayOperation": "9590527884408464",
+        "EventCometGuestlistDetailsListUsersSelfRendererQuery_facebookRelayOperation": "10068149549909347",
+        "EventCometGuestlistDetailsRootQuery_facebookRelayOperation": "9684647161625876",
         "EventCometHostGuidanceSeeMoreDialogQuery_facebookRelayOperation": "9581230278591396",
         "EventCometInviteDialogQuery_facebookRelayOperation": "29319011527747029",
         "EventCometInviteGroupMembersDialogQuery_facebookRelayOperation": "24062651656654171",
@@ -407,7 +410,7 @@
         "FBECometCTAConfirmationQuery_facebookRelayOperation": "9556219547804465",
         "FBECometCTAInstalling_appPageInstallCreateMutation_facebookRelayOperation": "9546130438796260",
         "FBECommerceOnsiteAccelerationUtilsSellerRegionQuery_facebookRelayOperation": "29823408080606560",
-        "FBEGlobalSetupQuery_facebookRelayOperation": "9312332805545263",
+        "FBEGlobalSetupQuery_facebookRelayOperation": "9770238169742020",
         "FBEIntentListQuery_facebookRelayOperation": "24282281361360170",
         "FBEUnifiedBusinessLoginAppFBEValuePropsListQuery_facebookRelayOperation": "24014665964803345",
         "FBEUnifiedBusinessLoginCatalogMigrationSectionQuery_facebookRelayOperation": "9586492154721065",
@@ -435,8 +438,8 @@
         "FBEUnifiedBusinessLoginSelectMultipleAdAccountSectionQuery_facebookRelayOperation": "29961338796786576",
         "FBEUnifiedBusinessLoginSelectPageWithBusinessManagerSectionPaginationQuery_facebookRelayOperation": "9600111543398806",
         "FBEUnifiedBusinessLoginSelectPageWithBusinessManagerSectionQuery_facebookRelayOperation": "9608331125943070",
-        "FBEUnifiedBusinessLoginSelectPixelSectionPaginationQuery_facebookRelayOperation": "24074264835533073",
-        "FBEUnifiedBusinessLoginSelectPixelSectionQuery_facebookRelayOperation": "29234795269501179",
+        "FBEUnifiedBusinessLoginSelectPixelSectionPaginationQuery_facebookRelayOperation": "24181221244794628",
+        "FBEUnifiedBusinessLoginSelectPixelSectionQuery_facebookRelayOperation": "24415360058051581",
         "FBEUnifiedBusinessLoginShopDetailsSectionQuery_facebookRelayOperation": "7768663156590614",
         "FBEUnifiedBusinessLoginSMCConfirmBusinessAndAdAccountSectionPaginationQuery_facebookRelayOperation": "9460911873962832",
         "FBEUnifiedBusinessLoginSMCConfirmBusinessAndAdAccountSectionQuery_facebookRelayOperation": "29747165204899241",
@@ -448,35 +451,28 @@
         "FBGVideoPlayerQuery_facebookRelayOperation": "9493598294101577",
         "FBPayHubTransactionDetailDialogQuery_facebookRelayOperation": "29938039689142900",
         "FBPayOnsiteECPCheckoutHelperRootWrapperQuery_facebookRelayOperation": "9613834195396565",
-        "FBReelsContainerQuery_facebookRelayOperation": "9756715077776693",
         "FBReelsDeleteMutation_facebookRelayOperation": "30176024268663588",
         "FBReelsEditRemixMutation_facebookRelayOperation": "9857103107681579",
-        "FBReelsEntityDialogImplQuery_facebookRelayOperation": "9996773590361242",
-        "FBReelsFeedbackLikeQuery_facebookRelayOperation": "29145907145054686",
-        "FBReelsFeedbackRightRailWithCommentPreloadingQuery_facebookRelayOperation": "8940064869426844",
-        "FBReelsForPageContainerQuery_facebookRelayOperation": "9640923265995756",
+        "FBReelsEntityDialogImplQuery_facebookRelayOperation": "29585651911079172",
         "FBReelsHideAdMutation_facebookRelayOperation": "9499248853461799",
-        "FBReelsLikeMutation_facebookRelayOperation": "8892993547470025",
-        "FBReelsRootWithEntrypointQuery_facebookRelayOperation": "10099272370104525",
+        "FBReelsRootWithEntrypointQuery_facebookRelayOperation": "9799185800136042",
         "FBReelsSaveMutation_facebookRelayOperation": "24004383842500675",
         "FBReelsSeenStateMutation_facebookRelayOperation": "23904669215784926",
-        "FBReelsSubscribeMutation_facebookRelayOperation": "10086736484691920",
         "FBReelsUnsaveMutation_facebookRelayOperation": "23884107311194467",
-        "FBReelsUnsubscribeMutation_facebookRelayOperation": "24485890811018073",
         "FBScreenTimeLogger_syncMutation_facebookRelayOperation": "9999253096754294",
         "FBToggleStarsMutation_facebookRelayOperation": "9749064818470208",
         "FDSEntityActorSelectorMenuQuery_facebookRelayOperation": "9582362498523503",
         "FeedComposerCometAnimatedImageAttachmentAreaQuery_facebookRelayOperation": "9456960987766307",
         "FeedComposerCometCreatorRecDismissalMutation_facebookRelayOperation": "9369698506473600",
         "FeedComposerCometCreatorRecImpressionMutation_facebookRelayOperation": "29330294233281118",
-        "FeedComposerCometRootQuery_facebookRelayOperation": "9760789923997184",
+        "FeedComposerCometRootQuery_facebookRelayOperation": "9825708204132734",
         "FeedComposerDefaultPrivacyQuery_facebookRelayOperation": "9927570033931242",
         "FeedComposerSocialSentenceActivityObjectQuery_facebookRelayOperation": "9558601400913647",
         "FeedComposerSocialSentenceTaggedUsersQuery_facebookRelayOperation": "9109922135780776",
         "FeedComposerSocialSentenceWithActivityQuery_facebookRelayOperation": "29248383674809599",
         "FeedComposerSocialSentenceWithTaggedSponsorQuery_facebookRelayOperation": "9982249538502591",
         "FeedsCometFilterPanelQuery_facebookRelayOperation": "10051869914845503",
-        "fetchComposerPostCreationStatusQuery_facebookRelayOperation": "10083183901739289",
+        "fetchComposerPostCreationStatusQuery_facebookRelayOperation": "9648629281900421",
         "fetchCtvCastPayloadQuery_facebookRelayOperation": "29808457688745543",
         "fetchMWChatVideoAutoplaySettingQuery_facebookRelayOperation": "29417255637889051",
         "fetchPolarisLoggedOutExperimentQuery_instagramRelayOperation": "29320190290960997",
@@ -510,9 +506,9 @@
         "GraphQLMessengerPlatformCtaPostHandlingMutation_facebookRelayOperation": "29450402841273535",
         "GroupCometComposerCreateDialogQuery_facebookRelayOperation": "9629872723799281",
         "GroupCometShareGroupQuery_facebookRelayOperation": "25173709868883255",
-        "GroupsCometAdminActivityLogItemSeeDetailsDialogQuery_facebookRelayOperation": "24200890929531415",
+        "GroupsCometAdminActivityLogItemSeeDetailsDialogQuery_facebookRelayOperation": "24035407379411846",
         "GroupsCometAdminMemberChatInformationDialogQuery_facebookRelayOperation": "9900767743313307",
-        "GroupsCometAdmodChatsPendingPostReviewDialogQuery_facebookRelayOperation": "29530899139891287",
+        "GroupsCometAdmodChatsPendingPostReviewDialogQuery_facebookRelayOperation": "9979018278842426",
         "GroupsCometAdmodChatsReviewDialogQuery_facebookRelayOperation": "29275379342110821",
         "GroupsCometCancelForumParticipationRequestDialogQuery_facebookRelayOperation": "9416501595126663",
         "GroupsCometChatAcceptInviteMutation_facebookRelayOperation": "9640454326070929",
@@ -526,6 +522,13 @@
         "GroupsCometClaimableMemberBadgesManagementDialogQuery_facebookRelayOperation": "24093686180215538",
         "GroupsCometCMDisabledChatDialogQuery_facebookRelayOperation": "9637409876354840",
         "GroupsCometCMGeoBlockedChatDialogQuery_facebookRelayOperation": "29181422338169883",
+        "GroupsCometCommunityChatsAdminEducationDialogQuery_facebookRelayOperation": "29552621267716325",
+        "GroupsCometCommunityChatsCreateChatDialogQuery_facebookRelayOperation": "9720268808060241",
+        "GroupsCometCommunityChatsListOfEngageMembersChatsDialogQuery_facebookRelayOperation": "9992558200795437",
+        "GroupsCometCommunityChatsListOfInvitePeopleChatsDialogQuery_facebookRelayOperation": "9024527210982386",
+        "GroupsCometCommunityChatsListOfNewChatsDialogQuery_facebookRelayOperation": "29258687037111168",
+        "GroupsCometCommunityChatsListOfSendMessageChatsDialogQuery_facebookRelayOperation": "9461593180634200",
+        "GroupsCometCommunityChatsListOfTopChatsDialogQuery_facebookRelayOperation": "9458343750942971",
         "GroupsCometCoverEditMenuQuery_facebookRelayOperation": "29230062513307420",
         "GroupsCometDiscussionLayoutRootQuery_facebookRelayOperation": "29461081693537136",
         "GroupsCometEndOfFeedQuery_facebookRelayOperation": "24203282545930994",
@@ -535,7 +538,7 @@
         "GroupsCometFeatureSetManageViewSingleDialogQuery_facebookRelayOperation": "9587989661317395",
         "GroupsCometFeatureSettingsDetailViewDialogQuery_facebookRelayOperation": "9476277925815677",
         "GroupsCometFeatureSettingsDetailViewTransitionQuery_facebookRelayOperation": "9187363348036785",
-        "groupsCometFetchStoryQuery_facebookRelayOperation": "9710352172395711",
+        "groupsCometFetchStoryQuery_facebookRelayOperation": "9899509553496645",
         "GroupsCometFollowGroupAndJoinChatDialogQuery_facebookRelayOperation": "9562207437233100",
         "GroupsCometGlobalChatCreationDialogGroupSelectorPaginationQuery_facebookRelayOperation": "8330313223760603",
         "GroupsCometGlobalChatCreationDialogQuery_facebookRelayOperation": "9578991145469240",
@@ -549,6 +552,7 @@
         "GroupsCometOpenAdmodChatDialogQuery_facebookRelayOperation": "9891720044226461",
         "GroupsCometParticipationQuestionsDialogQuery_facebookRelayOperation": "9706092092772032",
         "GroupsCometPausedChatMemberDialogQuery_facebookRelayOperation": "29202937366018471",
+        "GroupsCometPendingPostStandaloneActionsMenuQuery_facebookRelayOperation": "24404182292503949",
         "GroupsCometRequestToParticipateFromChatDialogQuery_facebookRelayOperation": "9655205924560797",
         "GroupsCometRulesDialogQuery_facebookRelayOperation": "24341235328796857",
         "GroupsCometSaleComposerDialogQuery_facebookRelayOperation": "9095513640550822",
@@ -567,21 +571,18 @@
         "InstantGamesUnfollowPageMutation_facebookRelayOperation": "9636311419786887",
         "InterventionDialogQuery_facebookRelayOperation": "9530914897027223",
         "IntlLocaleSelectorTypeaheadSourceQuery_facebookRelayOperation": "9822227461172096",
-        "IXTFacebookGeoXfacBvTriggerRootQuery_facebookRelayOperation": "24492268327028415",
+        "LiveProducerAYMTInteractionMutation_facebookRelayOperation": "9801246066581435",
         "LiveProducerGameSearchTypeaheadDataSourceQuery_facebookRelayOperation": "24074987712103791",
         "LiveVideoCometNuxForCVCQuery_facebookRelayOperation": "9931609010210383",
-        "LSVersion": "9910475485732216",
+        "LSVersion": "9635691509875928",
         "LWIAdAccountFetcherQuery_facebookRelayOperation": "9377169549079124",
         "LWIBizWebPageWALinkInviteResponseQuery_facebookRelayOperation": "29265641069717868",
         "LWIBizWebPixelCAPISetupDialogQuery_facebookRelayOperation": "29585320437781687",
         "LWICometActorEnforcementGuidanceCardRefetchQuery_facebookRelayOperation": "9869784663043230",
         "LWICometAdAccountSpendLimitLearnMoreDialogQuery_facebookRelayOperation": "24334100469513417",
         "LWICometAdAccountSpendLimitSectionQuery_facebookRelayOperation": "9643668655746869",
-        "LWICometAdvertiserVerificationRegulationRootQuery_facebookRelayOperation": "29258558870458836",
         "LWICometAsyncRequestSubscription_facebookRelayOperation": "9773413006105167",
         "LWICometAudienceAllTabViewQuery_facebookRelayOperation": "29165364356440381",
-        "LWICometAUFinServEntitiesRefreshQuery_facebookRelayOperation": "29368043446143547",
-        "LWICometAustraliaFinancialServicesRegulationSectionContentQuery_facebookRelayOperation": "10057540884266402",
         "LWICometAutomatedAdsProductInfoPopoverQuery_facebookRelayOperation": "9523211731068056",
         "LWICometAutomatedChatEditingModalContainerQuery_facebookRelayOperation": "24701389976115421",
         "LWICometBoostedPostRemoveTaggingsDialogMutation_facebookRelayOperation": "9640061119424573",
@@ -611,9 +612,7 @@
         "LWICometCTAWhatsAppVerificationDialogQuery_facebookRelayOperation": "9730769000321947",
         "LWICometDraftDialogUtils_CreateDraftMutation_facebookRelayOperation": "9794207674026016",
         "LWICometDraftDialogUtils_UpdateDraftMutation_facebookRelayOperation": "9605908089477687",
-        "LWICometDSASectionRootQuery_facebookRelayOperation": "9849764568407720",
         "LWICometIAPCouponClaimDialogQuery_facebookRelayOperation": "9692321637489223",
-        "LWICometIndiaFinancialServicesRegulationSectionContentQuery_facebookRelayOperation": "9962699973769512",
         "LWICometLeadGenFormSubsectionQuery_facebookRelayOperation": "29446957694920188",
         "LWICometLeadGenSavedFormDetailsCardWrapperQuery_facebookRelayOperation": "9874039782616072",
         "LWICometLocalEstimatedAudienceSizeQuery_facebookRelayOperation": "23935493026037243",
@@ -637,8 +636,8 @@
         "LWICometPixelViewConnectSignalSetupRecommendedPixelMutation_facebookRelayOperation": "29882070161438557",
         "LWICometPoliticalAdAuthorizationDialogQuery_facebookRelayOperation": "9511943122261558",
         "LWICometPoliticalAdSummaryRefetchQuery_facebookRelayOperation": "9717634191660986",
-        "LWICometPostAudienceABTestManagementPhaseAudienceAQuery_facebookRelayOperation": "10008524805873371",
-        "LWICometPostAudienceABTestManagementPhaseAudienceBQuery_facebookRelayOperation": "9496549667107445",
+        "LWICometPostAudienceABTestManagementPhaseAudienceAQuery_facebookRelayOperation": "9434399496682980",
+        "LWICometPostAudienceABTestManagementPhaseAudienceBQuery_facebookRelayOperation": "29549897891323721",
         "LWICometPostCreationRootContentQuery_facebookRelayOperation": "29443648411916489",
         "LWICometProductPickerRootSavePlatformQuery_facebookRelayOperation": "9961293120550229",
         "LWICometRegulatedCategoryUtilsAustraliaFinservQuery_facebookRelayOperation": "24047564988160526",
@@ -648,7 +647,6 @@
         "LWICometRegulatedCategoryUtilsTaiwanFinservQuery_facebookRelayOperation": "29255634027385161",
         "LWICometRegulatedCategoryUtilsTuningQuery_facebookRelayOperation": "29741907362061090",
         "LWICometRegulatedCategoryUtilsTuningRegulatedCategoriesQuery_facebookRelayOperation": "9666548570050437",
-        "LWICometTaiwanFinancialServicesRegulationSectionContentQuery_facebookRelayOperation": "29432331529747252",
         "LWICometWhatsAppAccountTypeUtilsQuery_facebookRelayOperation": "9804263116279421",
         "LWICometWhatsAppAccountUtilsSubscription_facebookRelayOperation": "29287998120847120",
         "LWICometWhatsAppSendDownloadBusinessAppLinkMutation_facebookRelayOperation": "23948244318092751",
@@ -681,7 +679,7 @@
         "MarketplaceNotificationsUpdateSeenStateMutation_facebookRelayOperation": "9465678260217672",
         "MarketplacePDPC2CShippedMakeOfferDialogQuery_facebookRelayOperation": "9652564001524177",
         "MarketplacePDPC2CSweepstakesButtonRefetchQuery_facebookRelayOperation": "29170707755909658",
-        "MarketplacePDPPreviewContainerQuery_facebookRelayOperation": "29742629812051394",
+        "MarketplacePDPPreviewContainerQuery_facebookRelayOperation": "9147385028695519",
         "MarketplaceSearchAddressDataSourceQuery_facebookRelayOperation": "23927904220149957",
         "MarketplaceSetSellLocationMutation_facebookRelayOperation": "10065389326825602",
         "MarketplaceYouSellingBulkRenewDialogQuery_facebookRelayOperation": "9882282455181664",
@@ -743,8 +741,7 @@
         "MWGeoblockThreadDialogQuery_facebookRelayOperation": "9304634992993107",
         "MWGroupUpdatesBaseSettingsDialogQuery_facebookRelayOperation": "10065505273471665",
         "MWInboxSettingsPresenceMainPushPageQuery_facebookRelayOperation": "8959323514169499",
-        "MWInboxTrayContainerLiveQuery_facebookRelayOperation": "9707771399339753",
-        "MWInboxTrayContainerQuery_facebookRelayOperation": "9392904794152256",
+        "MWInboxTrayContainerQuery_facebookRelayOperation": "29980958841502656",
         "MWLSGroupMembershipDialogQuery_facebookRelayOperation": "9265370860258042",
         "MWLSInboxQuery_facebookRelayOperation": "9644696885569517",
         "MWPThreadThemeProviderQuery_facebookRelayOperation": "9734829906576883",
@@ -757,10 +754,14 @@
         "MWRecurringNotificationsOptinDialogQuery_facebookRelayOperation": "23962325466719284",
         "MWRecurringNotificationsOptinDialogTopicRegisteredQuery_facebookRelayOperation": "29265486336433064",
         "MWSupportInboxDialogQuery_facebookRelayOperation": "9518369024942602",
-        "MWThreadListQPQuery_facebookRelayOperation": "9740269686070013",
+        "MWThreadListQPQuery_facebookRelayOperation": "9597765020322829",
         "MWV2ComposerPromptButtonQuery_facebookRelayOperation": "24479938651596685",
         "MWV2HeaderGroupSettingsSectionQuery_facebookRelayOperation": "29477693758510886",
         "MWV2MessageProfilePhotoMenuQuery_facebookRelayOperation": "9370810589694752",
+        "NonprofitOnboardingDialogBusinessInfoExpandingQuery_facebookRelayOperation": "9587548451365374",
+        "NonprofitOnboardingDraftApplicationMutation_facebookRelayOperation": "25638645279072756",
+        "NonprofitOnboardingEnterURLsFieldIsURLBlocklistedQuery_facebookRelayOperation": "29448323901448222",
+        "NonprofitOnboardingPPGFCharitySelectorStepQuery_facebookRelayOperation": "9646257448790438",
         "NonprofitSignOffsiteTermsMutation_facebookRelayOperation": "9325987600863410",
         "P2MAttachBankSlipDialogQuery_facebookRelayOperation": "9534661689958012",
         "P2MInvoicerAndConsumerSwitcherQuery_facebookRelayOperation": "29296786276603515",
@@ -772,29 +773,43 @@
         "PageLinkInstagramMutationToggleIGDirectMessageMutation_facebookRelayOperation": "29265563713086962",
         "PageLinkInstagramMutationUnlinkMutation_facebookRelayOperation": "9615354141876344",
         "PagesCometComposerDialogQuery_facebookRelayOperation": "10015569081828454",
-        "PagesCometComposerEditDialogQuery_facebookRelayOperation": "9873278722751888",
-        "PagesCometCoverSlideshowEditorQuery_facebookRelayOperation": "9522474731180992",
+        "PagesCometComposerEditDialogQuery_facebookRelayOperation": "23951748061104744",
         "PagesComposerCometInterceptionPluginUtilsQuery_facebookRelayOperation": "9956326281052355",
         "PagesOffsiteDonateCTAWebsiteBodyURLVerificationQuery_facebookRelayOperation": "9557304124347192",
         "PageWhatsAppLinkingLinkAccountMutation_facebookRelayOperation": "8941080199327777",
         "PageWhatsAppLinkingStartVerifyMutation_facebookRelayOperation": "29311229151854240",
         "PartnerPlatformCMSIntegrationScreensQuery_Query_facebookRelayOperation": "9811731105606642",
+        "PayoutBusinessProfileQuery_facebookRelayOperation": "29268623206115025",
+        "PayoutCometOnboardingBusinessInfoNoTaxWithEmailConfigQuery_facebookRelayOperation": "10091622630857893",
+        "PayoutCometOnboardingDialogBusinessInfoExpandingQuery_facebookRelayOperation": "9745222792192834",
+        "PayoutCometOnboardingDialogLegalOwnerConfigQuery_facebookRelayOperation": "9364294273697457",
+        "PayoutCometOnboardingDialogLegalOwnerNoEmailConfigQuery_facebookRelayOperation": "9597663150269045",
+        "PayoutCometOnboardingDialogLegalOwnerQuery_facebookRelayOperation": "9723846021015733",
+        "PayoutCometOnboardingDialogQuery_facebookRelayOperation": "29200650622912213",
+        "PayoutCometOnboardingPaymentInfoConfigExternalLoginQuery_facebookRelayOperation": "23902284132702732",
+        "PayoutCometOnboardingPaymentInfoConfigQuery_facebookRelayOperation": "10089264757792945",
+        "PayoutCometOnboardingPaymentInfoExternalLoginQuery_facebookRelayOperation": "9652218731533315",
+        "PayoutCometOnboardingPaymentInfoQuery_facebookRelayOperation": "29260323013614372",
+        "PayoutEnvFromGraphqlQuery_facebookRelayOperation": "29345807241731138",
+        "PayoutFinancialEntityAdminsQuery_facebookRelayOperation": "9592498530785246",
+        "PayoutOnboardingUtilVerificationDirectDebitCompletionMutation_facebookRelayOperation": "9824301740925899",
+        "PayoutOnboardingUtilVerificationDirectDebitInitializationMutation_facebookRelayOperation": "9297522933690373",
         "ProfileCometActionFollowingMenuQuery_facebookRelayOperation": "29454357207544890",
         "ProfileCometAd4AdSectionMutation_facebookRelayOperation": "29411712115111335",
         "ProfileCometAvatarCoverPhotoTakeoverDismissMutation_facebookRelayOperation": "9578345382249418",
         "ProfileCometAvatarCoverPhotoTakeoverImpressionMutation_facebookRelayOperation": "9998530810205441",
         "ProfileCometBioTextEditorPrivacyIconQuery_facebookRelayOperation": "10015749438517659",
         "ProfileCometBlockProfileSOAPInformationDialogQuery_facebookRelayOperation": "9409261269196098",
-        "ProfileCometBulkStoryCurationMutation_facebookRelayOperation": "9748475431913930",
+        "ProfileCometBulkStoryCurationMutation_facebookRelayOperation": "9819868044759704",
         "ProfileCometCollegeProfileFieldEditFormQuery_facebookRelayOperation": "9571312809611890",
         "ProfileCometComposerFunFactsAttachmentAreaQuery_facebookRelayOperation": "9644189475670415",
-        "ProfileCometComposerRootQuery_facebookRelayOperation": "9580261055418041",
-        "ProfileCometContextualProfileGroupPostsFeedPaginationQuery_facebookRelayOperation": "23902416039383657",
+        "ProfileCometComposerRootQuery_facebookRelayOperation": "24611471901775670",
+        "ProfileCometContextualProfileGroupPostsFeedPaginationQuery_facebookRelayOperation": "24642034045384552",
         "ProfileCometContextualProfileTilesSectionRefetchQuery_facebookRelayOperation": "24125842940356265",
         "ProfileCometCoverPhotoMediaPickerDialogQuery_facebookRelayOperation": "23888457670738773",
         "ProfileCometCoverPhotoRemoveMutation_facebookRelayOperation": "29310308078617083",
         "ProfileCometCoverPhotoUpdateMutation_facebookRelayOperation": "9311212219008088",
-        "ProfileCometEditComposerDialogQuery_facebookRelayOperation": "24121556824113571",
+        "ProfileCometEditComposerDialogQuery_facebookRelayOperation": "9664195180294424",
         "ProfileCometFeaturedHighlightsAddNewCollectionMutation_facebookRelayOperation": "24061019290167483",
         "ProfileCometFeaturedHighlightsDeleteCollectionMutation_facebookRelayOperation": "9729245043856320",
         "ProfileCometFeaturedHighlightsEditCollectionListStepPaginationQuery_facebookRelayOperation": "9623766864409316",
@@ -806,17 +821,17 @@
         "ProfileCometFeaturedHighlightsMediaPickerSectionPaginationQuery_facebookRelayOperation": "29232489996399543",
         "ProfileCometHeaderQuery_facebookRelayOperation": "9703649339683217",
         "ProfileCometIntroDetailsEditDialogQuery_facebookRelayOperation": "9584911544935460",
-        "ProfileCometLifeEventCreateMutation_facebookRelayOperation": "9746104078778538",
-        "ProfileCometLifeEventEditMutation_facebookRelayOperation": "24492532630350046",
+        "ProfileCometLifeEventCreateMutation_facebookRelayOperation": "9417533308351900",
+        "ProfileCometLifeEventEditMutation_facebookRelayOperation": "10041339189221872",
         "ProfileCometLifeEventsComposerDefaultMediaPickerQuery_facebookRelayOperation": "9593020887433745",
         "ProfileCometLifeEventsComposerEntityMediaQuery_facebookRelayOperation": "24361125293476145",
         "ProfileCometLifeEventsComposerIconSelectorPopoverQuery_facebookRelayOperation": "9498000083609144",
         "ProfileCometLifeEventsComposerTitleInputRelayQuery_facebookRelayOperation": "9853550241371020",
         "ProfileCometLockedProfileHomeDialogQuery_facebookRelayOperation": "29612437531688108",
-        "ProfileCometManagePostsTimelineRootQuery_facebookRelayOperation": "24966585449615749",
+        "ProfileCometManagePostsTimelineRootQuery_facebookRelayOperation": "7924247237699116",
         "ProfileCometManageSectionsDialogQuery_facebookRelayOperation": "9353838248046898",
         "ProfileCometManageSectionsSaveMutation_facebookRelayOperation": "9147173418722110",
-        "ProfileCometMentionsFeedRefetchQuery_facebookRelayOperation": "9699973870093122",
+        "ProfileCometMentionsFeedRefetchQuery_facebookRelayOperation": "23996191373307509",
         "ProfileCometPinFeatureMutation_facebookRelayOperation": "29325196473761589",
         "ProfileCometProfilePictureEditDialogQuery_facebookRelayOperation": "9737826862948972",
         "ProfileCometProfilePictureEditPreviewDialogQuery_facebookRelayOperation": "9492190647551885",
@@ -837,19 +852,19 @@
         "ProfileCometSOAPOnboardingDialogQuery_facebookRelayOperation": "9793553294023599",
         "ProfileCometSOAPSetSeenPostCreationMutation_facebookRelayOperation": "9682683971848943",
         "ProfileCometTilesFeedPaginationQuery_facebookRelayOperation": "9606273382788836",
-        "ProfileCometTimelineFeedQuery_facebookRelayOperation": "24109121218685989",
-        "ProfileCometTimelineFeedRefetchQuery_facebookRelayOperation": "24038391392463920",
-        "ProfileCometTimelineGridViewFeedRefetchQuery_facebookRelayOperation": "23897517783220439",
-        "ProfileCometTimelineListViewRootQuery_facebookRelayOperation": "9760031804033461",
+        "ProfileCometTimelineFeedQuery_facebookRelayOperation": "24114607964811670",
+        "ProfileCometTimelineFeedRefetchQuery_facebookRelayOperation": "23874455022167469",
+        "ProfileCometTimelineGridViewFeedRefetchQuery_facebookRelayOperation": "24007469168878641",
+        "ProfileCometTimelineListViewRootQuery_facebookRelayOperation": "23970892622535000",
         "ProfileCometTimelineTabAuxBannerRefetchQuery_facebookRelayOperation": "9948903981870884",
-        "ProfileCometTopAppSectionQuery_facebookRelayOperation": "9754914241295397",
+        "ProfileCometTopAppSectionQuery_facebookRelayOperation": "9776251345792967",
         "ProfileCometUnpinFeatureMutation_facebookRelayOperation": "10097357250297295",
         "ProfileCometUserUpdateRelationshipStatusMutation_facebookRelayOperation": "9995760193838887",
         "ProfileCometViewAsBarQuery_facebookRelayOperation": "24379899911599799",
         "ProfileCometWorkProfileFieldEditFormQuery_facebookRelayOperation": "24114431238159703",
         "ProfileComposerDefaultPrivacyQuery_facebookRelayOperation": "9622172027901399",
         "ProfilePlusCometActionFollowAsAPPlusDialogQuery_facebookRelayOperation": "9339652569466459",
-        "ProfilePlusCometAdminWhatsappAfterPartyDialogQuery_facebookRelayOperation": "9807894625962296",
+        "ProfilePlusCometAdminWhatsappAfterPartyDialogQuery_facebookRelayOperation": "29745735425042301",
         "ProfilePlusIntegratedOnboardingAdInterceptDialogQuery_facebookRelayOperation": "9541692912550537",
         "ProfilePlusIntentBasedSwitchingDialogQuery_facebookRelayOperation": "24041595855446368",
         "ProfilePlusSwitchProfilesUnifiedShareSheetShareToPageQuery_facebookRelayOperation": "23949440778006947",
@@ -893,7 +908,7 @@
         "StoriesCreateTextOverlaysRootQuery_facebookRelayOperation": "29544035581909378",
         "StoriesDeleteCardOptionMenuItem_StoriesDeleteMutation_facebookRelayOperation": "9862824653777625",
         "StoriesMuteStoryOptionMenuItem_StoriesMuteMutation_facebookRelayOperation": "10099227613423021",
-        "StoriesTrayRectangularRootQuery_facebookRelayOperation": "9791034604312509",
+        "StoriesTrayRectangularRootQuery_facebookRelayOperation": "10029597640440214",
         "StoriesUnfollowPageOptionMenuItem_unfollowPageMutation_facebookRelayOperation": "9565293430245087",
         "StoriesUnmuteStoryOptionMenuItem_StoriesMuteMutation_facebookRelayOperation": "9668163889928420",
         "TopOfFeedTrayAdditionalProfileRootQuery_facebookRelayOperation": "9712568382144592",
@@ -904,7 +919,7 @@
         "TwoStepVerificationSelfieBasePageQuery_facebookRelayOperation": "9510576159068583",
         "TwoStepVerificationUpdateLoginMutation_facebookRelayOperation": "8860347300734842",
         "UnifiedShareSheetMessengerMultiSelectionDialogQuery_facebookRelayOperation": "29687886117468951",
-        "UnifiedShareSheetMessengerSectionQuery_facebookRelayOperation": "9713421505441738",
+        "UnifiedShareSheetMessengerSectionQuery_facebookRelayOperation": "23993111606963614",
         "updateLWIGraduationStateToGraduatingMutation_facebookRelayOperation": "9503713706421834",
         "UpdateUserLastActiveMutation_facebookRelayOperation": "29366862719625520",
         "useAdsCouponCometEnrollMutation_enrollMutation_facebookRelayOperation": "29498748883072133",
@@ -966,22 +981,23 @@
         "useCometRelayExpiredVideoUrlRefreshHandlerQuery_facebookRelayOperation": "9700755936657095",
         "useCometStickerPickerTrayPacksPaginationQuery_facebookRelayOperation": "30363494859916398",
         "useCometTrashPostMutation_facebookRelayOperation": "10082372305158147",
-        "useCometUFICreateCommentMutation_facebookRelayOperation": "9047080602060423",
+        "useCometUFICreateCommentMutation_facebookRelayOperation": "9788133124569918",
         "useCometUFIDeleteCommentMutation_facebookRelayOperation": "9178619945576351",
-        "useCometUFIEditCommentMutation_facebookRelayOperation": "10065480873491386",
+        "useCometUFIEditCommentMutation_facebookRelayOperation": "9960141160766772",
         "useCometUFITypingIndicatorSubscription_facebookRelayOperation": "9275898662514129",
         "useCometUndoFBSupervisionParentSettingControlsMutation_facebookRelayOperation": "9561795013928094",
         "useCometVideoCollaboratorDataSourceQuery_facebookRelayOperation": "9585284898194004",
         "useComposerActivityPickerTypeaheadDataSourceQuery_facebookRelayOperation": "9254421167999497",
         "useComposerActivitySearchDataSourceQuery_facebookRelayOperation": "9669201856494552",
-        "useComposerCreatePostSubscription_facebookRelayOperation": "24630284713238713",
+        "useComposerCreatePostSubscription_facebookRelayOperation": "9788236731294399",
         "useComposerLocationPickerTypeaheadDataSourceQuery_facebookRelayOperation": "9491671960888015",
         "useComposerVideoUploaderConfigQuery_facebookRelayOperation": "9564797373627788",
         "useCreateOneTapNoncesFBMutation_facebookRelayOperation": "9568496503235607",
         "useCreateOrganicLeadGenFormMutation_facebookRelayOperation": "29942569288690544",
+        "useCrisisListingCreateMutation_facebookRelayOperation": "9860339787391269",
         "useECPCheckoutSetupMutation_facebookRelayOperation": "9891079854283856",
         "useEndMarketplaceVacationModeMutation_facebookRelayOperation": "29149813671331073",
-        "useEventCometCohostMutation_facebookRelayOperation": "23994025916856848",
+        "useEventCometCohostMutation_facebookRelayOperation": "10010117062378859",
         "useEventCometCohostTypeaheadDataSourceQuery_facebookRelayOperation": "29103195089324803",
         "useEventCometDeleteMutation_facebookRelayOperation": "24704493432483804",
         "useEventCometHandleChangeActorMutation_facebookRelayOperation": "9426249957485031",
@@ -1019,7 +1035,6 @@
         "useFeedComposerCometMentionsNullstateDataSourceQuery_facebookRelayOperation": "29307488505533285",
         "useFetaSetSavePasswordInterstitialShownMutation_facebookRelayOperation": "23875129928766666",
         "useFXReauthDialogContentQuery_facebookRelayOperation": "9838788336159707",
-        "useFXSettingsAdTopicsOptOutServiceMutation_facebookRelayOperation": "9541925205915565",
         "useFXSettingsSendPasswordResetLinkForViewerMutation_facebookRelayOperation": "23901062569500160",
         "useFXSettingsSendPasswordResetLinkMutation_facebookRelayOperation": "9818182581575430",
         "useFXVerifyReauthQuery_facebookRelayOperation": "9513815222033111",
@@ -1028,19 +1043,24 @@
         "useGroupMemberJoinSubscription_facebookRelayOperation": "29362260386721981",
         "useGroupsCometAnonymousActorSwitcherSetActorMutation_facebookRelayOperation": "9931753976844683",
         "useGroupsCometAutomatedTemplateCreateTemporaryPhotoFromURIMutation_facebookRelayOperation": "24099154486354402",
+        "useGroupsCometChatCreateMutation_facebookRelayOperation": "9854631831261751",
         "useGroupsCometChatCreateSubscription_facebookRelayOperation": "29214344714880587",
         "useGroupsCometChatDeleteSubscription_facebookRelayOperation": "9032039933563345",
         "useGroupsCometChatDirectInviteSubscription_facebookRelayOperation": "9458503570939356",
-        "useGroupsCometChatJoinMutation_facebookRelayOperation": "9817359921704674",
+        "useGroupsCometChatJoinMutation_facebookRelayOperation": "9698918716844296",
         "useGroupsCometChatLastMessageSnippetSubscription_facebookRelayOperation": "9614769988640840",
+        "useGroupsCometCreateAdmodChatMutation_facebookRelayOperation": "8154389941352483",
         "useGroupsCometEntityMenuSubscription_facebookRelayOperation": "9629711200442523",
         "useGroupsCometFeatureSubscription_facebookRelayOperation": "29304105579234228",
         "useGroupsCometGroupMallNuxUpdateStateMutation_facebookRelayOperation": "29447456531536646",
         "useGroupsCometInstallFeatureSetMutation_facebookRelayOperation": "24034559822828903",
         "useGroupsCometInstallFeaturesMutation_facebookRelayOperation": "9800451433395909",
+        "useGroupsCometMarkChathubUpsellAsSeenMutation_facebookRelayOperation": "9550982655019871",
         "useGroupsCometMarkCMOffboardingContentAsSeenMutation_facebookRelayOperation": "29677688028512108",
-        "useGroupsCometPinUnitMutation_facebookRelayOperation": "30022010604056671",
+        "useGroupsCometPinUnitMutation_facebookRelayOperation": "24153158640943841",
         "useGroupsEntityScopedRecentSearchAndExploreDataSourceQuery_facebookRelayOperation": "29991286907125289",
+        "useIdStorageGrantConsentMutation_facebookRelayOperation": "9576808492355446",
+        "useIdStorageWithdrawConsentMutation_facebookRelayOperation": "29358743593769428",
         "useIGCreateNoncesMutation_instagramRelayOperation": "24202943505974563",
         "useIncrementLinkSharingDisclosureImpressionCountMutation_facebookRelayOperation": "9370415306417248",
         "useInitialComposerViewStateBuilder_listingQuery_facebookRelayOperation": "9312672052189410",
@@ -1051,7 +1071,6 @@
         "useLiveVirtualEventsViewerStateChangeSubscription_facebookRelayOperation": "9060837730684549",
         "useLocalAlertsSetPartnerAsOnboardedMutation_facebookRelayOperation": "24349614384626887",
         "useLWIAudioSwapStatusQuery_facebookRelayOperation": "24051703314430752",
-        "useLWICometAdAccountUpdate_AdAccountQuery_facebookRelayOperation": "9941904662497024",
         "useLWICometOpenTargetingModalTargetSpecQuery_facebookRelayOperation": "9643195859108256",
         "useLWICometPixelMapQuery_facebookRelayOperation": "29193903793590669",
         "useLWIInferredGoalQuery_facebookRelayOperation": "8926927124076162",
@@ -1072,6 +1091,18 @@
         "useMarketplaceSetShouldTurnOffAutoBoostMutation_facebookRelayOperation": "24319458367654356",
         "useMedianRateLabelCodeForCategory_MedianRatesQuery_facebookRelayOperation": "9885729221493241",
         "useMessengerUnsendNUXQuery_facebookRelayOperation": "9581169425252316",
+        "useMutateCreateDirectDebitCredentialMutation_facebookRelayOperation": "30229018636688953",
+        "useMutateCreateFinancialEntityPartialMutation_facebookRelayOperation": "23915949447988952",
+        "useMutateCreateTaxInterviewURLMutation_facebookRelayOperation": "23939717062279495",
+        "useMutateLinkFinancialEntityToSubtypeMutation_facebookRelayOperation": "9579978345442768",
+        "useMutatePayoutCometOnboardingAdminMutation_facebookRelayOperation": "9596673287106805",
+        "useMutatePayoutCometOnboardingAdminPartialMutation_facebookRelayOperation": "30098750486436319",
+        "useMutatePayoutCometOnboardingCreateDirectDebitCredentialMutation_facebookRelayOperation": "9849962025027132",
+        "useMutatePayoutCometOnboardingCreateFinancialEntityMutation_facebookRelayOperation": "9928785963831177",
+        "useMutatePayoutCometOnboardingUpdateFinancialEntityMutation_facebookRelayOperation": "9725072210912626",
+        "useMutateUpdateFinancialEntityPartialMutation_facebookRelayOperation": "8714836055286129",
+        "useMutateVerificationCometDirectDebitCompletionMutation_facebookRelayOperation": "8251422411649259",
+        "useMutateVerificationCometDirectDebitInitMutation_facebookRelayOperation": "9689634244451966",
         "useMWEBSetHasSeenNoticeMutation_facebookRelayOperation": "9618790408209960",
         "useMWEncryptedBackupsFetchBackupIdsV2ImplQuery_facebookRelayOperation": "23961239003493663",
         "useMWEncryptedBackupsFetchBackupIdsV2Query_facebookRelayOperation": "24212800704976633",
@@ -1079,13 +1110,17 @@
         "useMWV2ComposerEmojiPickerSearchResultsQuery_facebookRelayOperation": "9753068468139497",
         "useMWXComposerMaybeShowHDMediaNuxQuery_facebookRelayOperation": "9580085508750272",
         "useNavigateToCTXCreationQuery_facebookRelayOperation": "9643794908990864",
-        "usePagesCometCoverPhotoUpdateMutation_facebookRelayOperation": "9706083852807204",
+        "useNonprofitOnboardingBusinessValidationsQuery_facebookRelayOperation": "9767194743371065",
+        "useNonprofitOnboardingPreloadFieldsQuery_facebookRelayOperation": "29225902067024739",
+        "usePayoutCometOnboardingAddressTypeaheadQuery_facebookRelayOperation": "9576278502464482",
         "useProfileCometFriendsDataSourceQuery_facebookRelayOperation": "9711014942271222",
         "useProfileCometHubsTypeaheadDataSourceQuery_facebookRelayOperation": "9525885104190719",
         "useProfileCometLocationTypeaheadDataSourceQuery_facebookRelayOperation": "29666761632922150",
         "useProfileCometSOAPOnboardingDialogGroupsDataSourceQuery_facebookRelayOperation": "8985023458264670",
         "useProfileCometSOAPOnboardingDialogPageDataSourceQuery_facebookRelayOperation": "23998659723074009",
         "useProfileCometSOAPOnboardingFriendsDataSourceQuery_facebookRelayOperation": "9992159470839340",
+        "useQueryPayFinancialEntityQuery_facebookRelayOperation": "9159140910857218",
+        "useQueryPayoutCometOnboardingPaypalURLQuery_facebookRelayOperation": "9807919729287858",
         "UserActivitySubscription_facebookRelayOperation": "9525970914181809",
         "useRainbowNativeSurveyDialogPlatformIntegrationPointQuery_facebookRelayOperation": "9468073073315099",
         "useRollcallContributionsXMAActionHandlerQuery_facebookRelayOperation": "24318405161090869",
@@ -1105,12 +1140,18 @@
         "useUGCAgentsSubmitFeedbackMutation_facebookRelayOperation": "9600826256672927",
         "useUpdateCPNSettingForTransitionMutation_facebookRelayOperation": "9559844884081042",
         "useUpdateLinkSharingUrlMetadataMutation_facebookRelayOperation": "9640324582727287",
+        "useUpdateTaxInterviewURLMutation_facebookRelayOperation": "29263153199998031",
         "useUserFollowMutation_facebookRelayOperation": "9639732129474910",
         "useUserNonce_nonceMutation_facebookRelayOperation": "30021917174060095",
         "useUserUnfollowMutation_facebookRelayOperation": "24163222503281284",
         "useUserUpdateFollowTypeMutation_facebookRelayOperation": "29517469764533805",
+        "useValidateBankAccountQuery_facebookRelayOperation": "9607786965924944",
+        "useValidatePayoutCometOnboardingAddressPhoneTinQuery_facebookRelayOperation": "29250825574532092",
+        "useValidatePayoutCometOnboardingAddressQuery_facebookRelayOperation": "29101282919519712",
         "useVDEDirectLinkUrlQuery_facebookRelayOperation": "9792770397475182",
         "useVideoPlayerWatchAndScrollControlNUXQuery_facebookRelayOperation": "9959057844158796",
+        "useViewerLocationPermissionSettingQuery_facebookRelayOperation": "9925700510821315",
+        "useViewerLocationQuery_facebookRelayOperation": "9609809995762359",
         "VerifyPageWhatsAppAccountForDisclosuresMutation_facebookRelayOperation": "9861869260500284",
         "VestaDeleteAccountMutation_facebookRelayOperation": "23902987852620802",
         "VestaServerGraphQLLoginProviderBeginLoginMutation_facebookRelayOperation": "9747954008656745",
@@ -1120,7 +1161,6 @@
         "VestaServerGraphQLRegisterProviderFinishRegisterMutation_facebookRelayOperation": "9551173398333326",
         "VestaServerGraphQLRegisterProviderInitQuery_facebookRelayOperation": "10088892487810238",
         "VideoComposerVideoPublishingMutation_facebookRelayOperation": "9525961877524243",
-        "VideoInteractivePluginManagerSubscription_facebookRelayOperation": "10009396185790048",
         "VideoPlayerCaptionsSettingMutation_facebookRelayOperation": "8917695971664599",
         "VideoPlayerIMFStickersOverlayRelayQuery_facebookRelayOperation": "9776015242512718",
         "VideoPlayerRelayFragmentRefetchQuery_facebookRelayOperation": "9450060145042784",
@@ -1134,25 +1174,23 @@
         "ZenonMWThriftSendMessageMutation_facebookRelayOperation": "9506032179432017"
     },
     "providedVariables": {
-        "MWInboxTrayContainerLiveQuery_facebookRelayOperation": {
-            "__relay_internal__pv__MWInboxTrayCreationEnabledrelayprovider": false,
-            "__relay_internal__pv__MWInboxTrayNumberOfContactsToFetchrelayprovider": 30,
-            "__relay_internal__pv__MWInboxTrayNotesEnabledrelayprovider": false
-        },
         "MWInboxTrayContainerQuery_facebookRelayOperation": {
             "__relay_internal__pv__MWInboxTrayCreationEnabledrelayprovider": false,
             "__relay_internal__pv__MWInboxTrayNumberOfContactsToFetchrelayprovider": 30,
             "__relay_internal__pv__MWInboxTrayNotesEnabledrelayprovider": false
         },
-        "MWCreateBroadcastChannelDialogQuery_facebookRelayOperation": {
-            "__relay_internal__pv__CometMessagingJewelDropdownCMBlendedEntrpyointEnabledrelayprovider": false,
+        "CometMessagingJewelDropdownQuery_facebookRelayOperation": {
+            "__relay_internal__pv__CometMessagingJewelDropdownCMBlendedEntrpyointEnabledrelayprovider": true,
             "__relay_internal__pv__MWEBNewUserOnboardingShouldLoadUpsellsrelayprovider": false
+        },
+        "ProfileCometComposerRootQuery_facebookRelayOperation": {
+            "__relay_internal__pv__CometUnifiedVideoCreation_showPrivacyMergerelayprovider": false
         },
         "CometUnifiedVideoCreationDialogQuery_facebookRelayOperation": {
             "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
             "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
         },
-        "ProfileCometComposerRootQuery_facebookRelayOperation": {
+        "LWICometPhoneNumberInputQuery_facebookRelayOperation": {
             "__relay_internal__pv__CometUnifiedVideoCreation_showPrivacyMergerelayprovider": false
         },
         "CometComposerIPSPluginRefreshQuery_facebookRelayOperation": {
@@ -1171,12 +1209,11 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
         "useComposerCreatePostSubscription_facebookRelayOperation": {
-            "__relay_internal__pv__GHLShouldChangeSponsoredAuctionDistanceFieldNamerelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeSponsoredAuctionDistanceFieldNamerelayprovider": false,
             "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
             "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
             "__relay_internal__pv__IsWorkUserrelayprovider": false,
@@ -1189,44 +1226,17 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
-        "CometPhotoPermalinkRootQuery_facebookRelayOperation": {
-            "__relay_internal__pv__IsWorkUserrelayprovider": false,
-            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
-            "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600,
-            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false,
-            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false,
-            "__relay_internal__pv__IsMergQAPollsrelayprovider": false,
-            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false,
-            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
-            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
-            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
-            "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true
-        },
-        "CometPhotoRootContentQuery_facebookRelayOperation": {
-            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
-            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
-            "__relay_internal__pv__IsWorkUserrelayprovider": false,
-            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
-            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false
-        },
         "CometClassicHomeLeftRailContainerQuery_facebookRelayOperation": {
             "__relay_internal__pv__WebPixelRatiorelayprovider": 1
-        },
-        "CometHomeContactsContainerLiveQuery_facebookRelayOperation": {
-            "__relay_internal__pv__MWContactListQueryOptimisationEnabledrelayprovider": false
         },
         "CometHomeContactsContainerQuery_facebookRelayOperation": {
             "__relay_internal__pv__MWContactListQueryOptimisationEnabledrelayprovider": false
         },
         "CometMegaphoneRootQuery_facebookRelayOperation": {
-            "__relay_internal__pv__GHLShouldChangeSponsoredAuctionDistanceFieldNamerelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeSponsoredAuctionDistanceFieldNamerelayprovider": false,
             "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
             "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
             "__relay_internal__pv__IsWorkUserrelayprovider": false,
@@ -1239,11 +1249,11 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
         "CometRightSideHeaderCardsQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GHLShouldChangeRHCSideFeedFieldNamerelayprovider": false,
             "__relay_internal__pv__GHLShouldChangeRHCAdsFieldNamerelayprovider": true,
             "__relay_internal__pv__GHLShouldChangeRHCFieldNamerelayprovider": false
         },
@@ -1263,12 +1273,30 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
-        "LWICometPhoneNumberInputQuery_facebookRelayOperation": {
-            "__relay_internal__pv__CometUnifiedVideoCreation_showPrivacyMergerelayprovider": false
+        "CometPhotoPermalinkRootQuery_facebookRelayOperation": {
+            "__relay_internal__pv__IsWorkUserrelayprovider": false,
+            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
+            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
+            "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600,
+            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false,
+            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false,
+            "__relay_internal__pv__IsMergQAPollsrelayprovider": false,
+            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false,
+            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
+            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
+            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
+            "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true
+        },
+        "CometPhotoRootContentQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
+            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
+            "__relay_internal__pv__IsWorkUserrelayprovider": false,
+            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
+            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false
         },
         "FBReelsRootWithEntrypointQuery_facebookRelayOperation": {
             "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
@@ -1279,7 +1307,6 @@
             "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
             "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__IsWorkUserrelayprovider": false,
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
@@ -1290,7 +1317,7 @@
             "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true,
-            "__relay_internal__pv__GHLShouldChangeSponsoredAuctionDistanceFieldNamerelayprovider": true
+            "__relay_internal__pv__GHLShouldChangeSponsoredAuctionDistanceFieldNamerelayprovider": false
         },
         "ComposerStoryEditMutation_facebookRelayOperation": {
             "__relay_internal__pv__IsWorkUserrelayprovider": false,
@@ -1305,13 +1332,8 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
-        },
-        "CometFeedStoryMenuQuery_facebookRelayOperation": {
-            "__relay_internal__pv__CometFeedStoryCopyLinkMenuItem_isLinkSharingEnabledrelayprovider": true,
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true
         },
         "GroupsCometClaimableMemberBadgesManagementDialogQuery_facebookRelayOperation": {
             "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
@@ -1326,7 +1348,6 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
@@ -1343,12 +1364,16 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
+        "CometFeedStoryMenuQuery_facebookRelayOperation": {
+            "__relay_internal__pv__CometFeedStoryCopyLinkMenuItem_isLinkSharingEnabledrelayprovider": true,
+            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true
+        },
         "CometUnifiedShareSheetDialogQuery_facebookRelayOperation": {
-            "__relay_internal__pv__isGqlDeferredNonAddressableDataEnabledrelayprovider": false
+            "__relay_internal__pv__isAttachmentsQueryOptimizationEnabledrelayprovider": true,
+            "__relay_internal__pv__isWaAddressableFieldsEnabledrelayprovider": true
         },
         "GroupsCometAdminActivityLogItemSeeDetailsDialogQuery_facebookRelayOperation": {
             "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
@@ -1363,12 +1388,8 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
-        },
-        "MWChatTabInThreadBannerQuery_facebookRelayOperation": {
-            "__relay_internal__pv__MWEBNewUserOnboardingShouldLoadUpsellsrelayprovider": false
         },
         "BizKitBIOOrderDetailActionsQuery_facebookRelayOperation": {
             "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
@@ -1380,8 +1401,14 @@
             "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
             "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
         },
+        "MWChatTabInThreadBannerQuery_facebookRelayOperation": {
+            "__relay_internal__pv__MWEBNewUserOnboardingShouldLoadUpsellsrelayprovider": false
+        },
         "MWV2HeaderGroupSettingsSectionQuery_facebookRelayOperation": {
             "__relay_internal__pv__MWRelayChatTabSearchEnabledrelayprovider": null
+        },
+        "LWICometBoostUnavailableBoostPostPickerDialogQuery_facebookRelayOperation": {
+            "__relay_internal__pv__IsFBAdsExperiencerelayprovider": null
         },
         "EventCometComposerCreateRendererQuery_facebookRelayOperation": {
             "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
@@ -1389,19 +1416,16 @@
             "__relay_internal__pv__GroupsCometGroupChatLazyLoadLastMessageSnippetrelayprovider": false,
             "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600
         },
-        "LWICometBoostUnavailableBoostPostPickerDialogQuery_facebookRelayOperation": {
-            "__relay_internal__pv__IsFBAdsExperiencerelayprovider": true
+        "ProfileCometTimelineGridViewFeedRefetchQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true
+        },
+        "ProfileCometTimelineGridViewFeedQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true
         },
         "CometManagePostsFeedRefetchQuery_facebookRelayOperation": {
             "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true
         },
         "ProfileCometManagePostsTimelineRootQuery_facebookRelayOperation": {
-            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true
-        },
-        "ProfileCometTimelineGridViewFeedRefetchQuery_facebookRelayOperation": {
-            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true
-        },
-        "ProfileCometTimelineGridViewFeedQuery_facebookRelayOperation": {
             "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true
         },
         "FeedComposerDefaultPrivacyQuery_facebookRelayOperation": {
@@ -1421,7 +1445,6 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
@@ -1431,12 +1454,53 @@
         "useGroupsCometChatLastMessageSnippetSubscription_facebookRelayOperation": {
             "__relay_internal__pv__GroupsCometGroupChatLazyLoadLastMessageSnippetrelayprovider": false
         },
-        "EBMessagePointQueryWithPersistenceQuery_facebookRelayOperation": {
-            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false
+        "HandleStoryBumperExposureMutation_facebookRelayOperation": {
+            "__relay_internal__pv__IsWorkUserrelayprovider": false,
+            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
+            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
+            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false
         },
-        "UpdateUserLastActiveMutation_facebookRelayOperation": {
-            "__relay_internal__pv__CometMessagingJewelDropdownCMBlendedEntrpyointEnabledrelayprovider": false,
-            "__relay_internal__pv__MWEBNewUserOnboardingShouldLoadUpsellsrelayprovider": false
+        "CometFocusedStoryViewUFIQuery_facebookRelayOperation": {
+            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
+            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
+            "__relay_internal__pv__IsWorkUserrelayprovider": false,
+            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false
+        },
+        "useCometUFICreateCommentMutation_facebookRelayOperation": {
+            "__relay_internal__pv__IsWorkUserrelayprovider": false
+        },
+        "CometTextDelightAnimationQuery_facebookRelayOperation": {
+            "__relay_internal__pv__CometFeedStoryCopyLinkMenuItem_isLinkSharingEnabledrelayprovider": true,
+            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true
+        },
+        "CometStarsOnboardingUpsellDialogQuery_facebookRelayOperation": {
+            "__relay_internal__pv__isAttachmentsQueryOptimizationEnabledrelayprovider": true,
+            "__relay_internal__pv__isWaAddressableFieldsEnabledrelayprovider": true
+        },
+        "CometProfileSwitcherDialogEntrypointWrapperQuery_facebookRelayOperation": {
+            "__relay_internal__pv__IsWorkUserrelayprovider": false,
+            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
+            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
+            "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600,
+            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false,
+            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false,
+            "__relay_internal__pv__IsMergQAPollsrelayprovider": false,
+            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false,
+            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
+            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
+            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
+            "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true
+        },
+        "CometUFICommentMenuQuery_facebookRelayOperation": {
+            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false
+        },
+        "GroupsCometUFIAnonActorSwitcherQuery_facebookRelayOperation": {
+            "__relay_internal__pv__IsWorkUserrelayprovider": false
         },
         "useCometUFIEditCommentMutation_facebookRelayOperation": {
             "__relay_internal__pv__IsWorkUserrelayprovider": false
@@ -1445,7 +1509,8 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false
         },
         "CometLinkSharingInlineDisclosureCountQuery_facebookRelayOperation": {
-            "__relay_internal__pv__isGqlDeferredNonAddressableDataEnabledrelayprovider": false
+            "__relay_internal__pv__isAttachmentsQueryOptimizationEnabledrelayprovider": true,
+            "__relay_internal__pv__isWaAddressableFieldsEnabledrelayprovider": true
         },
         "CometFocusedStoryViewStoryQuery_facebookRelayOperation": {
             "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
@@ -1460,18 +1525,8 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
-        },
-        "CometFocusedStoryViewUFIQuery_facebookRelayOperation": {
-            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
-            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
-            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
-            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
-            "__relay_internal__pv__IsWorkUserrelayprovider": false,
-            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false
         },
         "ProfileCometMentionsFeedRefetchQuery_facebookRelayOperation": {
             "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
@@ -1486,7 +1541,6 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
@@ -1503,12 +1557,8 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
-        },
-        "CometUFICommentMenuQuery_facebookRelayOperation": {
-            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false
         },
         "CometVideoChannelFollowMutation_facebookRelayOperation": {
             "__relay_internal__pv__CometVideoHomeCopyLinkMenuItem_isLinkSharingEnabledrelayprovider": true
@@ -1526,7 +1576,6 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true
         },
         "CometResharesFeedPaginationQuery_facebookRelayOperation": {
@@ -1542,7 +1591,6 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true
         },
         "groupsCometFetchStoryQuery_facebookRelayOperation": {
@@ -1558,13 +1606,15 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
-        "FBReelsEntityDialogImplQuery_facebookRelayOperation": {
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
+        "EBMessagePointQuery_facebookRelayOperation": {
+            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false
+        },
+        "UpdateUserLastActiveMutation_facebookRelayOperation": {
+            "__relay_internal__pv__CometMessagingJewelDropdownCMBlendedEntrpyointEnabledrelayprovider": true,
+            "__relay_internal__pv__MWEBNewUserOnboardingShouldLoadUpsellsrelayprovider": false
         },
         "ProfileCometProfilePictureRevertMutation_facebookRelayOperation": {
             "__relay_internal__pv__ProfileGeminiIsCoinFlipEnabledrelayprovider": null
@@ -1572,37 +1622,21 @@
         "BizKitPageProfilePictureMutation_facebookRelayOperation": {
             "__relay_internal__pv__ProfileGeminiIsCoinFlipEnabledrelayprovider": null
         },
-        "useCometRelayExpiredVideoUrlRefreshHandlerQuery_facebookRelayOperation": {
+        "useFeedComposerCometMentionsBootloadDataSourceQuery_facebookRelayOperation": {
+            "__relay_internal__pv__CometVideoHomeCopyLinkMenuItem_isLinkSharingEnabledrelayprovider": true
+        },
+        "CometFriendNotificationsStateChangeSubscription_facebookRelayOperation": {
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true
         },
         "EBGetEBStateQuery_facebookRelayOperation": {
             "__relay_internal__pv__CometUnifiedVideoCreation_showPrivacyMergerelayprovider": false
         },
-        "LiveVideoCometNuxForCVCQuery_facebookRelayOperation": {
-            "__relay_internal__pv__WebPixelRatiorelayprovider": 1
-        },
-        "EBMessageMetadataQueryQuery_facebookRelayOperation": {
+        "CometDismissFBNuxMutation_facebookRelayOperation": {
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false
         },
-        "MWEBRestoreDialogWrapperQuery_facebookRelayOperation": {
-            "__relay_internal__pv__IsWorkUserrelayprovider": false,
-            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
+        "CometUFIFeedbackReactSubscription_facebookRelayOperation": {
             "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
-            "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600,
-            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false,
-            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false,
-            "__relay_internal__pv__IsMergQAPollsrelayprovider": false,
-            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false,
-            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
-            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
-            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
-            "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
-            "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
-        },
-        "ProfileCometCoverPhotoUpdateMutation_facebookRelayOperation": {
-            "__relay_internal__pv__CometVideoHomeCopyLinkMenuItem_isLinkSharingEnabledrelayprovider": true
+            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
         },
         "CometTahoeRootQuery_facebookRelayOperation": {
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
@@ -1682,8 +1716,8 @@
         },
         "LWICometPostCreationRootContentQuery_facebookRelayOperation": {
             "__relay_internal__pv__IsLWIObjectivesOptimizationExperimentEnabledrelayprovider": null,
-            "__relay_internal__pv__IsFBAdsExperiencerelayprovider": true,
-            "__relay_internal__pv__IsMBSAdsExperiencerelayprovider": true
+            "__relay_internal__pv__IsFBAdsExperiencerelayprovider": null,
+            "__relay_internal__pv__IsMBSAdsExperiencerelayprovider": null
         },
         "CometMediaViewerPhotoRotateActionMutation_facebookRelayOperation": {
             "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false
@@ -1701,7 +1735,6 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
@@ -1718,8 +1751,39 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true
+        },
+        "useViewerLocationQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
+            "__relay_internal__pv__IsWorkUserrelayprovider": false,
+            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
+            "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600,
+            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false,
+            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false,
+            "__relay_internal__pv__IsMergQAPollsrelayprovider": false,
+            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false,
+            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
+            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
+            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
+            "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
+            "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
+        },
+        "CoronavirusCommunityHelpCometRequestOfferHelpCreateDialogQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
+            "__relay_internal__pv__IsWorkUserrelayprovider": false,
+            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
+            "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600,
+            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false,
+            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false,
+            "__relay_internal__pv__IsMergQAPollsrelayprovider": false,
+            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false,
+            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
+            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
+            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
+            "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
+            "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
         "CometVideoHomeVideoContextMenuContentsQuery_facebookRelayOperation": {
             "__relay_internal__pv__CometVideoHomeCopyLinkMenuItem_isLinkSharingEnabledrelayprovider": true
@@ -1742,6 +1806,24 @@
         "CometVideoHomeHashtagRootQuery_facebookRelayOperation": {
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
+        "useGroupsCometChatCreateMutation_facebookRelayOperation": {
+            "__relay_internal__pv__GroupsCometGroupChatLazyLoadLastMessageSnippetrelayprovider": false
+        },
+        "GroupsCometCommunityChatsAdminEducationDialogQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GroupsCometGroupChatLazyLoadLastMessageSnippetrelayprovider": false
+        },
+        "GroupsCometCommunityChatsListOfNewChatsDialogQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GroupsCometGroupChatLazyLoadLastMessageSnippetrelayprovider": false
+        },
+        "GroupsCometCommunityChatsListOfTopChatsDialogQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GroupsCometGroupChatLazyLoadLastMessageSnippetrelayprovider": false
+        },
+        "GroupsCometCommunityChatsCreateChatDialogQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GroupsCometGroupChatLazyLoadLastMessageSnippetrelayprovider": false
+        },
+        "CometGroupAdminToolsPageRootQuery_facebookRelayOperation": {
+            "__relay_internal__pv__GroupsCometGroupChatLazyLoadLastMessageSnippetrelayprovider": false
+        },
         "useEventCometCohostTypeaheadDataSourceQuery_facebookRelayOperation": {
             "__relay_internal__pv__GroupsCometGroupChatLazyLoadLastMessageSnippetrelayprovider": false
         },
@@ -1750,13 +1832,25 @@
             "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
             "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__IsWorkUserrelayprovider": false,
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__MarketplacePDPRedesignrelayprovider": null,
             "__relay_internal__pv__MarketplacePDPCTARedesignrelayprovider": null,
             "__relay_internal__pv__MarketplacePDPTailRedesignrelayprovider": null,
             "__relay_internal__pv__MarketplacePDPBSGRedesignrelayprovider": null
+        },
+        "useCometArchivePostMutation_facebookRelayOperation": {
+            "__relay_internal__pv__FeedComposerComet_isGenAILabelEnabledrelayprovider": false,
+            "__relay_internal__pv__CometUnifiedVideoCreation_showPrivacyMergerelayprovider": false,
+            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
+            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
+            "__relay_internal__pv__IsWorkUserrelayprovider": false,
+            "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600,
+            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false,
+            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false,
+            "__relay_internal__pv__IsMergQAPollsrelayprovider": false,
+            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
+            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
         },
         "CometChannelTabVideoDeleteActionMutation_facebookRelayOperation": {
             "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
@@ -1782,24 +1876,10 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true
         },
         "MarketplaceEcommCartAddProductMutation_facebookRelayOperation": {
             "__relay_internal__pv__CometUnifiedVideoCreation_showPrivacyMergerelayprovider": false
-        },
-        "useCometArchivePostMutation_facebookRelayOperation": {
-            "__relay_internal__pv__FeedComposerComet_isGenAILabelEnabledrelayprovider": false,
-            "__relay_internal__pv__CometUnifiedVideoCreation_showPrivacyMergerelayprovider": false,
-            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
-            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
-            "__relay_internal__pv__IsWorkUserrelayprovider": false,
-            "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600,
-            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false,
-            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false,
-            "__relay_internal__pv__IsMergQAPollsrelayprovider": false,
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
         },
         "StoriesCreateQuery_facebookRelayOperation": {
             "__relay_internal__pv__FeedComposerComet_isGenAILabelEnabledrelayprovider": false
@@ -1808,6 +1888,7 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
             "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false,
+            "__relay_internal__pv__FBUnifiedVideo_enable_reel_music_metadatarelayprovider": false,
             "__relay_internal__pv__FBUnifiedVideoMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
         },
         "ProfileCometHeaderQuery_facebookRelayOperation": {
@@ -1823,7 +1904,6 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
@@ -1842,15 +1922,11 @@
             "__relay_internal__pv__MWThreadListQP_enableEBWebUXrelayprovider": true,
             "__relay_internal__pv__MWEBNewUserOnboardingShouldLoadUpsellsrelayprovider": false
         },
-        "useCometLocaleSelectorLanguageChangeMutation_facebookRelayOperation": {
-            "__relay_internal__pv__FeedComposerComet_isGenAILabelEnabledrelayprovider": false,
-            "__relay_internal__pv__CometUnifiedVideoCreation_showPrivacyMergerelayprovider": false
-        },
-        "MWCMBlendedThreadListQuery_facebookRelayOperation": {
+        "CometActorGatewayExperienceSubscription_facebookRelayOperation": {
             "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false
         },
         "CometProfileVerificationBadgePopoverQuery_facebookRelayOperation": {
-            "__relay_internal__pv__CometMessagingJewelDropdownCMBlendedEntrpyointEnabledrelayprovider": false,
+            "__relay_internal__pv__CometMessagingJewelDropdownCMBlendedEntrpyointEnabledrelayprovider": true,
             "__relay_internal__pv__MWEBNewUserOnboardingShouldLoadUpsellsrelayprovider": false
         },
         "useCometMetaManagerBadgeCountQuery_facebookRelayOperation": {
@@ -1859,7 +1935,11 @@
             "__relay_internal__pv__GroupsCometGroupChatLazyLoadLastMessageSnippetrelayprovider": false,
             "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600
         },
-        "MWChatTabsNotificationSubscription_MessengerChatTabsNotificationSubscription_facebookRelayOperation": {
+        "useCometLocaleSelectorLanguageChangeMutation_facebookRelayOperation": {
+            "__relay_internal__pv__FeedComposerComet_isGenAILabelEnabledrelayprovider": false,
+            "__relay_internal__pv__CometUnifiedVideoCreation_showPrivacyMergerelayprovider": false
+        },
+        "useSearchCometTypeaheadBootstrapValidationQuery_facebookRelayOperation": {
             "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
             "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
             "__relay_internal__pv__IsWorkUserrelayprovider": false,
@@ -1872,7 +1952,6 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
@@ -1889,78 +1968,10 @@
             "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
             "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
             "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
             "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true,
             "__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider": true
         },
-        "CometUFIPollPickerCardQuery_facebookRelayOperation": {
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
-        },
-        "FBReelsContainerQuery_facebookRelayOperation": {
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
-        },
-        "FBReelsFeedbackRightRailWithCommentPreloadingQuery_facebookRelayOperation": {
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__IsWorkUserrelayprovider": false
-        },
-        "FBReelsSubscribeMutation_facebookRelayOperation": {
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
-        },
-        "CometProfileSwitcherDialogEntrypointWrapperQuery_facebookRelayOperation": {
-            "__relay_internal__pv__IsWorkUserrelayprovider": false,
-            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
-            "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600,
-            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false,
-            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false,
-            "__relay_internal__pv__IsMergQAPollsrelayprovider": false,
-            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false,
-            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
-            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
-            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
-            "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true
-        },
-        "GroupsCometUFIAnonActorSwitcherQuery_facebookRelayOperation": {
-            "__relay_internal__pv__IsWorkUserrelayprovider": false
-        },
-        "CometUFIConversationGuideContainerQuery_facebookRelayOperation": {
-            "__relay_internal__pv__IsWorkUserrelayprovider": false,
-            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
-            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
-            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
-            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
-            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false
-        },
-        "CometStarsOnboardingUpsellDialogQuery_facebookRelayOperation": {
-            "__relay_internal__pv__isGqlDeferredNonAddressableDataEnabledrelayprovider": false
-        },
-        "CometStoryAggregatedCollaboratorsDialogQuery_facebookRelayOperation": {
-            "__relay_internal__pv__IsWorkUserrelayprovider": false,
-            "__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider": true,
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider": true,
-            "__relay_internal__pv__CometFeedStoryDynamicResolutionPhotoAttachmentRenderer_experimentWidthrelayprovider": 600,
-            "__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider": false,
-            "__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider": false,
-            "__relay_internal__pv__IsMergQAPollsrelayprovider": false,
-            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false,
-            "__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider": false,
-            "__relay_internal__pv__CometUFIShareActionMigrationrelayprovider": true,
-            "__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider": false,
-            "__relay_internal__pv__CometIsReplyPagerDisabledrelayprovider": false,
-            "__relay_internal__pv__StoriesArmadilloReplyEnabledrelayprovider": true
-        },
-        "CometPhotoTagLayerQuery_facebookRelayOperation": {
-            "__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider": true,
-            "__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider": false
-        },
-        "ProfileCometBioTextEditorPrivacyIconQuery_facebookRelayOperation": {
+        "CometComposerLifeEventCategoryListQuery_facebookRelayOperation": {
             "__relay_internal__pv__CometUnifiedVideoCreation_showPrivacyMergerelayprovider": false
         }
     }
