@@ -263,7 +263,7 @@ const fb_mnu = {
                     if (j < u_ids.length - 1) await menu.text_cdown(`Chờ tài khoản:`, 1.5e3);
                 }
                 await m.file.writeAsJson(resFile, all_res, 'utf-8');
-                if (i < folders.length - 1)await menu.text_cdown(`Chờ post tiếp theo:`, 5e3); 
+                if (i < folders.length - 1) await menu.text_cdown(`Chờ post tiếp theo:`, 5e3); 
             }
         }
 
@@ -285,15 +285,15 @@ const fb_mnu = {
 }
 
 
-export default fb_mnu.fb_mutation
-// export default async (__dirname) => {
-//     dir = `${__dirname}/fb_profile`;2
-//     const dirData = '.data', txtNamed = 'post.txt', res_success = 'success', res_error = 'error';
+// export default fb_mnu.fb_mutation
+export default async (__dirname) => {
+    // dir = `${__dirname}/fb_profile`;
+    const dirData = '.data', txtNamed = 'post.txt', res_success = 'success', res_error = 'error';
 
-//     let choosers = [['Exit', null], ['Login', fb_mnu.fb_login]]
-//     if (Object.keys(await m.file.readJsonOr(m.env.USER_DATA_JSON)).length) {
-//         choosers.push(['Mở trang Facebook', fb_mnu.fb_open_personal_page])
-//         choosers.push(['Create mutation', fb_mnu.fb_mutation])
-//     }
-//     await menu.internalization(choosers, false)
-// }
+    let choosers = [['Exit', null], ['Login', fb_mnu.fb_login]]
+    if (Object.keys(await m.file.readJsonOr(m.env.USER_DATA_JSON)).length) {
+        choosers.push(['Mở trang Facebook', fb_mnu.fb_open_personal_page])
+        choosers.push(['Create mutation', fb_mnu.fb_mutation])
+    }
+    await menu.internalization(choosers, false)
+}

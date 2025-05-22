@@ -10,10 +10,9 @@ const mnu = {
     onFacebook: async () => await fbmodel(__dirname),
     onServer: async () => await server(__dirname),
 }
-await mnu.onFacebook();
-
-// await menu.internalization([
-//     ['Exit', null],
-//     ['Facebook', mnu.onFacebook],
-//     ['Manage File Upload', mnu.onServer],
-// ], false)
+// await mnu.onFacebook();
+await menu.internalization([
+    ['Exit', null],
+    ['Facebook', mnu.onFacebook],
+    ['Manage File Upload', mnu.onServer],
+], false)
